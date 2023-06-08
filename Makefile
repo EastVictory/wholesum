@@ -1,0 +1,2 @@
+shie:
+	yarn run dev
