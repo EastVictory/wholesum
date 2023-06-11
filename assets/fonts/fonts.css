@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Peachi';
+    src: url('Peachi-Bold.woff2') format('woff2'),
+        url('Peachi-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Peachi';
+    src: url('Peachi-Black.woff2') format('woff2'),
+        url('Peachi-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Peachi';
+    src: url('Peachi-Light.woff2') format('woff2'),
+        url('Peachi-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Peachi';
+    src: url('Peachi-Medium.woff2') format('woff2'),
+        url('Peachi-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Peachi';
+    src: url('Peachi-Thin.woff2') format('woff2'),
+        url('Peachi-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Peachi';
+    src: url('Peachi-Regular.woff2') format('woff2'),
+        url('Peachi-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
