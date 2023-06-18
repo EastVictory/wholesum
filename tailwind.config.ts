@@ -30,7 +30,7 @@ export default <Partial<Config>>{
         "red-orange": "#FF4000",
         byzantine: "#AB2DA0",
         capri: "#00BFFF",
-        "taupe-gray": "#878A84",
+        "taupe-gray": "#87848A",
       },
     },
   },
