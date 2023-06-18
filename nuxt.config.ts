@@ -59,7 +59,11 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ["@/assets/fonts/fonts.css", "/assets/scss/main.scss"],
+  css: [
+    "@/assets/fonts/fonts.css",
+    "/assets/scss/utilities.scss",
+    "/assets/scss/main.scss",
+  ],
   modules: [
     "nuxt-icons",
     [
