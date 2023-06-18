@@ -35,7 +35,8 @@
       and Privacy Policy
     </p>
     <p class="text-dark text-xs text-center font-medium">
-      Already signed up? <a href="" class="underline">Proceed to login</a>
+      Already signed up?
+      <nuxt-link to="/auth/login" class="underline">Proceed to login</nuxt-link>
     </p>
   </AuthLayout>
 </template>
