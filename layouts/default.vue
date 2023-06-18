@@ -1,5 +1,5 @@
 <template>
-  <div data-theme="light">
+  <div data-theme="light" class="min-h-screen">
     <slot />
   </div>
 </template>
