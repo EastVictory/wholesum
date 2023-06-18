@@ -1,49 +1,52 @@
 <script setup lang="ts"></script>
 
 <template>
-  <aside class="aside-nav">
-    <ul class="main-links">
-      <li>
-        <nuxt-link class="nav-link" to="/">
-          <nuxt-icon name="homepage" />
-          <span class="text-dark">Home page</span>
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link class="nav-link">
-          <nuxt-icon name="explore" />
-          <span class="text-dark">Explore</span>
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link class="nav-link">
-          <nuxt-icon name="insights" />
-          <span class="text-dark">Insights</span>
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link class="nav-link">
-          <nuxt-icon name="homepage" />
-          <span class="text-dark">Profile</span>
-        </nuxt-link>
-      </li>
-    </ul>
-    <ul class="support-links">
-      <li>
-        <nuxt-link class="nav-link">Suggestions </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link class="nav-link">Request Support</nuxt-link>
-      </li>
-      <li>
-        <nuxt-link class="nav-link">Feedback</nuxt-link>
-      </li>
-    </ul>
-  </aside>
+  <div>
+    <aside class="aside-nav">
+      <ul class="main-links">
+        <li>
+          <nuxt-link class="nav-link" to="/">
+            <nuxt-icon name="homepage" />
+            <span class="text-dark">Home page</span>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link class="nav-link">
+            <nuxt-icon name="explore" />
+            <span class="text-dark">Explore</span>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link class="nav-link">
+            <nuxt-icon name="insights" />
+            <span class="text-dark">Insights</span>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link class="nav-link">
+            <nuxt-icon name="homepage" />
+            <span class="text-dark">Profile</span>
+          </nuxt-link>
+        </li>
+      </ul>
+      <ul class="support-links">
+        <li>
+          <nuxt-link class="nav-link">Suggestions </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link class="nav-link">Request Support</nuxt-link>
+        </li>
+        <li>
+          <nuxt-link class="nav-link">Feedback</nuxt-link>
+        </li>
+      </ul>
+    </aside>
+  </div>
 </template>
 
 <style>
 .aside-nav {
+  @apply sticky top-[6.25rem];
   .main-links {
     @apply flex flex-col gap-[0.625rem] pb-[2.4375rem];
     .nav-link {
