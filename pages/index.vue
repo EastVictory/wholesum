@@ -56,6 +56,7 @@ const isVisible = ref(true);
             <p class="text-right min-h-[1.5rem]">
               <nuxt-link
                 class="inline-block underline text-[0.625rem] text-black leading-3 font-medium"
+                to="/dailies"
               >
                 Set daily goals
               </nuxt-link>
