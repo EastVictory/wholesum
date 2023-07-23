@@ -16,4 +16,11 @@ html {
   input[type="number"] {
     -moz-appearance: textfield;
   }
+  input[type="checkbox"].checkbox {
+    --bc: 2, 73%, 36%;
+    border-color: #4d4d4d;
+  }
+  input[type="checkbox"].checkbox:checked {
+    border: none;
+  }
 }

@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <div data-theme="light" class="min-h-screen">
     <header
@@ -12,22 +14,11 @@
         >
           <nuxt-link to="/" class="">HOME</nuxt-link>
           <span class="font-light text-[1.625rem]">/</span>
-          <span class="text-black">DAILY GOALS</span>
+          <slot name="current-link"></slot>
         </p>
       </div>
       <div class="flex items-center gap-4">
-        <button
-          class="rounded inline-flex text-dark px-[1.5rem] py-[0.8125rem] gap-2 items-center border border-platinum min-w-[6.1875rem] text-[0.625rem]"
-        >
-          EXIT
-          <nuxt-icon name="close" class="w-4 h-4" />
-        </button>
-        <button
-          class="rounded inline-flex text-white px-[1.5rem] py-[0.8125rem] gap-2 items-center bg-byzantine min-w-[6.1875rem] text-[0.625rem]"
-        >
-          SAVE
-          <nuxt-icon name="save" class="w-4 h-4 no-fill" />
-        </button>
+        <slot name="actions"></slot>
       </div>
     </header>
     <main>
@@ -35,8 +26,8 @@
     </main>
   </div>
 </template>
-<script setup></script>
-<style>
+
+<style scoped>
 header {
   box-shadow: inset 0 -1px 0 #e4e4e4;
 }

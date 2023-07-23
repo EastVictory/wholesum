@@ -64,7 +64,7 @@ const handleMinus = () => {
     @apply pt-[1.875rem] pb-[1.625rem] flex justify-center;
   }
   .control-button {
-    @apply font-medium text-[1.25rem] leading-6 text-black hover:bg-platinum px-[0.8125rem] py-2;
+    @apply font-medium text-[1.25rem] leading-6 text-black hover:bg-platinum px-[0.8125rem] py-2 rounded-sm;
   }
 }
 </style>

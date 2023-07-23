@@ -19,6 +19,9 @@ export default <Partial<Config>>{
       title: ["Peachi", "system-ui", "sans-serif"],
     },
     extend: {
+      fontSize: {
+        xxs: "0.625rem",
+      },
       screens: {
         xl: "1200px",
         hd: "1920px",

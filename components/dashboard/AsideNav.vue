@@ -6,25 +6,25 @@
       <ul class="main-links">
         <li>
           <nuxt-link class="nav-link" to="/">
-            <nuxt-icon name="homepage" />
+            <nuxt-icon name="homepage" class="no-fill" />
             <span class="text-dark">Home page</span>
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link class="nav-link">
-            <nuxt-icon name="explore" />
+          <nuxt-link class="nav-link" to="/explore">
+            <nuxt-icon name="explore" class="no-fill" />
             <span class="text-dark">Explore</span>
           </nuxt-link>
         </li>
         <li>
           <nuxt-link class="nav-link">
-            <nuxt-icon name="insights" />
+            <nuxt-icon name="insights" class="no-fill" />
             <span class="text-dark">Insights</span>
           </nuxt-link>
         </li>
         <li>
           <nuxt-link class="nav-link">
-            <nuxt-icon name="homepage" />
+            <nuxt-icon name="profile" class="no-fill" />
             <span class="text-dark">Profile</span>
           </nuxt-link>
         </li>
@@ -53,14 +53,10 @@
       @apply min-w-[9.5rem] min-h-[2.5rem] w-full py-[0.625rem] px-4 inline-flex items-center font-light;
       @apply gap-[0.625rem] text-taupe-gray text-sm cursor-pointer leading-[0.9375rem];
       &.router-link-exact-active {
-        @apply bg-platinum text-dark rounded-lg font-bold;
+        @apply bg-platinum text-dark rounded-lg font-medium;
       }
       &:hover {
-        @apply text-dark font-bold;
-      }
-      .nuxt-icon.nuxt-icon--fill,
-      .nuxt-icon.nuxt-icon--fill * {
-        fill: none !important;
+        @apply text-dark font-medium;
       }
     }
   }

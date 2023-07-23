@@ -1,0 +1,10 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<path id="Vector" d="M11.0625 3.5C11.2595 3.5 11.4545 3.4612 11.6365 3.38582C11.8185 3.31044 11.9839 3.19995 12.1232 3.06066C12.2624 2.92137 12.3729 2.75601 12.4483 2.57403C12.5237 2.39204 12.5625 2.19698 12.5625 2C12.5625 1.80302 12.5237 1.60796 12.4483 1.42597C12.3729 1.24399 12.2624 1.07863 12.1232 0.93934C11.9839 0.800052 11.8185 0.689563 11.6365 0.614181C11.4545 0.538799 11.2595 0.5 11.0625 0.5C10.6647 0.5 10.2831 0.658035 10.0018 0.93934C9.72054 1.22064 9.5625 1.60218 9.5625 2C9.5625 2.39782 9.72054 2.77936 10.0018 3.06066C10.2831 3.34196 10.6647 3.5 11.0625 3.5Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M10.5625 6.50001C11.0929 6.50001 11.6016 6.2893 11.9767 5.91422C12.3518 5.53915 12.5625 5.03044 12.5625 4.50001V2.00134" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M9.6875 15.4974H13.4368" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M11.5628 15.4985V9.87454C11.563 9.80391 11.5431 9.73468 11.5056 9.67483C11.4681 9.61498 11.4145 9.56696 11.3508 9.5363C11.2872 9.50563 11.2162 9.49358 11.146 9.50152C11.0758 9.50947 11.0093 9.53709 10.9542 9.58121L9.6875 10.5925" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M4.5625 3V13" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M2.5625 11L4.5625 13L6.5625 11" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

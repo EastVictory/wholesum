@@ -1,13 +1,8 @@
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_565_9478)">
-<path d="M1.25425 3.43182C1.37536 2.29984 2.28576 1.38944 3.41716 1.26333C4.25752 1.16967 5.12036 1.08922 6.00007 1.08922C6.87978 1.08922 7.74262 1.16967 8.58295 1.26333C9.71438 1.38944 10.6248 2.29984 10.7459 3.43182C10.8353 4.26741 10.9108 5.12531 10.9108 5.99993C10.9108 6.87456 10.8353 7.73245 10.7459 8.56806C10.6248 9.7 9.71438 10.6104 8.58295 10.7365C7.74262 10.8302 6.87978 10.9106 6.00007 10.9106C5.12036 10.9106 4.25752 10.8302 3.41716 10.7365C2.28576 10.6104 1.37536 9.7 1.25425 8.56806C1.16485 7.73245 1.08936 6.87456 1.08936 5.99993C1.08936 5.12531 1.16485 4.26741 1.25425 3.43182Z" stroke="#87848A" stroke-width="0.69"/>
-<path d="M3.64746 8.67041H5.01327" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.64746 6.57178H5.99993" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8.72563 5.54492L7.41522 3.62978L5.55179 4.53786L4.34033 3.03728" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 10288727">
+<path id="Vector" d="M8.9 0.5H1.1C0.768629 0.5 0.5 0.768629 0.5 1.1V8.9C0.5 9.23137 0.768629 9.5 1.1 9.5H8.9C9.23137 9.5 9.5 9.23137 9.5 8.9V1.1C9.5 0.768629 9.23137 0.5 8.9 0.5Z" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M3 7.6333H4.36581" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M3 5.53467H5.35247" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M7.3853 4.50781L6.07489 2.59267L4.21145 3.50075L3 2.00017" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
-<defs>
-<clipPath id="clip0_565_9478">
-<rect width="11" height="11" fill="white" transform="matrix(1 0 0 -1 0.5 11.5)"/>
-</clipPath>
-</defs>
 </svg>
