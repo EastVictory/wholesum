@@ -1,0 +1,9 @@
+.shie-container {
+  @apply max-w-4xl mx-auto;
+}
+.no-fill {
+  &.nuxt-icon.nuxt-icon--fill,
+  &.nuxt-icon.nuxt-icon--fill * {
+    fill: none !important;
+  }
+}

@@ -1,0 +1,11 @@
+.shie-btn {
+  @apply bg-crayola text-dark font-medium text-sm rounded;
+  @apply border-chocolate-brown border-[0.12rem] border-b-[0.25rem] py-[0.625rem] text-center w-full px-[1.25rem];
+  @apply hover:bg-transparent;
+  &--ghost {
+    @apply border-platinum bg-white hover:text-chocolate-brown hover:border-chocolate-brown;
+  }
+  &:disabled {
+    @apply border-platinum bg-platinum;
+  }
+}
