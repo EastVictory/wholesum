@@ -1,40 +1,57 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AuthLayout from "~/components/layouts/AuthLayout.vue";
+const pwdRef = ref<HTMLInputElement | null>(null);
+const togglePassword = () => {
+  const type = pwdRef.value?.type;
+  if (pwdRef.value?.type) {
+    pwdRef.value.type = type === "password" ? "text" : "password";
+  }
+};
+</script>
 
 <template>
   <AuthLayout class="signup-layout layout">
     <Head>
       <Title>Sign Up</Title>
     </Head>
-    <h1 class="page-title">Sign up to get started</h1>
-    <p>Create a free account</p>
+    <h1 class="page-title">Create an account to get started</h1>
+    <p>
+      Try Shie for 60 Days free, pay $1 for access afterwards. <br />
+      Visit <nuxt-link class="underline">Plans & Pricing</nuxt-link> for the
+      full breakdown.
+    </p>
     <form action="">
-      <div class="input-group grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <input type="text" placeholder="Last name" class="input w-full" />
-        <input type="text" placeholder="First name" class="input w-full" />
+      <div class="shie-input-group grid grid-cols-1 lg:grid-cols-2 gap-2">
+        <input type="text" placeholder="Last name" class="shie-input w-full" />
+        <input type="text" placeholder="First name" class="shie-input w-full" />
       </div>
-      <div class="input-group block">
-        <input type="email" placeholder="Email" class="input w-full" />
+      <div class="shie-input-group block">
+        <input type="email" placeholder="Email" class="shie-input w-full" />
       </div>
-      <div class="input-group block">
-        <input type="password" placeholder="Password" class="input w-full" />
+      <div class="shie-input-group shie-input-password-group block">
+        <input
+          ref="pwdRef"
+          type="password"
+          placeholder="Password"
+          class="shie-input w-full"
+        />
+        <span class="password-toggle" @click="togglePassword" />
       </div>
-      <button
-        class="btn btn-block text-dark normal-case bg-capri font-medium text-[0.8125rem]"
-      >
-        Create account
-      </button>
-      <div class="divider before:h-[0.0625rem] after:h-[0.0625rem]"></div>
+      <button class="shie-btn">Create account</button>
+      <div
+        class="divider before:h-[0.0625rem] after:h-[0.0625rem] my-[1.5rem]"
+      ></div>
 
-      <button class="google-button">
+      <button class="google-button shie-btn shie-btn--ghost">
         <nuxt-icon name="google" filled />
-        <span>Continue with Google</span>
+        <span class="flex-1 text-center">Continue with Google</span>
       </button>
     </form>
-    <p class="mb-6 text-dark text-xs font-medium">
+    <p class="mb-6 text-dark text-xs font-medium w-11/12">
       By continuing with Email or Google, you agree to Shie’s Terms of Service
       and Privacy Policy
     </p>
-    <p class="text-dark text-xs text-center font-medium">
+    <p class="text-dark text-xs text-left font-medium">
       Already signed up?
       <nuxt-link to="/auth/login" class="underline">Proceed to login</nuxt-link>
     </p>
@@ -43,27 +60,14 @@
 
 <style scoped>
 .signup-layout {
-  @apply px-4 lg:px-0;
   .page-title {
-    @apply font-title text-center text-[2rem] leading-[2.1875rem] mb-4;
+    @apply font-title text-left text-[2rem] leading-[2.1875rem] mb-4;
     & + p {
-      @apply text-black/70 text-sm text-center mb-[3.125rem];
-    }
-  }
-  .input-group {
-    @apply mb-4;
-    .input {
-      @apply rounded placeholder:text-taupe-gray placeholder:font-normal focus:outline-0 font-medium;
-      box-shadow: inset 0 -1px 1px #e4e4e4;
-      &:focus {
-        box-shadow: inset 0 -1px 0 #ff4000;
-        @apply rounded-none;
-      }
+      @apply text-taupe-gray text-sm mb-[3.125rem] font-medium;
     }
   }
   .google-button {
-    @apply btn btn-block bg-transparent text-dark normal-case font-medium text-[0.8125rem] border border-platinum mb-6;
-    @apply flex items-center gap-[0.8125rem];
+    @apply flex items-center gap-[0.8125rem] mb-6;
   }
 }
 </style>
