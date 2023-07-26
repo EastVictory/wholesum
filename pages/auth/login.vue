@@ -3,7 +3,7 @@ import VOtpInput from "vue3-otp-input";
 import AuthLayout from "~/components/layouts/AuthLayout.vue";
 
 const email = ref("");
-const isValid = ref(true);
+const isValid = ref(false);
 const otp = ref("");
 const otpComplete = ref(false);
 const otpInput = ref<InstanceType<typeof VOtpInput> | null>(null);
