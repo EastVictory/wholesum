@@ -1,0 +1,26 @@
+.otp {
+  &-container {
+    @apply flex flex-row items-center justify-center mb-6;
+    & > div {
+      @apply flex flex-row items-center justify-center gap-x-[1.5rem];
+    }
+  }
+  &-input {
+    @apply rounded placeholder:text-taupe-gray placeholder:font-normal focus:outline-0 text-dark transition-all p-2.5 w-full text-center;
+    @apply min-w-[5.8125rem];
+    box-shadow: inset 0 -1px 1px #e4e4e4;
+    &:focus {
+      box-shadow: inset 0 -1px 0 #ff4000;
+      @apply rounded-none;
+    }
+  }
+  /* Background colour of an input field with value */
+  &-input.is-complete {
+    box-shadow: inset 0 -1px 0 #ff4000;
+  }
+  &-input::-webkit-inner-spin-button,
+  &-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
