@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import RecentTasks from "~/components/dashboard/RecentTasks.vue";
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
+import SuggestedResources from "~/components/dashboard/SuggestedResources.vue";
 
 type Task = {
   icon: string;
@@ -63,6 +64,7 @@ const tasks: Task[] = [
       </section>
     </template>
     <section class="max-w-[47.1875rem] mx-auto">
+      <SuggestedResources class="my-6" />
       <RecentTasks :tasks="tasks" />
     </section>
   </DashboardLayout>
