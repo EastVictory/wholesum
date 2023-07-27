@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type Task = {
   icon: string;
-  type: string;
+  type?: string;
   title: string;
   createdAt: string;
   status: string;
@@ -16,7 +16,7 @@ defineProps<{
     <div
       class="flex justify-between items-center mb-[1.06rem] border-b border-platinum px-6 py-6"
     >
-      <p class="text-black font-semibold">Recent To Dos</p>
+      <p class="text-black">Recent To Dos</p>
       <nuxt-link class="text-sm font-medium underline text-black">
         View all
       </nuxt-link>
@@ -33,15 +33,16 @@ defineProps<{
             class="no-fill text-[#4D4D4D] h-[0.875rem] w-[0.875rem]"
           />
           <span
+            v-if="task.type"
             class="rounded border border-platinum py-[0.4375rem] text-[#4D4D4D] font-medium text-xxs w-[4.9375rem] text-center"
           >
             {{ task.type }}
           </span>
           <span class="text-sm">{{ task.title }}</span>
         </div>
-        <div class="flex items-center gap-2 min-w-[10rem] justify-between">
+        <div class="flex items-center gap-6 min-w-[12rem] justify-start">
           <span
-            class="py-1.5 px-4 bg-platinum rounded-full text-xxs min-w-[4.9375rem] text-center uppercase text-dark-liver"
+            class="py-1.5 px-4 bg-platinum rounded-full text-xxs min-w-[5.9375rem] text-center uppercase text-dark-liver"
             :class="{ completed: task.status === 'completed' }"
           >
             {{ task.status }}

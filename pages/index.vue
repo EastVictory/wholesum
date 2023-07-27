@@ -14,14 +14,14 @@ type Task = {
 const tasks: Task[] = [
   {
     icon: "trend-social",
-    type: "Stop watch",
+    type: "",
     title: "Volunteer @ Thread Together",
     createdAt: "3 mins ago",
     status: "ON GOING",
   },
   {
     icon: "trend-fitness",
-    type: "Stop watch",
+    type: "",
     title: "Evening run",
     createdAt: "Yesterday",
     status: "Draft",

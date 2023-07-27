@@ -5,7 +5,7 @@ import AuthLayout from "~/components/layouts/AuthLayout.vue";
 const email = ref("");
 const isValid = ref(false);
 const otp = ref("");
-const otpComplete = ref(false);
+const otpComplete = ref(true);
 const otpInput = ref<InstanceType<typeof VOtpInput> | null>(null);
 const handleOnComplete = () => {
   otpComplete.value = true;
@@ -13,7 +13,7 @@ const handleOnComplete = () => {
 const processSubmit = () => {
   if (isValid.value) {
     navigateTo("/");
-  } else if (otpComplete.value) {
+  } else {
     isValid.value = true;
   }
 };
