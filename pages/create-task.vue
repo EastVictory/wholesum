@@ -343,9 +343,9 @@ const duration = ref(25);
 }
 .activity__type {
   @apply py-[0.5rem] text-xxs border border-dashed border-taupe-gray font-medium;
-  @apply rounded flex-1 text-taupe-gray px-2 hover:border-red-orange hover:text-black transition-all;
+  @apply rounded flex-1 text-taupe-gray px-2 hover:border-cardinal hover:text-black transition-all;
   &.active {
-    @apply text-dark border-red-orange border-solid;
+    @apply text-dark border-cardinal border-solid;
   }
 }
 

@@ -62,7 +62,7 @@ const processSubmit = () => {
   </AuthLayout>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .signup-layout {
   .page-title {
     @apply font-title text-left text-[2rem] leading-[2.1875rem] mb-4;

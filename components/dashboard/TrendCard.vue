@@ -52,7 +52,7 @@ const emit = defineEmits<{ selectActivity: [name: string] }>();
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .trend-card {
   @apply border border-platinum rounded p-[0.62rem] flex flex-col justify-evenly;
   @apply min-h-[14.5625rem] min-w-[6.75rem] gap-[1.5rem];

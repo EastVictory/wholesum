@@ -45,7 +45,7 @@ const handleMinus = () => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .daily-card {
   @apply border border-platinum rounded hover:bg-[#F5F4F4] cursor-pointer transition;
   &:hover {

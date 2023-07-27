@@ -30,7 +30,7 @@ export default <Partial<Config>>{
       colors: {
         platinum: "#E4E4E4",
         dark: "#141414",
-        "red-orange": "#FF4000",
+        cardinal: "#BF1F2F",
         byzantine: "#AB2DA0",
         capri: "#00BFFF",
         "taupe-gray": "#87848A",

@@ -280,7 +280,7 @@ const currentTrendActivity = ref("education");
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .trend-preview {
   @apply border border-white rounded hover:border-byzantine cursor-pointer transition-all;
   &.active {
