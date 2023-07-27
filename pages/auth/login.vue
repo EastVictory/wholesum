@@ -10,6 +10,13 @@ const otpInput = ref<InstanceType<typeof VOtpInput> | null>(null);
 const handleOnComplete = () => {
   otpComplete.value = true;
 };
+const processSubmit = () => {
+  if (isValid.value) {
+    navigateTo("/");
+  } else if (otpComplete.value) {
+    isValid.value = true;
+  }
+};
 </script>
 
 <template>
@@ -19,7 +26,7 @@ const handleOnComplete = () => {
     </Head>
     <h1 class="page-title">Sign into your account</h1>
     <p>Access your account with Shie.</p>
-    <form @submit.prevent="isValid = true">
+    <form @submit.prevent="processSubmit">
       <div class="shie-input-group block">
         <input
           v-model="email"
