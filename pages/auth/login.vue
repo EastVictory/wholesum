@@ -5,7 +5,7 @@ import AuthLayout from "~/components/layouts/AuthLayout.vue";
 const email = ref("");
 const isValid = ref(false);
 const otp = ref("");
-const otpComplete = ref(true);
+const otpComplete = ref(false);
 const otpInput = ref<InstanceType<typeof VOtpInput> | null>(null);
 const handleOnComplete = () => {
   otpComplete.value = true;
