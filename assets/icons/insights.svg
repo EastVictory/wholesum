@@ -1,8 +1,8 @@
 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Group 10288727">
-<path id="Vector" d="M8.9 0.5H1.1C0.768629 0.5 0.5 0.768629 0.5 1.1V8.9C0.5 9.23137 0.768629 9.5 1.1 9.5H8.9C9.23137 9.5 9.5 9.23137 9.5 8.9V1.1C9.5 0.768629 9.23137 0.5 8.9 0.5Z" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_2" d="M3 7.6333H4.36581" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_3" d="M3 5.53467H5.35247" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_4" d="M7.3853 4.50781L6.07489 2.59267L4.21145 3.50075L3 2.00017" stroke="#87848A" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector" d="M8.9 0.5H1.1C0.768629 0.5 0.5 0.768629 0.5 1.1V8.9C0.5 9.23137 0.768629 9.5 1.1 9.5H8.9C9.23137 9.5 9.5 9.23137 9.5 8.9V1.1C9.5 0.768629 9.23137 0.5 8.9 0.5Z" stroke="currentColor" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M3 7.6333H4.36581" stroke="currentColor" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M3 5.53467H5.35247" stroke="currentColor" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M7.3853 4.50781L6.07489 2.59267L4.21145 3.50075L3 2.00017" stroke="currentColor" stroke-width="0.69" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>

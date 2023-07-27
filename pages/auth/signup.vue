@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import AuthLayout from "~/components/layouts/AuthLayout.vue";
 const pwdRef = ref<HTMLInputElement | null>(null);
+
 const togglePassword = () => {
   const type = pwdRef.value?.type;
   if (pwdRef.value?.type) {
     pwdRef.value.type = type === "password" ? "text" : "password";
   }
+};
+const processSubmit = () => {
+  navigateTo("/");
 };
 </script>
 
@@ -20,7 +24,7 @@ const togglePassword = () => {
       Visit <nuxt-link class="underline">Plans & Pricing</nuxt-link> for the
       full breakdown.
     </p>
-    <form action="">
+    <form @submit.prevent="processSubmit">
       <div class="shie-input-group grid grid-cols-1 lg:grid-cols-2 gap-2">
         <input type="text" placeholder="Last name" class="shie-input w-full" />
         <input type="text" placeholder="First name" class="shie-input w-full" />
@@ -58,7 +62,7 @@ const togglePassword = () => {
   </AuthLayout>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .signup-layout {
   .page-title {
     @apply font-title text-left text-[2rem] leading-[2.1875rem] mb-4;

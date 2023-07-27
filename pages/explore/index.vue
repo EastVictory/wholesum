@@ -29,7 +29,7 @@ import TodoTab from "~/components/explore/TodoTab.vue";
   </DashboardLayout>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .explore-tabs {
   .active-tab {
     @apply border-b border-byzantine text-[#141414] font-semibold;

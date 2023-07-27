@@ -1,48 +1,20 @@
 <script setup lang="ts">
-type Link = {
-  title: string;
-  link: string;
-  icon: string;
-};
-const links: Link[] = [
-  { title: "DASHBOARD", link: "/", icon: "homepage" },
-  { title: "EXPLORE", link: "/explore", icon: "explore" },
-  { title: "INSIGHTS", link: "/insights", icon: "insights" },
-  { title: "ACCOUNT", link: "/profile", icon: "profile" },
-];
+import AppNav from "~/components/layouts/AppNav.vue";
+import AppNotifications from "~/components/layouts/AppNotifications.vue";
+const notificationsVisible = ref(false);
 </script>
 
 <template>
   <div data-theme="light" class="min-h-screen">
-    <header class="dashboard-header sticky top-0">
-      <div
-        class="max-w-[90rem] mx-auto flex items-center gap-[4.62rem] w-full px-[6.25rem]"
-      >
-        <nuxt-link to="/">
-          <nuxt-icon name="logo" class="w-[2.25rem] h-[2.25rem]" filled />
-        </nuxt-link>
-        <nav class="flex">
-          <ul class="flex items-center">
-            <li v-for="link in links" :key="link.title">
-              <nuxt-link
-                class="px-[0.62rem] py-4 text-taupe-gray text-sm inline-flex items-center gap-4 min-w-[12.3125rem] h-[4.6875rem] justify-center hover:text-dark transition-all"
-                :to="link.link"
-              >
-                <nuxt-icon
-                  :name="link.icon"
-                  class="no-fill w-[1.3125rem] h-[1.3125rem]"
-                />
-                <span>
-                  {{ link.title }}
-                </span>
-              </nuxt-link>
-            </li>
-          </ul>
-        </nav>
-        <div class="flex items-center gap-[0.625rem] p-[0.625rem]">
-          <nuxt-link>Help Center</nuxt-link>
-          <nuxt-icon name="light-dark" filled />
-        </div>
+    <header class="dashboard-header">
+      <div class="nav__wrapper">
+        <AppNav
+          @toggle-notifications="(e:boolean) => (notificationsVisible = e)"
+        />
+        <AppNotifications
+          v-if="notificationsVisible"
+          @toggle-notifications="(e:boolean) => (notificationsVisible = e)"
+        />
       </div>
       <slot name="sub-header"></slot>
     </header>
@@ -52,11 +24,11 @@ const links: Link[] = [
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .dashboard-header {
-  box-shadow: inset 0 -1px 0 #e4e4e4;
-  .router-link-exact-active {
-    @apply text-dark font-medium bg-[#F5F4F4];
+  @apply sticky top-0 z-10 bg-white;
+  .nav__wrapper {
+    box-shadow: inset 0 -1px 0 #e4e4e4;
   }
 }
 </style>

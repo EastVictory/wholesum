@@ -3,12 +3,19 @@ import VOtpInput from "vue3-otp-input";
 import AuthLayout from "~/components/layouts/AuthLayout.vue";
 
 const email = ref("");
-const isValid = ref(true);
+const isValid = ref(false);
 const otp = ref("");
 const otpComplete = ref(false);
 const otpInput = ref<InstanceType<typeof VOtpInput> | null>(null);
 const handleOnComplete = () => {
   otpComplete.value = true;
+};
+const processSubmit = () => {
+  if (isValid.value) {
+    navigateTo("/");
+  } else if (otpComplete.value) {
+    isValid.value = true;
+  }
 };
 </script>
 
@@ -19,7 +26,7 @@ const handleOnComplete = () => {
     </Head>
     <h1 class="page-title">Sign into your account</h1>
     <p>Access your account with Shie.</p>
-    <form @submit.prevent="isValid = true">
+    <form @submit.prevent="processSubmit">
       <div class="shie-input-group block">
         <input
           v-model="email"

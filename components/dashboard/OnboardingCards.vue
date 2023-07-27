@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .daily-banner {
   @apply rounded-lg border border-platinum px-[4.875rem] py-[1.9375rem] flex justify-between gap-[4rem] items-center mb-4;
 }
