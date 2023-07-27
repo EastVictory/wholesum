@@ -36,6 +36,8 @@ export default <Partial<Config>>{
         "taupe-gray": "#87848A",
         gunmetal: "#16262A",
         crayola: "#76D7EA",
+        "dark-liver": "#4D4D4D",
+        "phil-yellow": "#FFC700",
         "chocolate-brown": "#3F000F",
       },
     },
