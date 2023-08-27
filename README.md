@@ -1,6 +1,8 @@
-# Nuxt 3 Minimal Starter
+# Wholesum Frontend
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b21101a2-cbb5-459f-a990-f23ebae1f776/deploy-status)](https://app.netlify.com/sites/wholesum/deploys)
 
 ## Setup
 
