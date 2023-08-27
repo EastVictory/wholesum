@@ -55,8 +55,12 @@ const features: Feature[] = [
               <nuxt-icon name="logo-icon" filled />
             </a>
             <ul class="flex gap-x-[2.63rem]">
-              <li v-for="link in links" :key="link.href">
-                <a :href="link.name">{{ link.name }}</a>
+              <li
+                v-for="link in links"
+                :key="link.href"
+                class="text-dark-puce font-title uppercase text-sm hover:text-cardinal"
+              >
+                <nuxt-link :to="link.href">{{ link.name }}</nuxt-link>
               </li>
             </ul>
           </nav>
