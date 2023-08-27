@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Shie" || process.env.npm_package_name,
+      title: "Wholesum" || process.env.npm_package_name,
       htmlAttrs: {
         lang: "en",
       },
@@ -72,6 +72,7 @@ export default defineNuxtConfig({
       {
         families: {
           Inter: true,
+          Borel: true,
         },
       },
     ],
