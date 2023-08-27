@@ -13,10 +13,12 @@ export default <Partial<Config>>{
     `./Error.{js,ts,vue}`,
     `./error.{js,ts,vue}`,
     `./app.config.{js,ts}`,
+    "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   theme: {
     fontFamily: {
-      title: ["Peachi", "system-ui", "sans-serif"],
+      title: ["Borel", "system-ui", "sans-serif"],
+      subtitle: ["Peachi", "system-ui", "sans-serif"],
     },
     extend: {
       fontSize: {
@@ -28,6 +30,8 @@ export default <Partial<Config>>{
         "4k": "3840px",
       },
       colors: {
+        conditioner: "#ffffcc",
+        "outer-space": "#444444",
         platinum: "#E4E4E4",
         dark: "#141414",
         cardinal: "#BF1F2F",
@@ -37,13 +41,14 @@ export default <Partial<Config>>{
         gunmetal: "#16262A",
         crayola: "#76D7EA",
         "dark-liver": "#4D4D4D",
+        "dark-puce": "#4D3B3C",
         "phil-yellow": "#FFC700",
         "chocolate-brown": "#3F000F",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
-  daisyui: {
-    themes: false,
-  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tw-elements/dist/plugin.cjs"),
+  ],
 };

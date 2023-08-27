@@ -1,76 +1,176 @@
 <script setup lang="ts">
-import RecentTasks from "~/components/dashboard/RecentTasks.vue";
-import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
-import SuggestedResources from "~/components/dashboard/SuggestedResources.vue";
-
-type Task = {
-  icon: string;
-  type: string;
-  title: string;
-  status: string;
-  createdAt: string;
+import LandingLayout from "~/components/layouts/LandingLayout.vue";
+import ShieLink from "~/components/buttons/ShieLink.vue";
+import InfoSection from "~/components/landing/InfoSection.vue";
+import StartBanner from "~/components/landing/StartBanner.vue";
+import LandingFooter from "~/components/landing/LandingFooter.vue";
+import TestimonialsSection from "~/components/landing/TestimonialsSection.vue";
+import CuratedResources from "~/components/landing/CuratedResources.vue";
+type Link = {
+  name: string;
+  href: string;
 };
+type Feature = {
+  name: string;
+  icon: string;
+};
+const links: Link[] = [
+  { name: "Our Story", href: "/story" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Contact", href: "/contact" },
+  { name: "Library", href: "/library" },
+];
 
-const tasks: Task[] = [
+const features: Feature[] = [
   {
-    icon: "trend-social",
-    type: "",
-    title: "Volunteer @ Thread Together",
-    createdAt: "3 mins ago",
-    status: "ON GOING",
+    name: "LEARN NEW THINGS",
+    icon: "books",
   },
   {
-    icon: "trend-fitness",
-    type: "",
-    title: "Evening run",
-    createdAt: "Yesterday",
-    status: "Draft",
+    name: "SOCIALITY",
+    icon: "joystick",
   },
   {
-    icon: "trend-self-care",
-    type: "Timer",
-    title: "Pick up Dry Cleaning",
-    createdAt: "3 mins ago",
-    status: "completed",
+    name: "AN APPLE A DAY",
+    icon: "carrot",
   },
   {
-    icon: "trend-education",
-    type: "Timer",
-    title: "Winter planning",
-    createdAt: "Thu 1",
-    status: "ON GOING",
+    name: "SELF CARE",
+    icon: "heart-purple",
   },
 ];
 </script>
 
 <template>
-  <DashboardLayout>
-    <template #sub-header>
-      <section class="bg-[#F5F4F4]">
+  <LandingLayout>
+    <div class="shie-container pt-6">
+      <section
+        class="max-w-[74.5rem] mx-auto w-full rounded-[1.375rem] border-2 border-dark-puce p-6 bg-white mb-[3.19rem]"
+      >
+        <header>
+          <nav
+            class="flex justify-center items-center gap-[4.12rem] mb-[5.62rem]"
+          >
+            <a href="/">
+              <nuxt-icon name="logo-icon" filled />
+            </a>
+            <ul class="flex gap-x-[2.63rem]">
+              <li v-for="link in links" :key="link.href">
+                <a :href="link.name">{{ link.name }}</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <div class="flex flex-col items-center text-center mb-[3.56rem]">
+          <div class="max-w-[33.5rem] h-[6.44rem] mb-6">
+            <nuxt-icon name="wholesum" filled />
+          </div>
+          <p class="font-subtitle text-[2.5rem] text-outer-space mb-6">
+            Life's Worksheet
+          </p>
+          <p class="text-outer-space">FOCUS & GET STUFF DONE WITH EASE</p>
+        </div>
         <div
-          class="max-w-[47.1875rem] mx-auto flex justify-between items-center py-[1.40625rem]"
+          class="flex gap-[3.56rem] justify-center items-center mb-[2.27rem]"
         >
           <div>
-            <p
-              class="font-title text-black text-base tracking-[0.04rem] leading-[1.625rem] min-h-[1.875rem]"
-            >
-              10:18 am &#x2022; May 01, 2023
-            </p>
+            <ShieLink icon="white-triangle">Start Now</ShieLink>
           </div>
-          <button class="text-[#4A4A4D] text-base font-light">
-            /Quick search
-          </button>
+          <div>
+            <ShieLink icon="bar-arrow-right" variant="secondary">
+              Sign In
+            </ShieLink>
+          </div>
         </div>
       </section>
-    </template>
-    <section class="max-w-[47.1875rem] mx-auto">
-      <SuggestedResources class="my-6" />
-      <RecentTasks :tasks="tasks" />
-    </section>
-  </DashboardLayout>
+      <section
+        class="max-w-[74.5rem] mx-auto w-full flex flex-col lg:flex-row gap-6 justify-between mb-[9.54rem]"
+      >
+        <div
+          v-for="(feature, i) in features"
+          :key="`feature-${i}`"
+          class="feature"
+        >
+          <div class="relative flex-1 feature-top-half">
+            <div class="feature-bg opacity-0 transition-all">
+              <nuxt-icon name="triangle-crayola" filled />
+            </div>
+            <div class="feature-icon">
+              <nuxt-icon :name="feature.icon" filled />
+            </div>
+          </div>
+          <div class="relative flex-1">
+            <div class="feature-bg relative">
+              <nuxt-icon
+                name="triangle-dark-puce"
+                filled
+                class="h-[13.44931rem] w-[13.53613rem]"
+              />
+              <p class="feature-text">
+                {{ feature.name }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <InfoSection
+      title="Knock off the seconds in style"
+      image="/images/png/custom-timer.png"
+      description="Make each minute you get count, spend time in style with custom timer user interface."
+    />
+    <InfoSection
+      title="Nuanced
+       insights."
+      image="/images/png/insights-graph.png"
+      description="Take a closer look at how you spend your time."
+      variant="alternate"
+    />
+    <InfoSection
+      title="Take notes while at it."
+      image="/images/png/abc.png"
+      description="Save thoughts, quotes and moments to your worksheet."
+    />
+    <InfoSection
+      title="Take your content
+      with you."
+      image="/images/png/doc-yellow.png"
+      description="Download .txt, docx & pdf files to extend your workflow."
+      variant="alternate"
+    />
+    <div
+      class="border-b border-dotted border-dark-puce pt-[9.38rem] pb-[7.44rem]"
+    >
+      <StartBanner class="mb-[10.19rem]" />
+      <CuratedResources />
+    </div>
+    <TestimonialsSection />
+    <LandingFooter />
+  </LandingLayout>
 </template>
 
-<style scoped>
-.homepage-main {
+<style scoped lang="scss">
+.feature {
+  @apply flex flex-col min-w-[13.53613rem];
+
+  &-top-half {
+    @apply -mb-1;
+    &:hover {
+      .feature-bg {
+        @apply opacity-100;
+      }
+    }
+  }
+  &-icon,
+  &-text {
+    @apply absolute z-[2] left-[50%]  -translate-x-[50%] text-center;
+  }
+  &-icon {
+    @apply bottom-[1.5rem];
+  }
+  &-text {
+    @apply top-[1rem] text-white text-[1.375rem] leading-[2.5rem];
+  }
 }
 </style>
