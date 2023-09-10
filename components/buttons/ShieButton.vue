@@ -24,7 +24,7 @@ withDefaults(
 
 <style scoped lang="scss">
 .shie-button {
-  @apply text-base rounded-[0.326rem] uppercase;
+  @apply rounded-[0.326rem] uppercase;
   @apply py-[0.6375rem] text-center w-full px-[3.3rem] justify-center items-center gap-[0.92rem] inline-flex;
   &--primary {
     @apply bg-cardinal text-white;
