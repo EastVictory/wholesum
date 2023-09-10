@@ -35,7 +35,9 @@ onMounted(() => {
     <slot name="header">
       <StickyAppNav />
     </slot>
-    <slot></slot>
+    <main class="px-4">
+      <slot></slot>
+    </main>
     <LandingFooter />
   </div>
 </template>
