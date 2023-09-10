@@ -3,16 +3,11 @@ import LandingLayout from "~/components/layouts/LandingLayout.vue";
 import ShieLink from "~/components/buttons/ShieLink.vue";
 import InfoSection from "~/components/landing/InfoSection.vue";
 import StartBanner from "~/components/landing/StartBanner.vue";
-import LandingFooter from "~/components/landing/LandingFooter.vue";
 import TestimonialsSection from "~/components/landing/TestimonialsSection.vue";
 import CuratedResources from "~/components/landing/CuratedResources.vue";
 type Link = {
   name: string;
   href: string;
-};
-type Feature = {
-  name: string;
-  icon: string;
 };
 const links: Link[] = [
   { name: "Our Story", href: "/story" },
@@ -20,34 +15,15 @@ const links: Link[] = [
   { name: "Contact", href: "/contact" },
   { name: "Library", href: "/library" },
 ];
-
-const features: Feature[] = [
-  {
-    name: "LEARN NEW THINGS",
-    icon: "books",
-  },
-  {
-    name: "SOCIALITY",
-    icon: "joystick",
-  },
-  {
-    name: "AN APPLE A DAY",
-    icon: "carrot",
-  },
-  {
-    name: "SELF CARE",
-    icon: "heart-purple",
-  },
-];
 </script>
 
 <template>
   <LandingLayout>
     <div class="shie-container pt-6">
       <section
-        class="max-w-[74.5rem] mx-auto w-full rounded-[1.375rem] border-2 border-dark-puce p-6 bg-white mb-[3.19rem]"
+        class="max-w-[86.25rem] mx-auto w-full rounded-[1.375rem] border-2 border-dark-puce p-6 bg-white mb-[3.19rem]"
       >
-        <header>
+        <header class="home-nav">
           <nav
             class="flex justify-center items-center gap-[4.12rem] mb-[5.62rem]"
           >
@@ -88,35 +64,18 @@ const features: Feature[] = [
           </div>
         </div>
       </section>
-      <section
-        class="max-w-[74.5rem] mx-auto w-full flex flex-col lg:flex-row gap-6 justify-between mb-[9.54rem]"
-      >
-        <div
-          v-for="(feature, i) in features"
-          :key="`feature-${i}`"
-          class="feature"
-        >
-          <div class="relative flex-1 feature-top-half">
-            <div class="feature-bg opacity-0 transition-all">
-              <nuxt-icon name="triangle-crayola" filled />
-            </div>
-            <div class="feature-icon">
-              <nuxt-icon :name="feature.icon" filled />
-            </div>
-          </div>
-          <div class="relative flex-1">
-            <div class="feature-bg relative">
-              <nuxt-icon
-                name="triangle-dark-puce"
-                filled
-                class="h-[13.44931rem] w-[13.53613rem]"
-              />
-              <p class="feature-text">
-                {{ feature.name }}
-              </p>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div
+      class="border-b border-dotted border-dark-puce pt-[6.31rem] pb-[7.44rem]"
+    >
+      <section class="shie-container pl-[8.44rem] w-4/5">
+        <p class="mb-[2.88rem] text-2xl font-title uppercase text-black">
+          Where Ideas Take Shape
+        </p>
+        <p class="font-subtitle text-[3rem] text-dark-puce leading-[normal]">
+          Transform your creative visions into reality, move beyond to-do lists
+          and turn your goals into accomplishment with Wholesum.
+        </p>
       </section>
     </div>
     <InfoSection
@@ -150,7 +109,6 @@ const features: Feature[] = [
       <CuratedResources />
     </div>
     <TestimonialsSection />
-    <LandingFooter />
   </LandingLayout>
 </template>
 

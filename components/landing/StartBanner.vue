@@ -2,18 +2,20 @@
 
 <template>
   <section
-    class="mx-auto max-w-[59.0625rem] bg-[#DDC738] py-[3.55rem] text-center border-2 border-dark-puce rounded"
+    class="mx-auto max-w-[75rem] bg-[#DDC738] py-[3.55rem] text-center border-2 border-dark-puce rounded"
   >
     <p class="font-subtitle text-[2.5rem] text-dark mb-6">
-      Just take life easy
+      Take life easy, one task at a time
+    </p>
+    <p class="mb-8 text-dark text-2xl font-light">
+      Start with 60 days free and AUD $ 7.99/mo
     </p>
     <div>
       <nuxt-link
         to=""
-        class="mx-auto bg-dark-puce p-1.5 rounded min-h-[3.75rem] min-w-[15.625rem] text-center inline-flex items-center justify-center hover:bg-transparent hover:text-dark-puce border-dark-puce border text-white"
+        class="mx-auto bg-capri p-1.5 rounded min-h-[3.75rem] min-w-[15.625rem] text-center inline-flex items-center justify-center hover:bg-transparent hover:text-dark-puce border-dark border-2 text-dark uppercase"
       >
-        <nuxt-icon name="start-now" class="w-[5.0645rem] inline-block" />
-        <span class="sr-only">Start Now</span>
+        Start Now
       </nuxt-link>
     </div>
   </section>
