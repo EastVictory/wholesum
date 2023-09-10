@@ -1,53 +1,38 @@
 <script setup lang="ts">
-type Resource = {
-  icon: string;
-  title: string;
-};
 withDefaults(
   defineProps<{
     title: string;
     description: string;
-    resources?: Resource[];
+    icon: string;
+    color?: string;
   }>(),
   {
-    resources: () => [],
+    color: "white",
   }
 );
 </script>
 
 <template>
-  <section class="curated-resources">
-    <div class="max-w-[12.125rem]">
-      <p class="font-title text-sm text-dark leading-6 mb-6 mt-2">
+  <section class="curated-resources" :style="{ backgroundColor: color }">
+    <div class="w-4/5 py-6">
+      <nuxt-icon
+        :name="icon"
+        filled
+        class="h-16 w-16 inline-block mb-[2.5rem]"
+      />
+      <p class="font-title text-[2rem] text-dark leading-6 mb-6 mt-2">
         {{ title }}
       </p>
-      <p class="text-sm leading-6 font-light text-dark py-4">
+      <p class="text-2xl leading-[2.375rem] font-light text-dark py-4">
         {{ description }}
       </p>
-    </div>
-    <div>
-      <p class="leading-[1.125rem] font-medium text-xs text-outer-space">
-        Top Resources
-      </p>
-      <div class="">
-        <p
-          v-for="resource in resources"
-          :key="resource.title"
-          class="top-resource-row"
-        >
-          <span class="top-resource-row__icon">
-            <nuxt-icon :name="resource.icon" />
-          </span>
-          <span class="top-resource-row__text">{{ resource.title }}</span>
-        </p>
-      </div>
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
 .curated-resources {
-  @apply border-2 border-dark-puce bg-white rounded-[1.375rem] w-[37.3125rem] py-8 pl-16 pr-5 flex flex-col lg:flex-row gap-16;
+  @apply rounded-[1.25rem] min-w-[37.5rem] p-[2.5rem] flex flex-col lg:flex-row gap-16;
   .top-resource-row {
     @apply flex gap-[0.625rem] p-[0.625rem] items-center;
     &:hover {
