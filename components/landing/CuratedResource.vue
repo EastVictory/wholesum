@@ -14,7 +14,7 @@ withDefaults(
 
 <template>
   <section class="curated-resources" :style="{ backgroundColor: color }">
-    <div class="w-4/5 py-6">
+    <div class="w-4/5 pb-6">
       <nuxt-icon
         :name="icon"
         filled
@@ -23,7 +23,7 @@ withDefaults(
       <p class="font-title text-[2rem] text-dark leading-6 mb-6 mt-2">
         {{ title }}
       </p>
-      <p class="text-2xl leading-[2.375rem] font-light text-dark py-4">
+      <p class="text-2xl leading-[2.375rem] font-light text-dark">
         {{ description }}
       </p>
     </div>
