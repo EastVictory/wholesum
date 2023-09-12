@@ -13,7 +13,7 @@
     <div>
       <nuxt-link
         to=""
-        class="mx-auto bg-capri p-1.5 rounded min-h-[3.75rem] min-w-[15.625rem] text-center inline-flex items-center justify-center hover:bg-transparent hover:text-white border-capri border-2 text-dark uppercase"
+        class="mx-auto bg-crayola p-1.5 rounded min-h-[3.75rem] min-w-[15.625rem] text-center inline-flex items-center justify-center hover:bg-transparent hover:text-white border-crayola border-2 text-dark uppercase"
       >
         Start Now
       </nuxt-link>

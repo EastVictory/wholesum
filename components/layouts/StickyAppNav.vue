@@ -34,7 +34,7 @@ const links: Link[] = [
       <div class="flex items-center gap-6">
         <div>
           <ShieButton class="whitespace-nowrap">
-            Sign Up
+            Start Now
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
