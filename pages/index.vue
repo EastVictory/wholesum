@@ -96,28 +96,32 @@ const links: Link[] = [
         life the easy way - one to-do at a time.
       </p>
     </section>
-    <InfoSection
-      title="Workout all priorities with ease"
-      image="/images/png/custom-timer.png"
-      description="Make each minute you get count, spend time in style with custom timer user interface."
-    />
-    <InfoSection
-      title="Get better at making sense of it all"
-      image="/images/png/insights-graph.png"
-      description="TUnexpected insights into your experience and what it all adds up to."
-      variant="alternate"
-    />
-    <InfoSection
-      title="Make notations as your get stuff done"
-      image="/images/png/abc.png"
-      description="Save lists, thoughts, quotes etc. and even add media if that’s your style."
-    />
-    <InfoSection
-      title="Download and Take your content wherever you go"
-      image="/images/png/doc-yellow.png"
-      description="Easily hand-off from wholesum and extend your workflow."
-      variant="alternate"
-    />
+    <div
+      class="flex flex-col gap-y-[11.44rem] border-b border-dotted border-dark-puce pt-[11.44rem] pb-[12.92rem]"
+    >
+      <InfoSection
+        title="Workout all priorities with ease"
+        image="/images/png/custom-timer.png"
+        description="Make each minute you get count, spend time in style with custom timer user interface."
+      />
+      <InfoSection
+        title="Get better at making sense of it all"
+        image="/images/png/insights-graph.png"
+        description="TUnexpected insights into your experience and what it all adds up to."
+        variant="alternate"
+      />
+      <InfoSection
+        title="Make notations as your get stuff done"
+        image="/images/png/abc.png"
+        description="Save lists, thoughts, quotes etc. and even add media if that’s your style."
+      />
+      <InfoSection
+        title="Download and Take your content wherever you go"
+        image="/images/png/doc-yellow.png"
+        description="Easily hand-off from wholesum and extend your workflow."
+        variant="alternate"
+      />
+    </div>
     <div
       class="border-b border-dotted border-dark-puce pt-[9.38rem] pb-[7.44rem]"
     >

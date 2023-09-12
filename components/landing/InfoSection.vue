@@ -11,7 +11,7 @@ withDefaults(
 </script>
 
 <template>
-  <div class="py-[11.44rem] w-full">
+  <div class="w-full">
     <section
       class="info-section"
       :class="{ [`info-section--${variant}`]: variant }"
