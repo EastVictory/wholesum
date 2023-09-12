@@ -103,7 +103,9 @@ const footerAltLinks: Link[] = [
           </ul>
         </section>
       </section>
-      <section class="flex px-4 items-center gap-1 flex-col lg:flex-row">
+      <section
+        class="flex px-4 items-center gap-1 flex-col lg:flex-row justify-center"
+      >
         <p class="text-white uppercase text-xs leading-5 font-light">
           © 2023 Wholesum is a registered trademark of DTFMEDIA, ABN 16423488320
         </p>
