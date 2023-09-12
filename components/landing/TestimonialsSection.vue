@@ -6,7 +6,7 @@
       <h2
         class="font-subtitle text-[2.5rem] leading-[2.5rem] text-dark mb-[7.12rem]"
       >
-        Testimonials
+        What people have to say about Wholesum
       </h2>
       <div class="flex flex-col lg:flex-row gap-[2.87rem] justify-between">
         <section>

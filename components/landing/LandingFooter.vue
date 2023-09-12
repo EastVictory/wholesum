@@ -36,7 +36,7 @@ const footerAltLinks: Link[] = [
             <nuxt-icon name="logo-text" />
           </nuxt-link>
           <p
-            class="lg:max-w-[17.1875rem] text-conditioner text-sm leading-6 font-light uppercase"
+            class="lg:max-w-[17.1875rem] text-conditioner text-xs leading-6 font-light uppercase"
           >
             We proudly acknowledge the Traditional Owners/Custodians of the land
             on which we work and live, and pay respect to their Elders past and
@@ -50,7 +50,7 @@ const footerAltLinks: Link[] = [
             Stay in touch
           </p>
           <p
-            class="lg:max-w-[17.1875rem] text-conditioner text-sm leading-6 font-light mb-6"
+            class="lg:max-w-[17.1875rem] text-conditioner text-xs leading-6 font-light mb-6"
           >
             Get periodic updates from the Wholesum team to know what we’ve been
             up to.
@@ -82,7 +82,7 @@ const footerAltLinks: Link[] = [
             >
               <nuxt-link
                 :to="link.href"
-                class="text-sm font-light leading-[1.125rem] p-2 text-conditioner hover:text-white uppercase"
+                class="text-xs font-light leading-[1.125rem] p-2 text-conditioner hover:text-white uppercase"
               >
                 {{ link.name }}
               </nuxt-link>
@@ -104,14 +104,14 @@ const footerAltLinks: Link[] = [
         </section>
       </section>
       <section class="flex px-4 items-center gap-1 flex-col lg:flex-row">
-        <p class="text-white uppercase text-sm leading-5 font-light">
+        <p class="text-white uppercase text-xs leading-5 font-light">
           © 2023 Wholesum is a registered trademark of DTFMEDIA, ABN 16423488320
         </p>
         <ul class="flex gap-1">
           <li v-for="link in footerAltLinks" :key="link.href">
             <nuxt-link
               :to="link.href"
-              class="text-white uppercase text-sm leading-5 font-light hover:text-conditioner"
+              class="text-white uppercase text-xs leading-5 font-light hover:text-conditioner"
             >
               | {{ link.name }}
             </nuxt-link>
