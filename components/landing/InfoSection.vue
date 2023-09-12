@@ -11,7 +11,7 @@ withDefaults(
 </script>
 
 <template>
-  <div class="border-b border-dotted border-dark-puce py-[9.37rem] w-full">
+  <div class="py-[11.44rem] w-full">
     <section
       class="info-section"
       :class="{ [`info-section--${variant}`]: variant }"
@@ -22,7 +22,7 @@ withDefaults(
       <div class="info-text">
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
-        <nuxt-link>Learn More</nuxt-link>
+        <nuxt-link to="/library">Learn More</nuxt-link>
       </div>
     </section>
   </div>
