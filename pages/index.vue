@@ -107,7 +107,7 @@ const links: Link[] = [
       <InfoSection
         title="Get better at making sense of it all"
         image="/images/png/insights-graph.png"
-        description="TUnexpected insights into your experience and what it all adds up to."
+        description="Unexpected insights into your experience and what it all adds up to."
         variant="alternate"
       />
       <InfoSection

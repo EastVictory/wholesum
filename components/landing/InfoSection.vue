@@ -45,7 +45,7 @@ withDefaults(
       @apply font-title text-[2rem] leading-[3.29819rem] text-dark mb-[2.31rem] uppercase;
     }
     p {
-      @apply text-2xl font-light font-subtitle leading-[2.5rem] text-dark mb-[2.31rem];
+      @apply text-2xl font-light leading-[2.5rem] text-dark mb-[2.31rem];
     }
 
     a {
