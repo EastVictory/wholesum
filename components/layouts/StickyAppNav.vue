@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShieButton from "~/components/buttons/ShieButton.vue";
+import ShieLink from "~/components/buttons/ShieLink.vue";
 
 type Link = {
   name: string;
@@ -33,7 +33,7 @@ const links: Link[] = [
 
       <div class="flex items-center gap-6">
         <div>
-          <ShieButton class="whitespace-nowrap">
+          <ShieLink class="whitespace-nowrap" to="/auth/signup">
             Start Now
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,12 +47,12 @@ const links: Link[] = [
                 fill="currentColor"
               />
             </svg>
-          </ShieButton>
+          </ShieLink>
         </div>
 
-        <ShieButton variant="secondary" icon="bar-arrow-right">
+        <ShieLink variant="secondary" icon="bar-arrow-right" to="/auth/login">
           SIGN IN
-        </ShieButton>
+        </ShieLink>
       </div>
     </nav>
   </header>
