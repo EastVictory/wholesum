@@ -19,45 +19,70 @@ const processSubmit = () => {
       <Title>Sign Up</Title>
     </Head>
     <h1 class="page-title">Create an account to get started</h1>
-    <p>
-      Try Shie for 60 Days free, pay $1 for access afterwards. <br />
-      Visit <nuxt-link class="underline">Plans & Pricing</nuxt-link> for the
-      full breakdown.
-    </p>
-    <form @submit.prevent="processSubmit">
-      <div class="shie-input-group grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <input type="text" placeholder="Last name" class="shie-input w-full" />
+    <form
+      class="flex flex-col gap-y-[0.75rem] mb-[3.25rem]"
+      @submit.prevent="processSubmit"
+    >
+      <div class="shie-input-group">
+        <label for="" class="shie-input-label">First Name</label>
         <input type="text" placeholder="First name" class="shie-input w-full" />
       </div>
-      <div class="shie-input-group block">
+
+      <div class="shie-input-group">
+        <label for="" class="shie-input-label">Last Name</label>
+        <input type="text" placeholder="Last name" class="shie-input w-full" />
+      </div>
+
+      <div class="shie-input-group">
+        <label for="" class="shie-input-label"
+          >Alias <span class="lowercase">(optional)</span></label
+        >
+        <input type="text" placeholder="Last name" class="shie-input w-full" />
+      </div>
+
+      <div class="shie-input-group">
+        <label for="" class="shie-input-label">Email</label>
         <input type="email" placeholder="Email" class="shie-input w-full" />
       </div>
-      <div class="shie-input-group shie-input-password-group block">
-        <input
-          ref="pwdRef"
-          type="password"
-          placeholder="Password"
-          class="shie-input w-full"
-        />
-        <span class="password-toggle" @click="togglePassword" />
-      </div>
-      <button class="shie-btn">Create account</button>
-      <div
-        class="divider before:h-[0.0625rem] after:h-[0.0625rem] my-[1.5rem]"
-      ></div>
 
-      <button class="google-button shie-btn shie-btn--ghost">
-        <nuxt-icon name="google" filled />
-        <span class="flex-1 text-center">Continue with Google</span>
+      <div class="shie-input-group">
+        <label for="" class="shie-input-label">Password</label>
+        <div class="shie-input-password-group relative w-full">
+          <input
+            ref="pwdRef"
+            type="password"
+            placeholder="Password"
+            class="shie-input shie-input--password"
+          />
+          <span class="password-toggle" @click="togglePassword" />
+        </div>
+      </div>
+      <button class="shie-auth-btn mt-[1.75rem]" type="submit">
+        <span>Create account</span>
+      </button>
+
+      <hr class="h-[0.125rem] bg-dark-puce opacity-100 w-11/12 mx-auto" />
+
+      <button class="shie-auth-btn shie-auth-btn--google" type="button">
+        <nuxt-icon name="google" filled class="mr-[1.26rem]" />
+        <span class="text-center">Continue with Google</span>
       </button>
     </form>
-    <p class="mb-6 text-dark text-xs font-medium w-11/12">
-      By continuing with Email or Google, you agree to Shie’s Terms of Service
-      and Privacy Policy
+    <p class="mb-6 text-dark text-xs font-medium w-4/5 text-center mx-auto">
+      By continuing with Email or Google, you agree to Shie’s
+      <nuxt-link class="underline hover:text-cardinal">
+        Terms of Service
+      </nuxt-link>
+      and
+      <nuxt-link class="underline hover:text-cardinal">
+        Privacy Policy
+      </nuxt-link>
     </p>
-    <p class="text-dark text-xs text-left font-medium">
+    <p class="text-dark text-xs font-medium text-center">
       Already signed up?
-      <nuxt-link to="/auth/login" class="underline">Proceed to login</nuxt-link>
+      <nuxt-link to="/auth/login" class="underline hover:text-cardinal">
+        Proceed to login
+      </nuxt-link>
     </p>
   </AuthLayout>
 </template>
@@ -65,13 +90,7 @@ const processSubmit = () => {
 <style scoped lang="scss">
 .signup-layout {
   .page-title {
-    @apply font-title text-left text-[2rem] leading-[2.1875rem] mb-4;
-    & + p {
-      @apply text-taupe-gray text-sm mb-[3.125rem] font-medium;
-    }
-  }
-  .google-button {
-    @apply flex items-center gap-[0.8125rem] mb-6;
+    @apply font-subtitle text-[2rem] leading-[2.58rem] mb-[2.81rem] text-center;
   }
 }
 </style>
