@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LandingLayout from "~/components/layouts/LandingLayout.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
-import ResourceCard from "~/components/landing/ResourceCard.vue";
+import ResourceCard from "~/components/library/ResourceCard.vue";
 
 type Tag = {
   title: string;
@@ -131,6 +131,7 @@ const resources: Resource[] = [
               :title="resource.title"
               :duration="resource.duration"
               :description="resource.description"
+              to="/library/1"
             />
           </div>
         </section>
