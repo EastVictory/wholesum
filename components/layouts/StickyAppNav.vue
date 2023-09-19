@@ -60,7 +60,7 @@ const links: Link[] = [
 
 <style scoped lang="scss">
 .sticky-app-nav {
-  @apply max-w-[87rem] mx-auto rounded-[1.375rem] border-2 border-dark-puce p-4 bg-white sticky top-[1.5rem] hidden;
+  @apply max-w-[76.5rem] mx-auto rounded-[1.375rem] border-2 border-dark-puce p-4 bg-white sticky top-[1.5rem] hidden;
   &[data-visible="true"] {
     @apply block;
   }
