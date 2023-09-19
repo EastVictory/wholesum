@@ -11,7 +11,7 @@ const processSubmit = () => {
     <Head>
       <Title>Request Password Reset</Title>
     </Head>
-    <h1 class="page-title">Sign into your account</h1>
+    <h1 class="page-title">Set a new password</h1>
     <form
       class="flex flex-col gap-y-[2.5rem] mb-[3.25rem]"
       @submit.prevent="processSubmit"

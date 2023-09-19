@@ -1,5 +1,5 @@
 .shie-input {
-  @apply p-2.5 text-center text-dark text-[1.375rem] leading-[2.5rem];
+  @apply p-2.5 text-center text-dark text-[1.375rem] leading-[2.5rem] pt-0;
   &:focus {
     @apply outline-none border-none caret-cardinal;
   }
@@ -13,7 +13,7 @@
     }
   }
   &-label {
-    @apply text-outer-space text-base font-title uppercase leading-[2.5rem] text-center w-full p-2.5;
+    @apply text-outer-space text-base font-title uppercase leading-[2.5rem] text-center w-full p-2.5 pb-0;
   }
   & + .password-toggle {
     @apply content-[''] w-4 h-4 absolute top-[50%] right-[1.625rem] -translate-y-[50%] cursor-pointer;

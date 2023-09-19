@@ -54,6 +54,12 @@ const fullyFilled = computed(() => {
           <span class="password-toggle" @click="togglePassword" />
         </div>
       </div>
+      <p class="text-xs text-dark">
+        Forgot password?
+        <nuxt-link to="/auth/request" class="underline hover:text-cardinal"
+          >Reset password</nuxt-link
+        >
+      </p>
       <button
         class="shie-auth-btn mt-[1.75rem]"
         type="submit"
