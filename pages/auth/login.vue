@@ -15,6 +15,10 @@ const togglePassword = () => {
 const processSubmit = () => {
   navigateTo("/");
 };
+
+const fullyFilled = computed(() => {
+  return Object.values(formData.value).filter((val) => val === "");
+});
 </script>
 
 <template>
@@ -50,7 +54,11 @@ const processSubmit = () => {
           <span class="password-toggle" @click="togglePassword" />
         </div>
       </div>
-      <button class="shie-auth-btn mt-[1.75rem]" type="submit">
+      <button
+        class="shie-auth-btn mt-[1.75rem]"
+        type="submit"
+        :disabled="fullyFilled.length > 0"
+      >
         <span>Create account</span>
       </button>
 
@@ -73,8 +81,8 @@ const processSubmit = () => {
     </p>
     <p class="text-dark text-xs font-medium text-center">
       Don’t have an account?
-      <nuxt-link to="/auth/login" class="underline hover:text-cardinal">
-        Proceed to login
+      <nuxt-link to="/auth/signup" class="underline hover:text-cardinal">
+        Sign up
       </nuxt-link>
     </p>
   </AuthLayout>

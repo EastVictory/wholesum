@@ -2,12 +2,26 @@
 import AuthLayout from "~/components/layouts/AuthLayout.vue";
 const pwdRef = ref<HTMLInputElement | null>(null);
 
+const formData = ref({
+  firstName: "",
+  lastName: "",
+  alias: "",
+  email: "",
+  password: "",
+});
+const optionalFormData = ref({
+  alias: "",
+});
 const togglePassword = () => {
   const type = pwdRef.value?.type;
   if (pwdRef.value?.type) {
     pwdRef.value.type = type === "password" ? "text" : "password";
   }
 };
+const fullyFilled = computed(() => {
+  return Object.values(formData.value).filter((val) => val === "");
+});
+
 const processSubmit = () => {
   navigateTo("/");
 };
@@ -25,24 +39,44 @@ const processSubmit = () => {
     >
       <div class="shie-input-group">
         <label for="" class="shie-input-label">First Name</label>
-        <input type="text" placeholder="First name" class="shie-input w-full" />
+        <input
+          v-model="formData.firstName"
+          type="text"
+          placeholder="First name"
+          class="shie-input w-full"
+        />
       </div>
 
       <div class="shie-input-group">
         <label for="" class="shie-input-label">Last Name</label>
-        <input type="text" placeholder="Last name" class="shie-input w-full" />
+        <input
+          v-model="formData.lastName"
+          type="text"
+          placeholder="Last name"
+          class="shie-input w-full"
+        />
       </div>
 
       <div class="shie-input-group">
-        <label for="" class="shie-input-label"
-          >Alias <span class="lowercase">(optional)</span></label
-        >
-        <input type="text" placeholder="Last name" class="shie-input w-full" />
+        <label for="" class="shie-input-label">
+          Alias <span class="lowercase">(optional)</span>
+        </label>
+        <input
+          v-model="optionalFormData.alias"
+          type="text"
+          placeholder="Last name"
+          class="shie-input w-full"
+        />
       </div>
 
       <div class="shie-input-group">
         <label for="" class="shie-input-label">Email</label>
-        <input type="email" placeholder="Email" class="shie-input w-full" />
+        <input
+          v-model="formData.email"
+          type="email"
+          placeholder="Email"
+          class="shie-input w-full"
+        />
       </div>
 
       <div class="shie-input-group">
@@ -50,6 +84,7 @@ const processSubmit = () => {
         <div class="shie-input-password-group relative w-full">
           <input
             ref="pwdRef"
+            v-model="formData.password"
             type="password"
             placeholder="Password"
             class="shie-input shie-input--password"
@@ -57,7 +92,11 @@ const processSubmit = () => {
           <span class="password-toggle" @click="togglePassword" />
         </div>
       </div>
-      <button class="shie-auth-btn mt-[1.75rem]" type="submit">
+      <button
+        class="shie-auth-btn mt-[1.75rem]"
+        type="submit"
+        :disabled="fullyFilled.length > 0"
+      >
         <span>Create account</span>
       </button>
 
