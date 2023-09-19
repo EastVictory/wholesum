@@ -99,7 +99,7 @@ const processSubmit = () => {
         started.
       </p>
       <div class="flex flex-col gap-4">
-        <button class="shie-auth-btn" type="submit">
+        <button class="shie-auth-btn" type="submit" :disabled="!otpComplete">
           <span>Set New Password</span>
         </button>
       </div>
