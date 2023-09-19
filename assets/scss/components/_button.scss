@@ -1,11 +1,17 @@
-.shie-btn {
-  @apply bg-crayola text-dark font-medium text-sm rounded;
-  @apply border-chocolate-brown border-[0.12rem] border-b-[0.25rem] py-[0.625rem] text-center w-full px-[1.25rem];
-  @apply hover:bg-transparent;
-  &--ghost {
-    @apply border-platinum bg-white hover:text-chocolate-brown hover:border-chocolate-brown;
-  }
-  &:disabled {
-    @apply border-platinum bg-platinum;
+form {
+  .shie-auth-btn {
+    @apply bg-crayola text-black font-medium rounded uppercase font-title text-[1.375rem];
+    @apply border-dark-puce border-x-[0.38rem] border-t-[0.25rem] border-b-[0.5rem];
+    @apply py-[0.625rem] text-center w-full px-[1.25rem] h-[4rem] inline-flex justify-center items-center;
+    @apply hover:bg-transparent;
+    span {
+      @apply h-[1.75rem] leading-[2.5rem];
+    }
+    &--google {
+      @apply bg-dark-puce text-white hover:text-black;
+    }
+    &:disabled {
+      @apply border-platinum bg-platinum;
+    }
   }
 }

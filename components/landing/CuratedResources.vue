@@ -44,7 +44,7 @@ onMounted(() => {
 
 <template>
   <div class="shie-container">
-    <section class="max-w-[82.06rem] mx-auto">
+    <section class="max-w-[76.5rem] mx-auto">
       <div class="flex flex-row justify-between items-center mb-[3.36rem]">
         <h2 class="text-dark font-subtitle text-[2.5rem]">
           Start right now with curated resource

@@ -3,7 +3,7 @@ withDefaults(
   defineProps<{
     title: string;
     description: string;
-    duration: string;
+    duration: number;
     to?: string;
   }>(),
   {
