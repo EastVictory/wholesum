@@ -19,7 +19,7 @@ const handleMinus = () => {
 
 const id = Math.random();
 
-const activeCondition = ref("");
+const activeCondition = ref("no");
 </script>
 
 <template>
@@ -94,10 +94,10 @@ const activeCondition = ref("");
     @apply py-[0.6375rem] text-center w-full justify-center items-center gap-[0.92rem] inline-flex;
     @apply flex-1 h-[1.875rem] text-center font-medium text-outer-space text-xxs px-2;
     &--active {
-      @apply border-2 border-dark-puce bg-crayola text-black rounded-[0.326rem];
+      @apply border-cardinal border-b-2;
     }
     &:not(.timer-card__condition--active) {
-      @apply border-cardinal border-b-2;
+      @apply border-2 border-dark-puce bg-crayola text-black rounded-[0.326rem];
     }
   }
 }
