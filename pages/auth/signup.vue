@@ -5,7 +5,6 @@ const pwdRef = ref<HTMLInputElement | null>(null);
 const formData = ref({
   firstName: "",
   lastName: "",
-  alias: "",
   email: "",
   password: "",
 });
