@@ -2,6 +2,10 @@
 import AuthLayout from "~/components/layouts/AuthLayout.vue";
 const pwdRef = ref<HTMLInputElement | null>(null);
 
+const formData = ref({
+  email: "",
+  password: "",
+});
 const togglePassword = () => {
   const type = pwdRef.value?.type;
   if (pwdRef.value?.type) {
@@ -25,7 +29,12 @@ const processSubmit = () => {
     >
       <div class="shie-input-group">
         <label for="" class="shie-input-label">Email</label>
-        <input type="email" placeholder="Email" class="shie-input w-full" />
+        <input
+          v-model="formData.email"
+          type="email"
+          placeholder="Email"
+          class="shie-input w-full"
+        />
       </div>
 
       <div class="shie-input-group">
@@ -33,6 +42,7 @@ const processSubmit = () => {
         <div class="shie-input-password-group relative w-full">
           <input
             ref="pwdRef"
+            v-model="formData.password"
             type="password"
             placeholder="Password"
             class="shie-input shie-input--password"
