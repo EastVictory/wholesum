@@ -54,8 +54,4 @@ defineProps<{
   </section>
 </template>
 
-<style scoped>
-.completed {
-  @apply bg-phil-yellow;
-}
-</style>
+<style scoped></style>
