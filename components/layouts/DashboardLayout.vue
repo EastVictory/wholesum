@@ -15,7 +15,7 @@ withDefaults(defineProps<{ title: string | null }>(), { title: "" });
     <header class="dashboard-header">
       <AppNav />
     </header>
-    <main>
+    <main class="pb-6">
       <slot />
     </main>
   </div>
