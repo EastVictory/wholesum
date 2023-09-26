@@ -4,7 +4,7 @@ import EmptyRecentActivity from "~/components/library/EmptyRecentActivity.vue";
 import RecentActivity from "~/components/library/RecentActivity.vue";
 
 const recentActivities = ["Resource", "Shelf", "All to do"];
-const todos: number[] | null = [1, 2, 2];
+const todos: number[] | null = [];
 const streak = 0;
 const goals = 0;
 </script>

@@ -9,7 +9,7 @@ const links: Link[] = [
   { name: "Our Story", href: "/story" },
   { name: "Pricing", href: "/pricing" },
   { name: "Contact", href: "/contact" },
-  { name: "Library", href: "/resources" },
+  { name: "Resources", href: "/resources" },
 ];
 </script>
 
