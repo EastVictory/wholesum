@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LandingLayout from "~/components/layouts/LandingLayout.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
-import TimerCard from "~/components/library/TimerCard.vue";
+import TimerCard from "~/components/resources/TimerCard.vue";
 const categories = ["EDUCATION", "SOCIAL", "SELF CARE", "FITNESS"];
 const activeCategory = ref("");
 </script>
