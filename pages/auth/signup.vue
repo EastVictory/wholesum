@@ -86,7 +86,8 @@ const processSubmit = () => {
             ref="pwdRef"
             v-model="formData.password"
             type="password"
-            placeholder="Password"
+            placeholder="At least 8 characters"
+            min="8"
             class="shie-input shie-input--password"
           />
           <span class="password-toggle" @click="togglePassword" />
