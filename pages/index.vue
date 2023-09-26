@@ -5,6 +5,7 @@ import InfoSection from "~/components/landing/InfoSection.vue";
 import StartBanner from "~/components/landing/StartBanner.vue";
 import TestimonialsSection from "~/components/landing/TestimonialsSection.vue";
 import CuratedResources from "~/components/landing/CuratedResources.vue";
+
 type Link = {
   name: string;
   href: string;
@@ -13,7 +14,7 @@ const links: Link[] = [
   { name: "Our Story", href: "/story" },
   { name: "Pricing", href: "/pricing" },
   { name: "Contact", href: "/contact" },
-  { name: "Library", href: "/resources" },
+  { name: "Resources", href: "/resources" },
 ];
 </script>
 

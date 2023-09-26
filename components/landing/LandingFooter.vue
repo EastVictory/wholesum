@@ -9,7 +9,7 @@ const footerMainLinks: Link[] = [
   { name: "Our Story", href: "/story" },
   { name: "Contact", href: "/contact" },
   { name: "Pricing", href: "/pricing" },
-  { name: "Library", href: "/resources" },
+  { name: "Resources", href: "/resources" },
 ];
 
 const socials: Link[] = [
