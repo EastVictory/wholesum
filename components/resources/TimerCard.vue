@@ -20,6 +20,12 @@ const handleMinus = () => {
 const id = Math.random();
 
 const activeCondition = ref("no");
+
+const emit = defineEmits<{ change: [time: number] }>();
+
+watch(time, (val) => {
+  emit("change", val);
+});
 </script>
 
 <template>

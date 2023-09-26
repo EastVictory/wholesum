@@ -9,7 +9,7 @@ const footerMainLinks: Link[] = [
   { name: "Our Story", href: "/story" },
   { name: "Contact", href: "/contact" },
   { name: "Pricing", href: "/pricing" },
-  { name: "Library", href: "/library" },
+  { name: "Library", href: "/resources" },
 ];
 
 const socials: Link[] = [
@@ -17,8 +17,8 @@ const socials: Link[] = [
   { name: "Twitter (x)", href: "#" },
 ];
 const footerAltLinks: Link[] = [
-  { name: "Terms OF USE", href: "/contact" },
-  { name: "Privacy policy", href: "/library" },
+  { name: "Terms OF USE", href: "#" },
+  { name: "Privacy policy", href: "#" },
 ];
 </script>
 

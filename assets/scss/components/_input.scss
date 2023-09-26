@@ -4,7 +4,7 @@
     @apply outline-none border-none caret-cardinal;
   }
   &--password {
-    @apply w-full mx-auto;
+    @apply w-full mx-auto text-left lg:pl-12 tracking-[0.625rem] placeholder:tracking-normal;
   }
   &-group {
     @apply border-2 border-dark-puce bg-white rounded-[0.875rem] flex flex-col items-center py-2 transition-all;

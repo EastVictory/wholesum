@@ -1,35 +1,41 @@
 <script setup lang="ts">
-import LandingLayout from "~/components/layouts/LandingLayout.vue";
+import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
-import TimerCard from "~/components/library/TimerCard.vue";
+import TimerCard from "~/components/resources/TimerCard.vue";
+import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
+
 const categories = ["EDUCATION", "SOCIAL", "SELF CARE", "FITNESS"];
-const activeCategory = ref("education");
+const activeCategory = ref("EDUCATION");
+const timerDuration = ref(0);
+const breakDuration = ref(0);
 </script>
 
 <template>
-  <LandingLayout>
-    <Head>
-      <Title>Resource</Title>
-    </Head>
-    <div class="shie-container pt-[3.6rem]">
-      <article class="mb-[5.62rem] max-w-[40.3125rem] mx-auto">
-        <div
-          class="flex flex-col lg:flex-row items-center justify-between gap-8"
-        >
-          <h2
-            class="w-full lg:w-1/2 text-dark font-title text-xl leading-[1.65rem]"
-          >
-            Personal Shield
-          </h2>
-          <p
-            class="w-full lg:w-1/2 text-dark-puce leading-[1.5rem] tracking-[-0.019rem]"
-          >
-            To share who you are and improve ways of working with team members.
+  <DashboardLayout title="Library | New Todo">
+    <div class="shie-container">
+      <div
+        class="max-w-[64.91375em] mx-auto flex items-center justify-between mb-[1.84rem]"
+      >
+        <div class="flex flex-row items-center">
+          <p class="font-title text-dark-puce leading-[1.125rem] text-base h-4">
+            Todo /
           </p>
+          <input
+            type="text"
+            class="text-dark leading-[1.125rem] text-base w-[5.5rem] mb-0 inline-block ml-1 bg-transparent hover:bg-[#FFC700] focus-visible:outline-none placeholder:text-dark"
+            placeholder="UNTITLED"
+          />
+          <button class="h-6 -mb-2">
+            <nuxt-icon name="chevron-right" filled />
+          </button>
         </div>
-        <p class="text-dark-puce font-title leading-[1.65rem] text-xs mb-3">
-          EST: 90 Mins
-        </p>
+        <div class="flex flex-row items-center gap-2">
+          <ShiePillButton>{{ activeCategory }}</ShiePillButton>
+          <ShiePillButton>{{ timerDuration }} mins session</ShiePillButton>
+          <ShiePillButton>{{ breakDuration }} mins break</ShiePillButton>
+        </div>
+      </div>
+      <article class="mb-[5.62rem] max-w-[40.3125rem] mx-auto">
         <section
           class="flex flex-col lg:flex-row gap-8 items-center mb-[4.06rem]"
         >
@@ -73,7 +79,7 @@ const activeCategory = ref("education");
             <p
               class="mb-8 text-dark-puce font-title leading-[1.5rem] uppercase"
             >
-              Category Tag
+              Choose a category tag
             </p>
             <div class="flex flex-col gap-8">
               <div
@@ -111,16 +117,18 @@ const activeCategory = ref("education");
             title="Timer"
             description="STOP PLAYING WHEN TIMER ENDS"
             class="w-full lg:w-[37%]"
+            @change="(e) => (timerDuration = e)"
           />
           <TimerCard
             title="Break"
             description="START BREAK AFTER TIMER"
             class="w-full lg:w-[37%]"
+            @change="(e) => (breakDuration = e)"
           />
         </section>
       </article>
     </div>
-  </LandingLayout>
+  </DashboardLayout>
 </template>
 
 <style scoped lang="scss">
