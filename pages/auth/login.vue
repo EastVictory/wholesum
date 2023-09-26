@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AuthLayout from "~/components/layouts/AuthLayout.vue";
+
 const pwdRef = ref<HTMLInputElement | null>(null);
 
 const formData = ref({
@@ -13,7 +14,7 @@ const togglePassword = () => {
   }
 };
 const processSubmit = () => {
-  navigateTo("/");
+  navigateTo("/library");
 };
 
 const fullyFilled = computed(() => {
