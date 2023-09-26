@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
+import EmptyRecentActivity from "~/components/library/EmptyRecentActivity.vue";
+import RecentActivity from "~/components/library/RecentActivity.vue";
 
 const recentActivities = ["Resource", "Shelf", "All to do"];
+const todos: number[] | null = [1, 2, 2];
+const streak = 0;
+const goals = 0;
 </script>
 
 <template>
@@ -18,7 +23,7 @@ const recentActivities = ["Resource", "Shelf", "All to do"];
         <p
           class="font-title leading-[1.004rem] text-[1.3125rem] text-dark mb-2"
         >
-          0
+          {{ streak > 0 ? `${streak} days` : 0 }}
         </p>
       </div>
       <div
@@ -29,24 +34,26 @@ const recentActivities = ["Resource", "Shelf", "All to do"];
         >
           Daily Goal
         </p>
-        <button
-          v-if="true"
+        <p
+          v-if="goals > 0"
+          class="font-title leading-[1.004rem] text-[1.3125rem] text-dark mb-2"
+        >
+          {{ goals }} mins
+        </p>
+        <nuxt-link
+          v-else
+          to="/library/goals"
           class="shie-black-border rounded-[1.375rem] text-dark-puce font-title uppercase px-4 leading-6 text-xs hover:text-cardinal w-full h-[1.5rem] items-center inline-flex justify-center"
         >
           <span class="h-[0.8125rem]"> Set Goals </span>
-        </button>
-        <p
-          v-else
-          class="font-title leading-[1.004rem] text-[1.3125rem] text-dark mb-2"
-        >
-          25 mins
-        </p>
+        </nuxt-link>
       </div>
-      <button
+      <nuxt-link
+        to="/library/todo"
         class="shie-black-border rounded-[0.9075rem] p-4 bg-white flex items-center justify-center hover:border-cardinal transition-all"
       >
         <span class="font-title text-[1.3125rem] text-dark">New Todo</span>
-      </button>
+      </nuxt-link>
     </section>
 
     <section class="max-w-[36.6875rem] w-full gap-6 mx-auto mb-[3rem]">
@@ -90,17 +97,11 @@ const recentActivities = ["Resource", "Shelf", "All to do"];
         </div>
       </div>
     </section>
-    <section
-      class="max-w-[36.6875rem] w-full mx-auto bg-[#D9D9D9] rounded min-h-[14rem] flex justify-center items-center flex-col"
-    >
-      <div class="flex justify-center mb-[2.14rem]">
-        <nuxt-icon name="box" filled />
+    <section class="max-w-[36.6875rem] w-full mx-auto">
+      <div v-if="todos.length > 0" class="flex flex-col gap-4">
+        <RecentActivity v-for="i in todos" :key="i" />
       </div>
-      <p
-        class="max-w-[14.0625rem] mx-auto text-center text-dark text-base leading-6"
-      >
-        You don’t have any To Dos in your Library
-      </p>
+      <EmptyRecentActivity v-else />
     </section>
   </DashboardLayout>
 </template>
