@@ -87,7 +87,7 @@ const resources: Resource[] = [
         </section>
         <section>
           <p class="font-title text-dark-puce leading-6 mb-[2.25rem]">
-            Recommended
+            Similar resources
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center">
             <ResourceCard

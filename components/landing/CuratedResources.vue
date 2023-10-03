@@ -87,7 +87,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .carousel-prev-btn,
 .carousel-next-btn {
-  @apply text-black border-2 border-dark-puce rounded px-2 py-[0.3125rem] hover:text-cardinal bg-capri;
+  @apply text-black border-2 border-dark-puce rounded px-2 py-[0.3125rem] hover:text-cardinal bg-crayola;
   &.disabled {
     @apply bg-taupe-gray border-taupe-gray text-conditioner pointer-events-none;
   }

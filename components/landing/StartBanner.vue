@@ -4,7 +4,7 @@ import ShieLink from "~/components/buttons/ShieLink.vue";
 
 <template>
   <section
-    class="mx-auto max-w-[69.25rem] bg-[#B2C4C3] py-[3.55rem] shie-black-border rounded lg:pl-[6.25rem] pr-[3.125rem]"
+    class="mx-auto max-w-[69.25rem] bg-[#B2C4C3] py-[3.55rem] shie-black-border rounded-[1.375rem] lg:pl-[6.25rem] pr-[3.125rem]"
   >
     <p class="font-subtitle text-[2.5rem] text-dark-puce mb-6">
       <slot name="title"> Take life easy, one task at a time </slot>

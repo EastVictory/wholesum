@@ -161,9 +161,6 @@ const resources: Resource[] = [
               {{ category }}
             </ShieButton>
           </div>
-          <p class="font-title text-dark-puce leading-6 mb-[2.25rem]">
-            Recommended
-          </p>
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center"
           >

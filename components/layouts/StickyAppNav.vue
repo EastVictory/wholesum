@@ -12,10 +12,10 @@ const links: Link[] = [
 </script>
 
 <template>
-  <div class="sticky pt-[1.5rem] top-0 bg-conditioner">
+  <div class="sticky pt-[1.5rem] pb-[1.5rem] top-0">
     <header class="sticky-app-nav">
       <nav class="flex items-center justify-center">
-        <div class="flex gap-[4.12rem] items-center">
+        <div class="flex gap-[4.12rem] items-center py-4">
           <a href="/">
             <nuxt-icon name="logo-icon" filled />
           </a>
@@ -36,7 +36,7 @@ const links: Link[] = [
 
 <style scoped lang="scss">
 .sticky-app-nav {
-  @apply max-w-[76.5rem] mx-auto rounded-[1.375rem] border-2 border-dark-puce p-4 bg-white  hidden;
+  @apply max-w-[76.5rem] mx-auto rounded-[1.375rem] border-2 border-dark-puce px-4 py-6 bg-white  hidden;
   &[data-visible="true"] {
     @apply block;
   }
