@@ -58,18 +58,10 @@ const links: Link[] = [
           class="flex gap-[3.56rem] justify-center items-center mb-[2.27rem]"
         >
           <div>
-            <ShieLink icon="white-triangle" to="/auth/signup">
-              Start Now
-            </ShieLink>
+            <ShieLink to="/auth/signup"> Start Now </ShieLink>
           </div>
           <div>
-            <ShieLink
-              icon="bar-arrow-right"
-              variant="secondary"
-              to="/auth/login"
-            >
-              Sign In
-            </ShieLink>
+            <ShieLink variant="secondary" to="/auth/login"> Sign In </ShieLink>
           </div>
         </div>
       </section>

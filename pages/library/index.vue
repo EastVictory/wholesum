@@ -3,8 +3,8 @@ import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import EmptyRecentActivity from "~/components/library/EmptyRecentActivity.vue";
 import RecentActivity from "~/components/library/RecentActivity.vue";
 
-const recentActivities = ["Resource", "Shelf", "All Todo"];
-const todos: number[] | null = [1, 1, 1];
+const recentActivities = ["Resources", "Tasks", "All Todo"];
+const todos: number[] | null = [];
 const streak = 0;
 const goals = 0;
 </script>
@@ -50,9 +50,9 @@ const goals = 0;
       </div>
       <nuxt-link
         to="/library/todo"
-        class="shie-black-border rounded-[0.9075rem] p-4 bg-white flex items-center justify-center hover:border-cardinal transition-all"
+        class="shie-black-border rounded-[0.9075rem] p-4 bg-white flex items-center justify-center hover:border-cardinal transition-all min-w-[8.25rem]"
       >
-        <span class="font-title text-[1.3125rem] text-dark">New Task</span>
+        <span class="font-title text-base text-dark">New Task</span>
       </nuxt-link>
     </section>
 

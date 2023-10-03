@@ -92,6 +92,36 @@ const resources: Resource[] = [
       "We're creating space for you to do some individual reflecting on how you like to work and comm...",
     duration: 90,
   },
+  {
+    title: "Personal Shield & Work Style",
+    description:
+      "We're creating space for you to do some individual reflecting on how you like to work and comm...",
+    duration: 90,
+  },
+  {
+    title: "Personal Shield & Work Style",
+    description:
+      "We're creating space for you to do some individual reflecting on how you like to work and comm...",
+    duration: 90,
+  },
+  {
+    title: "Personal Shield & Work Style",
+    description:
+      "We're creating space for you to do some individual reflecting on how you like to work and comm...",
+    duration: 90,
+  },
+  {
+    title: "Personal Shield & Work Style",
+    description:
+      "We're creating space for you to do some individual reflecting on how you like to work and comm...",
+    duration: 90,
+  },
+  {
+    title: "Personal Shield & Work Style",
+    description:
+      "We're creating space for you to do some individual reflecting on how you like to work and comm...",
+    duration: 90,
+  },
 ];
 </script>
 
@@ -101,14 +131,16 @@ const resources: Resource[] = [
       <Title>Library</Title>
     </Head>
     <div class="max-w-[69.25rem] mx-auto pt-[3.38rem] pb-[10rem]">
-      <StartBanner class="mb-[7.81rem]">
+      <StartBanner class="mb-[3.81rem]">
         <template #title> Work, Study, and Play SMART. </template>
         <template #subtitle> Start with resources from the library </template>
       </StartBanner>
 
       <article class="flex gap-[6.56rem] justify-center">
         <section class="hidden md:flex flex-col gap-[6.38rem] pt-4">
-          <div class="sticky top-[6.5rem] bg-conditioner z-[3]">
+          <div
+            class="sticky top-[6.5rem] bg-conditioner z-[3] top-[9rem] pt-[4rem]"
+          >
             <p class="text-dark-puce font-title uppercase leading-6 mb-6">
               Filter
             </p>
@@ -145,7 +177,7 @@ const resources: Resource[] = [
         </section>
         <section>
           <div
-            class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center sticky bg-conditioner top-[5.1rem] z-[3]"
+            class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center sticky bg-conditioner top-[8rem] z-[3] pt-[4rem]"
           >
             <ShieButton
               v-for="(category, i) in categories"
@@ -161,9 +193,6 @@ const resources: Resource[] = [
               {{ category }}
             </ShieButton>
           </div>
-          <p class="font-title text-dark-puce leading-6 mb-[2.25rem]">
-            Recommended
-          </p>
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center"
           >
