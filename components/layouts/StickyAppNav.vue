@@ -12,7 +12,9 @@ const links: Link[] = [
 </script>
 
 <template>
-  <div class="sticky pt-[1.5rem] pb-[1.5rem] top-0">
+  <div
+    class="sticky pt-[1.5rem] top-0 z-[10] max-w-[76.5rem] mx-auto bg-conditioner rounded-b-[1.375rem]"
+  >
     <header class="sticky-app-nav">
       <nav class="flex items-center justify-center">
         <div class="flex gap-[4.12rem] items-center py-4">

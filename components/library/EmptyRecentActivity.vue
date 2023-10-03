@@ -12,7 +12,7 @@ import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
     <p
       class="max-w-[14.0625rem] mx-auto text-center text-dark text-base leading-6 mb-6"
     >
-      You don’t have any To Dos in your Library
+      You don’t have any Tasks in your Library
     </p>
     <ShiePillButton class="min-w-[12.875rem]">CREATE A NEW TASK</ShiePillButton>
   </section>
