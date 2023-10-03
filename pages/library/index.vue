@@ -3,8 +3,8 @@ import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import EmptyRecentActivity from "~/components/library/EmptyRecentActivity.vue";
 import RecentActivity from "~/components/library/RecentActivity.vue";
 
-const recentActivities = ["Resource", "Shelf", "All to do"];
-const todos: number[] | null = [];
+const recentActivities = ["Resource", "Shelf", "All Todo"];
+const todos: number[] | null = [1, 1, 1];
 const streak = 0;
 const goals = 0;
 </script>
@@ -52,12 +52,14 @@ const goals = 0;
         to="/library/todo"
         class="shie-black-border rounded-[0.9075rem] p-4 bg-white flex items-center justify-center hover:border-cardinal transition-all"
       >
-        <span class="font-title text-[1.3125rem] text-dark">New Todo</span>
+        <span class="font-title text-[1.3125rem] text-dark">New Task</span>
       </nuxt-link>
     </section>
 
     <section class="max-w-[36.6875rem] w-full gap-6 mx-auto mb-[3rem]">
-      <p class="text-base font-title leading-[2rem]">Trial Progress</p>
+      <p class="text-base font-title leading-[2rem] uppercase text-dark">
+        Trial Progress
+      </p>
       <div class="flex gap-2 py-[1.12rem]">
         <div v-for="n in 6" :key="n" class="flex-1">
           <span
@@ -89,9 +91,9 @@ const goals = 0;
         <div
           v-for="(recentActivity, i) in recentActivities"
           :key="`rc-${i}`"
-          class="shie-black-border rounded-[0.9075rem] p-4 bg-crayola flex items-center justify-center h-[7.49088rem] flex-1"
+          class="shie-black-border rounded-[0.9075rem] p-4 bg-white flex items-center justify-center h-[7.49088rem] flex-1"
         >
-          <p class="font-title text-base text-dark uppercase h-[1rem]">
+          <p class="font-title text-base text-dark h-[1rem]">
             {{ recentActivity }}
           </p>
         </div>
