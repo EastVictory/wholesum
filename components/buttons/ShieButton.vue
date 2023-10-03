@@ -4,8 +4,9 @@ withDefaults(
     variant?: string;
     plain?: boolean;
     icon?: string | null;
+    color?: string;
   }>(),
-  { variant: "primary", icon: null, plain: false }
+  { variant: "primary", icon: null, plain: false, color: "" }
 );
 </script>
 
@@ -15,6 +16,7 @@ withDefaults(
     :class="{
       [`shie-button--${variant}`]: true,
       'shie-button--plain': plain,
+      [color]: color && variant === 'primary',
     }"
   >
     <slot></slot>

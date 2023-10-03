@@ -15,14 +15,16 @@ withDefaults(
     class="shie-link"
     :class="{ [`shie-link--${variant}`]: true }"
   >
-    <slot></slot>
-    <nuxt-icon v-if="icon" :name="icon" />
+    <span class="h-[1.75rem]">
+      <slot></slot>
+      <nuxt-icon v-if="icon" :name="icon" />
+    </span>
   </nuxt-link>
 </template>
 
 <style scoped lang="scss">
 .shie-link {
-  @apply text-[1.375rem] rounded-[0.326rem] uppercase whitespace-nowrap;
+  @apply text-[1.375rem] rounded-[0.326rem] uppercase whitespace-nowrap h-[4rem] items-center;
   @apply py-[0.6375rem] text-center w-full px-[3.3rem] justify-center items-center gap-[0.92rem] inline-flex;
   &--primary {
     @apply bg-cardinal text-white;

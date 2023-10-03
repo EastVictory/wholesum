@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LandingLayout from "~/components/layouts/LandingLayout.vue";
+import StartBanner from "~/components/landing/StartBanner.vue";
 </script>
 
 <template>
@@ -90,6 +91,7 @@ import LandingLayout from "~/components/layouts/LandingLayout.vue";
           </div>
         </div>
       </section>
+      <StartBanner class="mb-[7.81rem]" />
     </div>
   </LandingLayout>
 </template>

@@ -2,6 +2,7 @@
 import ShieLink from "~/components/buttons/ShieLink.vue";
 import CuratedResource from "~/components/landing/CuratedResource.vue";
 import { useCarousel } from "assets/composables/useCarousel";
+
 const { handleCustomCarousel } = useCarousel();
 type CResource = {
   title: string;
@@ -71,10 +72,12 @@ onMounted(() => {
       </div>
       <div class="flex gap-[3.56rem] justify-center items-center mb-[2.27rem]">
         <div>
-          <ShieLink icon="white-triangle">Start Now</ShieLink>
+          <ShieLink to="/auth/login">Start Now</ShieLink>
         </div>
         <div>
-          <ShieLink variant="secondary"> VISIT FULL LIBRARY </ShieLink>
+          <ShieLink variant="secondary" to="/resources">
+            VISIT FULL LIBRARY
+          </ShieLink>
         </div>
       </div>
     </section>
