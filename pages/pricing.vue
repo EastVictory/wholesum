@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LandingLayout from "~/components/layouts/LandingLayout.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
+import StartBanner from "~/components/landing/StartBanner.vue";
 
 const features = [
   "-> Uncommon Insights",
@@ -55,6 +56,7 @@ const features = [
           </div>
         </section>
       </article>
+      <StartBanner class="mb-[7.81rem]" />
     </div>
   </LandingLayout>
 </template>

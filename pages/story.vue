@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LandingLayout from "~/components/layouts/LandingLayout.vue";
+import StartBanner from "~/components/landing/StartBanner.vue";
 
 type Question = {
   title: string;
@@ -46,7 +47,7 @@ const questions: Question[] = [
           </p>
         </div>
       </section>
-      <section>
+      <section class="mb-[5.62rem]">
         <h2
           class="text-center text-dark text-[2.5rem] mb-4 leading-[2.5rem] font-title"
         >
@@ -70,6 +71,7 @@ const questions: Question[] = [
           </div>
         </div>
       </section>
+      <StartBanner class="mb-[7.81rem]" />
     </div>
   </LandingLayout>
 </template>

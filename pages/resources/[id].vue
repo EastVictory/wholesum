@@ -1,9 +1,34 @@
 <script setup lang="ts">
 import LandingLayout from "~/components/layouts/LandingLayout.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
-import TimerCard from "~/components/resources/TimerCard.vue";
-const categories = ["EDUCATION", "SOCIAL", "SELF CARE", "FITNESS"];
-const activeCategory = ref("education");
+import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
+import ResourceCard from "~/components/resources/ResourceCard.vue";
+
+type Resource = {
+  title: string;
+  description: string;
+  duration: number;
+};
+const resources: Resource[] = [
+  {
+    title: "Personal Shield",
+    description:
+      "To share who you are and improve ways of working with team members.",
+    duration: 45,
+  },
+  {
+    title: "Work Styles",
+    description:
+      "We're creating space for you to do some individual reflecting on how you like to work and comm...",
+    duration: 35,
+  },
+  {
+    title: "Personal Shield & Work Style",
+    description:
+      "We're creating space for you to do some individual reflecting on how you like to work and comm...",
+    duration: 90,
+  },
+];
 </script>
 
 <template>
@@ -12,111 +37,68 @@ const activeCategory = ref("education");
       <Title>Resource</Title>
     </Head>
     <div class="shie-container pt-[3.6rem]">
-      <article class="mb-[5.62rem] max-w-[40.3125rem] mx-auto">
-        <div
-          class="flex flex-col lg:flex-row items-center justify-between gap-8"
-        >
-          <h2
-            class="w-full lg:w-1/2 text-dark font-title text-xl leading-[1.65rem]"
-          >
-            Personal Shield
-          </h2>
-          <p
-            class="w-full lg:w-1/2 text-dark-puce leading-[1.5rem] tracking-[-0.019rem]"
-          >
-            To share who you are and improve ways of working with team members.
-          </p>
-        </div>
-        <p class="text-dark-puce font-title leading-[1.65rem] text-xs mb-3">
-          EST: 90 Mins
+      <article class="mb-[5.62rem] max-w-[53.375rem] mx-auto">
+        <p class="flex items-center gap-2 mb-[3.63rem]">
+          <nuxt-link to="/resources" class="h-8 -mb-2">
+            <nuxt-icon name="chevron-left" filled />
+          </nuxt-link>
+          <span class="text-dark font-title h-[1.125rem]"> CATEGORY /</span>
+          <span class="text-dark-puce font-title h-[1.125rem]">EDUCATION</span>
         </p>
         <section
-          class="flex flex-col lg:flex-row gap-8 items-center mb-[4.06rem]"
+          class="mx-auto max-w-[53.375rem] bg-[#B2C4C3] py-[3.55rem] shie-black-border rounded-[1.375rem] lg:p-[3rem] mb-[3.56rem]"
         >
-          <div class="w-full lg:w-1/2">
-            <div
-              class="resource-image__wrapper border-2 border-dark-puce bg-white rounded-[1.375rem] h-[22.375rem] w-[21.375rem] flex items-center justify-center"
-            >
-              <img src="/images/png/resource.png" alt="resource" />
+          <p
+            class="font-title text-2xl leading-[3.3rem] text-dark uppercase mb-8"
+          >
+            Personal Shield & Work Style
+          </p>
+          <p class="text-dark text-2xl leading-[2.5rem] mb-6">
+            To share who you are and improve ways of working with team members.
+          </p>
+          <div class="flex justify-between">
+            <div class="flex items-center gap-2">
+              <ShiePillButton class="w-[8.4375rem]"> EDUCATION </ShiePillButton>
+              <ShiePillButton class="w-[8.4375rem]">
+                25 MINS SESSION
+              </ShiePillButton>
+              <ShiePillButton class="w-[8.4375rem]">
+                5 MINS BREAK
+              </ShiePillButton>
             </div>
-          </div>
-          <div class="flex flex-col gap-[1.78rem] w-full lg:w-1/2">
-            <ShieButton variant="primary" class="!px-4">
-              Start to do
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="17"
-                viewBox="0 0 16 17"
-                fill="none"
-              >
-                <path
-                  d="M15.3164 13.611C15.4488 13.8765 15.5112 14.1715 15.4976 14.4679C15.484 14.7643 15.395 15.0523 15.2389 15.3046C15.0827 15.5569 14.8647 15.7652 14.6056 15.9096C14.3464 16.0541 14.0546 16.1299 13.7579 16.1299L1.98144 16.1299C1.68472 16.1299 1.39294 16.0541 1.13375 15.9096C0.87456 15.7652 0.656566 15.557 0.500447 15.3046C0.344328 15.0523 0.255261 14.7643 0.241691 14.4679C0.228121 14.1715 0.290499 13.8765 0.42291 13.611L6.31316 1.83255C6.45753 1.5433 6.67964 1.30001 6.95457 1.12996C7.2295 0.959916 7.54638 0.869837 7.86965 0.869837C8.19292 0.869837 8.5098 0.959916 8.78473 1.12996C9.05966 1.30001 9.28177 1.5433 9.42614 1.83255L15.3164 13.611Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </ShieButton>
-
-            <div class="flex gap-2">
-              <ShieButton variant="secondary" class="whitespace-nowrap !px-4">
-                Mark as done
-              </ShieButton>
-              <ShieButton variant="secondary" class="!w-[4rem] !px-2">
-                <span class="sr-only">Download</span>
-                <nuxt-icon name="download" filled class="w-6 h-6" />
+            <div>
+              <ShieButton color="bg-crayola" class="!bg-crayola !text-dark">
+                <span class="mr-4"> Start TO DO </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M15.1905 13.11C15.3229 13.3756 15.3852 13.6705 15.3717 13.9669C15.3581 14.2633 15.269 14.5513 15.1129 14.8037C14.9568 15.056 14.7388 15.2642 14.4796 15.4086C14.2204 15.5531 13.9286 15.6289 13.6319 15.6289L1.8555 15.6289C1.55879 15.6289 1.26701 15.5531 1.00782 15.4087C0.74863 15.2642 0.530636 15.056 0.374517 14.8037C0.218397 14.5513 0.12933 14.2633 0.11576 13.9669C0.10219 13.6705 0.164568 13.3756 0.296979 13.11L6.18723 1.33157C6.3316 1.04233 6.55371 0.799037 6.82864 0.628988C7.10357 0.458939 7.42045 0.368861 7.74372 0.368861C8.06699 0.368861 8.38386 0.458939 8.6588 0.628988C8.93373 0.799037 9.15584 1.04233 9.30021 1.33157L15.1905 13.11Z"
+                    fill="#4D3B3C"
+                  />
+                </svg>
               </ShieButton>
             </div>
           </div>
         </section>
-        <section class="flex flex-col lg:flex-row gap-8">
-          <div class="w-full lg:!w-[26%]">
-            <p
-              class="mb-8 text-dark-puce font-title leading-[1.5rem] uppercase"
-            >
-              Category Tag
-            </p>
-            <div class="flex flex-col gap-8">
-              <div
-                v-for="(category, i) in categories"
-                :key="`cty-${i}`"
-                class="w-full"
-              >
-                <label
-                  :for="`cty-${i}`"
-                  class="resource-tag__label"
-                  :class="{
-                    'resource-tag__label--checked': category === activeCategory,
-                  }"
-                >
-                  <nuxt-icon
-                    name="ankh"
-                    filled
-                    :class="`${
-                      category === activeCategory ? 'inline-block' : 'hidden'
-                    }`"
-                  />{{ category }}
-                </label>
-                <input
-                  :id="`cty-${i}`"
-                  v-model="activeCategory"
-                  type="radio"
-                  class="hidden resource-tag__input"
-                  name="tag"
-                  :value="category"
-                />
-              </div>
-            </div>
+        <section>
+          <p class="font-title text-dark-puce leading-6 mb-[2.25rem]">
+            Recommended
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center">
+            <ResourceCard
+              v-for="(resource, i) in resources"
+              :key="`res-${i}`"
+              :title="resource.title"
+              :duration="resource.duration"
+              :description="resource.description"
+              to="/resources/1"
+            />
           </div>
-          <TimerCard
-            title="Timer"
-            description="STOP PLAYING WHEN TIMER ENDS"
-            class="w-full lg:w-[37%]"
-          />
-          <TimerCard
-            title="Break"
-            description="START BREAK AFTER TIMER"
-            class="w-full lg:w-[37%]"
-          />
         </section>
       </article>
     </div>
