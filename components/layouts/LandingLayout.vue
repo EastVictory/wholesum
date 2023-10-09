@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import LandingFooter from "~/components/landing/LandingFooter.vue";
 import StickyAppNav from "~/components/layouts/StickyAppNav.vue";
+withDefaults(defineProps<{ title: string | null }>(), { title: null });
 
 onMounted(() => {
   const intersectionObserver = new IntersectionObserver(
@@ -32,10 +33,15 @@ onMounted(() => {
 
 <template>
   <div class="bg-conditioner">
+    <slot name="head">
+      <Head>
+        <Title>{{ title }}</Title>
+      </Head>
+    </slot>
     <slot name="header">
       <StickyAppNav />
     </slot>
-    <main class="px-4">
+    <main class="px-4 lg:!px-0">
       <slot></slot>
     </main>
     <LandingFooter />

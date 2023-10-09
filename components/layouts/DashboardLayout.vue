@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppNav from "~/components/layouts/AppNav.vue";
 
-withDefaults(defineProps<{ title: string | null }>(), { title: "" });
+withDefaults(defineProps<{ title: string | null }>(), { title: null });
 </script>
 
 <template>

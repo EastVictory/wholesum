@@ -17,8 +17,8 @@ const socials: Link[] = [
   { name: "Twitter (x)", href: "#" },
 ];
 const footerAltLinks: Link[] = [
-  { name: "Terms OF USE", href: "#" },
-  { name: "Privacy policy", href: "#" },
+  { name: "Terms OF USE", href: "/terms" },
+  { name: "Privacy policy", href: "/privacy" },
 ];
 </script>
 
