@@ -18,12 +18,12 @@ const breakDuration = ref(0);
       >
         <div class="flex flex-row items-center">
           <p class="font-title text-dark-puce leading-[1.125rem] text-base h-4">
-            Todo /
+            TODO /
           </p>
           <input
             type="text"
-            class="text-dark leading-[1.125rem] text-base w-[5.5rem] mb-0 inline-block ml-1 bg-transparent hover:bg-[#FFC700] focus-visible:outline-none placeholder:text-dark"
-            placeholder="UNTITLED"
+            class="text-dark leading-[1.125rem] text-base w-[8.5rem] mb-0 inline-block ml-1 bg-transparent hover:bg-[#FFC700] focus-visible:outline-none placeholder:text-dark"
+            placeholder="UNTITLED TASK"
           />
           <button class="h-6 -mb-2">
             <nuxt-icon name="chevron-right" filled />
