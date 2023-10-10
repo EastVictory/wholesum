@@ -10,7 +10,7 @@ type RecentTask = {
   createdAt: string;
 };
 
-const statuses = ["DRAFT", "ONGOING", "ARCHIVED", "COMPLETED"];
+const statuses = ["DRAFT", "ONGOING", "COMPLETED"];
 const activeStatus = ref("");
 
 const recentTasks: RecentTask[] = [

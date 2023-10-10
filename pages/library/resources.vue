@@ -171,7 +171,7 @@ const resources: Resource[] = [
         </section>
         <section>
           <div
-            class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center sticky bg-conditioner top-[2rem] z-[3] pt-[4rem]"
+            class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center sticky bg-conditioner top-0 z-[3] pt-[6rem] -mt-8"
           >
             <ShieButton
               v-for="(category, i) in categories"

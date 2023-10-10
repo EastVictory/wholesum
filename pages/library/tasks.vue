@@ -12,7 +12,7 @@ type RecentTask = {
 };
 
 const categories = ["EDUCATION", "SELF CARE", "SOCIALITY", "FITNESS"];
-const statuses = ["DRAFT", "ONGOING", "ARCHIVED"];
+const statuses = ["DRAFT", "ONGOING", "COMPLETED"];
 const activeCtg = ref("EDUCATION");
 const activeStatus = ref("");
 
@@ -73,6 +73,10 @@ const filteredTasks = computed(() => {
   }
   return recentTasks;
 });
+
+const handleStatusSelect = (status: string) => {
+  activeStatus.value = status === activeStatus.value ? "" : status;
+};
 </script>
 
 <template>
@@ -115,12 +119,12 @@ const filteredTasks = computed(() => {
                 :class="`${
                   activeStatus === status ? '!bg-dark-puce !text-white' : ''
                 }`"
-                @click="activeStatus = status"
+                @click="handleStatusSelect(status)"
               >
                 {{ status }}
               </ShiePillButton>
             </div>
-            <p v-if="filteredTasks.length < recentTasks.length">
+            <p v-if="activeStatus && filteredTasks.length">
               {{ filteredTasks.length }} tasks filtered
             </p>
           </div>
