@@ -1,10 +1,42 @@
 <script setup lang="ts">
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import EmptyRecentActivity from "~/components/library/EmptyRecentActivity.vue";
-import RecentActivity from "~/components/library/RecentActivity.vue";
-
-const recentActivities = ["Resources", "Tasks", "All Todo"];
-const todos: number[] | null = [];
+import TaskCard from "~/components/library/TaskCard.vue";
+type RecentActivity = {
+  title: string;
+  link: string;
+};
+type RecentTask = {
+  text: string;
+  status: string;
+  category: string;
+  createdAt: string;
+};
+const recentActivities: RecentActivity[] = [
+  { title: "Resources", link: "/library/resources" },
+  { title: "Tasks", link: "/library/tasks" },
+  { title: "All Todo", link: "/library/todos" },
+];
+const recentTasks: RecentTask[] = [
+  {
+    text: "Complete User Interface Design",
+    status: "DRAFT",
+    category: "EDUCATION",
+    createdAt: "3 mins ago",
+  },
+  {
+    text: "Test Bug Fixes",
+    status: "DRAFT",
+    category: "EDUCATION",
+    createdAt: "3 mins ago",
+  },
+  {
+    text: "Write Documentation",
+    status: "DRAFT",
+    category: "EDUCATION",
+    createdAt: "3 mins ago",
+  },
+];
 const streak = 0;
 const goals = 0;
 </script>
@@ -88,20 +120,21 @@ const goals = 0;
         Recent Activity
       </p>
       <div class="flex gap-6 flex-1">
-        <div
+        <nuxt-link
           v-for="(recentActivity, i) in recentActivities"
           :key="`rc-${i}`"
-          class="shie-black-border rounded-[0.9075rem] p-4 bg-white flex items-center justify-center h-[7.49088rem] flex-1"
+          class="shie-black-border rounded-[0.9075rem] p-4 bg-white flex items-center justify-center h-[7.49088rem] flex-1 hover:border-cardinal"
+          :to="recentActivity.link"
         >
           <p class="font-title text-base text-dark h-[1rem]">
-            {{ recentActivity }}
+            {{ recentActivity.title }}
           </p>
-        </div>
+        </nuxt-link>
       </div>
     </section>
     <section class="max-w-[36.6875rem] w-full mx-auto">
-      <div v-if="todos.length > 0" class="flex flex-col gap-4">
-        <RecentActivity v-for="i in todos" :key="i" />
+      <div v-if="recentTasks.length > 0" class="flex flex-col gap-4">
+        <TaskCard v-for="(task, i) in recentTasks" :key="i" :task="task" />
       </div>
       <EmptyRecentActivity v-else />
     </section>
