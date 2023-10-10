@@ -12,7 +12,7 @@ const goals = ["Education", "Self care", "Sociality", "Fitness"];
       <p
         class="text-dark-puce font-title uppercase leading-[1.125rem] text-base"
       >
-        LIBRARY/GOALS
+        LIBRARY / <span class="text-dark">GOALS</span>
       </p>
       <button
         class="shie-black-border rounded-[1.375rem] text-dark-puce font-title uppercase leading-6 text-xs hover:text-cardinal h-[1.5rem] items-center inline-flex justify-center px-6"
