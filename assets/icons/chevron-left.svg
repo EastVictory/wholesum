@@ -1,5 +1,5 @@
-<svg width="16" height="30" viewBox="0 0 16 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Edit">
-<path id="Vector" d="M9.78125 6.28125L5.34375 10.7187L9.78125 15.1562" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<path id="Vector" d="M8.927 2.10039L4.25828 6.76955C4.22792 6.79986 4.20388 6.83584 4.18746 6.87543C4.171 6.91507 4.16255 6.95753 4.16255 7.00039C4.16255 7.04325 4.171 7.08572 4.18746 7.12535C4.20388 7.16494 4.22792 7.20092 4.25828 7.23124L8.927 11.9004" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>
