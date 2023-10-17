@@ -1,60 +1,76 @@
 <script setup lang="ts">
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
-import TaskCard from "~/components/library/TaskCard.vue";
+import TodoCard from "~/components/library/TodoCard.vue";
 
 type RecentTask = {
   text: string;
   status: string;
   category: string;
   createdAt: string;
+  duration: number;
+  notes: number;
 };
 
 const statuses = ["DRAFT", "ONGOING", "COMPLETED"];
 const activeStatus = ref("");
-
+const selectedTodos = ref([]);
 const recentTasks: RecentTask[] = [
   {
     text: "Complete User Interface Design",
     status: "DRAFT",
     category: "EDUCATION",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
     text: "Conduct User Interviews",
     status: "ONGOING",
     category: "SOCIALITY",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
     text: "Test Bug Fixes",
     status: "ON GOING",
     category: "EDUCATION",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
     text: "Update Database Schema",
     status: "ARCHIVED",
     category: "SELF CARE",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
     text: "Write Documentation",
     status: "DRAFT",
     category: "EDUCATION",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
     text: "Plan Team Building Workshop",
     status: "ONGOING",
     category: "FITNESS",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
     text: "Code Refactoring",
     status: "ONGOING",
     category: "SOCIALITY",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
 ];
 </script>
@@ -110,11 +126,12 @@ const recentTasks: RecentTask[] = [
                   id="checkboxNoLabel"
                   class="task-checkbox"
                   type="checkbox"
-                  value=""
+                  v-model="selectedTodos"
+                  :value="`todo-${i}`"
                   aria-label="..."
                 />
               </div>
-              <TaskCard :task="task" />
+              <TodoCard :todo="task" />
             </div>
           </div>
           <div class="mt-[1.56rem] flex justify-between items-center">
