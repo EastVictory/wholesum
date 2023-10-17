@@ -25,7 +25,7 @@ const breakDuration = ref(0);
             class="text-dark leading-[1.125rem] text-base w-[8.5rem] mb-0 inline-block ml-1 bg-transparent hover:bg-[#FFC700] focus-visible:outline-none placeholder:text-dark"
             placeholder="UNTITLED TASK"
           />
-          <button class="h-6 -mb-2">
+          <button class="">
             <nuxt-icon name="chevron-right" filled />
           </button>
         </div>
@@ -47,7 +47,11 @@ const breakDuration = ref(0);
             </div>
           </div>
           <div class="flex flex-col gap-[1.78rem] w-full lg:w-1/2">
-            <ShieButton variant="primary" class="!px-4">
+            <ShieButton
+              variant="primary"
+              class="!px-4"
+              @click="navigateTo('/countdown')"
+            >
               Start to do
               <svg
                 xmlns="http://www.w3.org/2000/svg"
