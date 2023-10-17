@@ -30,7 +30,7 @@ withDefaults(
   @apply py-[0.6375rem] text-center w-full px-[3.3rem] justify-center items-center gap-[0.92rem] inline-flex;
   &--primary {
     @apply bg-cardinal text-white;
-    @apply border-dark-puce border-l-[0.38rem] border-r-[0.19rem] border-t-[0.25rem] border-b-[0.5rem];
+    @apply border-dark-puce border-x-[0.41rem] border-t-[0.25rem] border-b-[0.5rem];
     @apply hover:bg-transparent hover:text-dark-puce;
     &:disabled {
       @apply border-platinum bg-platinum;

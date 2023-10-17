@@ -1,62 +1,108 @@
 <script setup lang="ts">
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
-import TaskCard from "~/components/library/TaskCard.vue";
+import TodoCard from "~/components/library/TodoCard.vue";
 
 type RecentTask = {
+  id: number;
   text: string;
   status: string;
   category: string;
   createdAt: string;
+  duration: number;
+  notes: number;
 };
 
 const statuses = ["DRAFT", "ONGOING", "COMPLETED"];
 const activeStatus = ref("");
-
+const selectedTodos = ref<Array<number>>([]);
 const recentTasks: RecentTask[] = [
   {
+    id: 1,
     text: "Complete User Interface Design",
     status: "DRAFT",
     category: "EDUCATION",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
+    id: 2,
+
     text: "Conduct User Interviews",
     status: "ONGOING",
     category: "SOCIALITY",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
+    id: 3,
+
     text: "Test Bug Fixes",
-    status: "ON GOING",
+    status: "ONGOING",
     category: "EDUCATION",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
+    id: 4,
+
     text: "Update Database Schema",
     status: "ARCHIVED",
     category: "SELF CARE",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
+    id: 5,
+
     text: "Write Documentation",
     status: "DRAFT",
     category: "EDUCATION",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
+    id: 6,
+
     text: "Plan Team Building Workshop",
     status: "ONGOING",
     category: "FITNESS",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
   {
+    id: 7,
+
     text: "Code Refactoring",
     status: "ONGOING",
     category: "SOCIALITY",
     createdAt: "3 mins ago",
+    duration: 44,
+    notes: 10,
   },
 ];
+
+const handleStatusSelect = (status: string) => {
+  activeStatus.value = status === activeStatus.value ? "" : status;
+};
+
+const handleSelectAll = () => {
+  const ids = recentTasks.map((rTask) => rTask.id);
+  selectedTodos.value = selectedTodos.value.length < ids.length ? ids : [];
+};
+
+const filteredTasks = computed(() => {
+  if (activeStatus.value) {
+    return recentTasks.filter((rTask) => rTask.status === activeStatus.value);
+  }
+  return recentTasks;
+});
 </script>
 
 <template>
@@ -80,41 +126,56 @@ const recentTasks: RecentTask[] = [
                   id="checkboxNoLabel"
                   class="task-checkbox"
                   type="checkbox"
-                  value=""
+                  :checked="selectedTodos.length > 0"
                   aria-label="..."
+                  @click="handleSelectAll"
                 />
               </div>
-              <ShiePillButton
-                v-for="(status, i) in statuses"
-                :key="`status-${i}`"
-                class="min-w-[5.8125rem]"
-                :class="`${
-                  activeStatus === status ? '!bg-dark-puce !text-white' : ''
-                }`"
-                @click="activeStatus = status"
+              <div
+                v-if="selectedTodos.length"
+                class="flex flex-col lg:flex-row flex-wrap gap-4"
               >
-                {{ status }}
-              </ShiePillButton>
+                <ShiePillButton class="w-[8.4375rem]">
+                  Archive TODO
+                </ShiePillButton>
+                <ShiePillButton class="w-[8.4375rem]">
+                  MArk as done
+                </ShiePillButton>
+              </div>
+              <div v-else class="flex flex-col lg:flex-row flex-wrap gap-4">
+                <ShiePillButton
+                  v-for="(status, i) in statuses"
+                  :key="`status-${i}`"
+                  class="min-w-[5.8125rem]"
+                  :class="`${
+                    activeStatus === status ? '!bg-dark-puce !text-white' : ''
+                  }`"
+                  @click="handleStatusSelect(status)"
+                >
+                  {{ status }}
+                </ShiePillButton>
+              </div>
             </div>
           </div>
         </section>
         <section class="flex flex-col min-h-[60vh] justify-between">
           <div class="flex flex-col gap-4">
             <div
-              v-for="(task, i) in recentTasks"
+              v-for="(task, i) in filteredTasks"
               :key="i"
               class="flex gap-2 items-center"
             >
               <div class="">
                 <input
                   id="checkboxNoLabel"
+                  v-model="selectedTodos"
                   class="task-checkbox"
                   type="checkbox"
-                  value=""
+                  :value="`todo-${i}`"
                   aria-label="..."
                 />
               </div>
-              <TaskCard :task="task" />
+              <TodoCard :todo="task" />
             </div>
           </div>
           <div class="mt-[1.56rem] flex justify-between items-center">
