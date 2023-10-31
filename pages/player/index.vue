@@ -2,6 +2,8 @@
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
 import PlayerEditor from "~/components/editor/PlayerEditor.vue";
+
+const lottiePlayer = ref(null);
 </script>
 
 <template>
@@ -44,22 +46,38 @@ import PlayerEditor from "~/components/editor/PlayerEditor.vue";
               <nuxt-icon name="audio" filled />
             </span>
           </div>
+          <div class="mb-[4.41rem]">
+            <client-only>
+              <Vue3Lottie
+                ref="lottiePlayer"
+                animation-link="https://lottie.host/e235aa6e-0ed3-4b2c-a71d-06c606c57aaf/AgMjR3kw8c.json"
+                :auto-play="false"
+                :loop="false"
+                :height="280"
+                :width="500"
+              />
+            </client-only>
+          </div>
+
           <div class="px-6 flex gap-[1.5rem] justify-center">
             <ShieButton
               variant="primary"
               class="!bg-white !border-x-[0.12rem] !border-t-[0.13rem]"
+              @click="lottiePlayer?.stop()"
             >
               <nuxt-icon name="stop" filled />
             </ShieButton>
             <ShieButton
               variant="primary"
               class="!bg-conditioner !border-x-[0.12rem] !border-t-[0.13rem]"
+              @click="lottiePlayer?.play()"
             >
               <nuxt-icon name="start" filled />
             </ShieButton>
             <ShieButton
               variant="secondary"
               class="whitespace-nowrap !px-4 !w-[7.625rem] mx-auto !text-[0.75rem] !bg-dark-puce !text-conditioner"
+              @click="lottiePlayer?.pause()"
             >
               Start break
             </ShieButton>
