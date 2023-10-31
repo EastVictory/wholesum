@@ -19,6 +19,8 @@ export default <Partial<Config>>{
     fontFamily: {
       title: ["Borel", "system-ui", "sans-serif"],
       subtitle: ["Peachi", "system-ui", "sans-serif"],
+      alt: ["Cormorant SC", "system-ui", "sans-serif"],
+      garamond: ["Cormorant Garamond", "system-ui", "sans-serif"],
     },
     extend: {
       fontSize: {

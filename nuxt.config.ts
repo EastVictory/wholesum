@@ -73,6 +73,8 @@ export default defineNuxtConfig({
         families: {
           Inter: true,
           Borel: true,
+          "Cormorant+SC": true,
+          "Cormorant+Garamond": true,
         },
       },
     ],

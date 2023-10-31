@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
+import PlayerEditor from "~/components/editor/PlayerEditor.vue";
 </script>
 
 <template>
@@ -25,32 +26,31 @@ import ShieButton from "~/components/buttons/ShieButton.vue";
           <nuxt-icon name="chevron-right" filled />
         </button>
         <div class="flex gap-2 items-center">
+          <ShiePillButton>SESSION 001</ShiePillButton>
           <ShiePillButton>EDUCATION</ShiePillButton>
           <ShiePillButton>25 MINS SESSION</ShiePillButton>
           <ShiePillButton>5 MINS BREAK</ShiePillButton>
         </div>
       </div>
-      <section class="flex gap-6">
-        <div
-          class="bg-white rounded-lg border-2 border-dark-puce max-w-[13.6875rem] w-full py-6 flex flex-col items-center"
-        >
-          <p class="py-4 mb-8">SESSION 001</p>
-          <div class="mb-6">
-            <nuxt-icon name="audio" filled />
-          </div>
-          <div class="mb-[6.61rem] text-center">
+      <div class="flex gap-6 justify-between max-w-[57.5625rem] mx-auto">
+        <section class="w-full flex-1">
+          <div class="px-6 flex justify-between mb-[2.81rem]">
             <p
-              class="text-[2rem] font-title text-dark font-bold leading-[1.875rem] mb-2"
+              class="text-[2rem] font-alt text-dark font-bold leading-[1.875rem]"
             >
-              30:00
+              30 : 00 <span class="text-[1.4375rem]">MINS</span>
             </p>
-            <p
-              class="text-[1.4375rem] font-title text-dark font-bold leading-[1.875rem]"
-            >
-              MINS
-            </p>
+            <span class="">
+              <nuxt-icon name="audio" filled />
+            </span>
           </div>
-          <div class="mb-[7rem] flex flex-col gap-[0.85rem]">
+          <div class="px-6 flex gap-[1.5rem] justify-center">
+            <ShieButton
+              variant="primary"
+              class="!bg-white !border-x-[0.12rem] !border-t-[0.13rem]"
+            >
+              <nuxt-icon name="stop" filled />
+            </ShieButton>
             <ShieButton
               variant="primary"
               class="!bg-conditioner !border-x-[0.12rem] !border-t-[0.13rem]"
@@ -58,20 +58,17 @@ import ShieButton from "~/components/buttons/ShieButton.vue";
               <nuxt-icon name="start" filled />
             </ShieButton>
             <ShieButton
-              variant="primary"
-              class="!bg-white !border-x-[0.12rem] !border-t-[0.13rem]"
+              variant="secondary"
+              class="whitespace-nowrap !px-4 !w-[7.625rem] mx-auto !text-[0.75rem] !bg-dark-puce !text-conditioner"
             >
-              <nuxt-icon name="stop" filled />
+              Start break
             </ShieButton>
           </div>
-          <ShieButton
-            variant="secondary"
-            class="whitespace-nowrap !px-4 !w-[7.625rem] mx-auto !text-[0.75rem]"
-          >
-            Start break
-          </ShieButton>
-        </div>
-      </section>
+        </section>
+        <section class="max-w-[24.3125rem] w-full">
+          <PlayerEditor />
+        </section>
+      </div>
     </section>
   </div>
 </template>
