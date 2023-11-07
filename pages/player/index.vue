@@ -3,7 +3,59 @@ import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
 import PlayerEditor from "~/components/editor/PlayerEditor.vue";
 
-const lottiePlayer = ref(null);
+const lottiePlayer: any = ref(null);
+
+const duration = 30;
+const speed = ref(0.018);
+const durationInSeconds = ref(duration * 60);
+
+const countdown = computed(() => {
+  return {
+    mins: Math.floor(durationInSeconds.value / 60),
+    seconds: Math.floor(durationInSeconds.value % 60),
+  };
+});
+
+let countInterval: NodeJS.Timer | null = null;
+const stopInterval = () => {
+  if (countInterval) {
+    clearInterval(countInterval);
+  }
+};
+
+onBeforeUnmount(() => {
+  stopInterval();
+});
+
+watch(durationInSeconds, (val) => {
+  if (val === 0) {
+    stopInterval();
+  }
+});
+const padZero = (unit: number) => {
+  return new Intl.NumberFormat("en", { minimumIntegerDigits: 2 }).format(unit);
+};
+const startPlayer = () => {
+  lottiePlayer?.value?.play();
+  countInterval = setInterval(() => {
+    progressCountdown();
+  }, 1000);
+};
+
+const stopPlayer = () => {
+  stopInterval();
+};
+
+const progressCountdown = () => {
+  durationInSeconds.value -= 1;
+};
+const pausePlayer = () => {
+  lottiePlayer?.value?.pause();
+};
+const handlePlayerComplete = () => {
+  stopInterval();
+  console.log("handlePlayerComplete");
+};
 </script>
 
 <template>
@@ -40,7 +92,9 @@ const lottiePlayer = ref(null);
             <p
               class="text-[2rem] font-alt text-dark font-bold leading-[1.875rem]"
             >
-              30 : 00 <span class="text-[1.4375rem]">MINS</span>
+              {{ countdown.mins }} :
+              {{ padZero(countdown.seconds) }}
+              <span class="text-[1.4375rem]">MINS</span>
             </p>
             <span class="">
               <nuxt-icon name="audio" filled />
@@ -50,11 +104,13 @@ const lottiePlayer = ref(null);
             <client-only>
               <Vue3Lottie
                 ref="lottiePlayer"
-                animation-link="https://lottie.host/e235aa6e-0ed3-4b2c-a71d-06c606c57aaf/AgMjR3kw8c.json"
+                animation-link="https://lottie.host/cececf82-6251-4554-bd57-905e2fbbcb0a/0aZtY0B81L.json"
                 :auto-play="false"
                 :loop="false"
                 :height="280"
                 :width="500"
+                :speed="speed"
+                @on-complete="handlePlayerComplete"
               />
             </client-only>
           </div>
@@ -63,21 +119,21 @@ const lottiePlayer = ref(null);
             <ShieButton
               variant="primary"
               class="!bg-white !border-x-[0.12rem] !border-t-[0.13rem]"
-              @click="lottiePlayer?.stop()"
+              @click="stopPlayer"
             >
               <nuxt-icon name="stop" filled />
             </ShieButton>
             <ShieButton
               variant="primary"
               class="!bg-conditioner !border-x-[0.12rem] !border-t-[0.13rem]"
-              @click="lottiePlayer?.play()"
+              @click="startPlayer"
             >
               <nuxt-icon name="start" filled />
             </ShieButton>
             <ShieButton
               variant="secondary"
               class="whitespace-nowrap !px-4 !w-[7.625rem] mx-auto !text-[0.75rem] !bg-dark-puce !text-conditioner"
-              @click="lottiePlayer?.pause()"
+              @click="pausePlayer"
             >
               Start break
             </ShieButton>

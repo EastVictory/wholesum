@@ -171,7 +171,7 @@ const filteredTasks = computed(() => {
                   v-model="selectedTodos"
                   class="task-checkbox"
                   type="checkbox"
-                  :value="`todo-${i}`"
+                  :value="task.id"
                   aria-label="..."
                 />
               </div>
