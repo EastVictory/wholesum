@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+withDefaults(defineProps<{ content?: any }>(), {
+  content: {},
+});
+</script>
 
 <template>
   <div class="editor-main"></div>

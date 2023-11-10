@@ -16,7 +16,7 @@ onMounted(() => {
 watch(counter, (val) => {
   if (val === 0) {
     clearInterval(intervalId);
-    navigateTo("/player");
+    // navigateTo("/player");
   }
 });
 
