@@ -6,8 +6,10 @@ import PlayerEditor from "~/components/editor/PlayerEditor.vue";
 const lottiePlayer: any = ref(null);
 
 const duration = 30;
-const speed = ref(0.018);
+const breaks = 5;
+const speed = ref(1);
 const durationInSeconds = ref(duration * 60);
+const breaksInSeconds = ref(breaks * 60);
 
 const countdown = computed(() => {
   return {
@@ -16,20 +18,30 @@ const countdown = computed(() => {
   };
 });
 
+const breaksCountdown = computed(() => {
+  return {
+    mins: Math.floor(breaksInSeconds.value / 60),
+    seconds: Math.floor(breaksInSeconds.value % 60),
+  };
+});
+
 let countInterval: NodeJS.Timer | null = null;
-const stopInterval = () => {
-  if (countInterval) {
-    clearInterval(countInterval);
+let breaksInterval: NodeJS.Timer | null = null;
+
+const stopInterval = (interval: NodeJS.Timer | null) => {
+  if (interval) {
+    clearInterval(interval);
   }
 };
 
 onBeforeUnmount(() => {
-  stopInterval();
+  stopInterval(countInterval);
+  stopInterval(breaksInterval);
 });
 
 watch(durationInSeconds, (val) => {
   if (val === 0) {
-    stopInterval();
+    stopInterval(countInterval);
   }
 });
 const padZero = (unit: number) => {
@@ -37,24 +49,40 @@ const padZero = (unit: number) => {
 };
 const startPlayer = () => {
   lottiePlayer?.value?.play();
+  stopInterval(breaksInterval);
+
   countInterval = setInterval(() => {
     progressCountdown();
   }, 1000);
 };
 
 const stopPlayer = () => {
-  stopInterval();
+  durationInSeconds.value = duration * 60;
+  breaksInSeconds.value = breaks * 60;
+  stopInterval(countInterval);
+  stopInterval(breaksInterval);
+  lottiePlayer?.value?.stop();
 };
 
 const progressCountdown = () => {
   durationInSeconds.value -= 1;
 };
+const progressBreaksCountdown = () => {
+  breaksInSeconds.value -= 1;
+};
+
 const pausePlayer = () => {
+  stopInterval(countInterval);
+  breaksInterval = setInterval(() => {
+    progressBreaksCountdown();
+  }, 1000);
   lottiePlayer?.value?.pause();
 };
 const handlePlayerComplete = () => {
-  stopInterval();
-  console.log("handlePlayerComplete");
+  stopInterval(countInterval);
+  stopInterval(breaksInterval);
+
+  // console.log("handlePlayerComplete");
 };
 </script>
 
@@ -69,7 +97,7 @@ const handlePlayerComplete = () => {
         />
       </nuxt-link>
     </div>
-    <section class="max-w-[90rem] mx-auto">
+    <section class="max-w-[90rem] mx-auto pb-[5.72rem]">
       <div
         class="max-w-[72.5rem] mx-auto flex items-center justify-between mb-[5rem]"
       >
@@ -89,13 +117,23 @@ const handlePlayerComplete = () => {
       <div class="flex gap-6 justify-between max-w-[57.5625rem] mx-auto">
         <section class="w-full flex-1">
           <div class="px-6 flex justify-between mb-[2.81rem]">
-            <p
-              class="text-[2rem] font-alt text-dark font-bold leading-[1.875rem]"
-            >
-              {{ countdown.mins }} :
-              {{ padZero(countdown.seconds) }}
-              <span class="text-[1.4375rem]">MINS</span>
-            </p>
+            <div class="flex gap-4">
+              <p
+                class="text-[2rem] font-alt text-dark font-bold leading-[1.875rem]"
+              >
+                {{ countdown.mins }} :
+                {{ padZero(countdown.seconds) }}
+                <span class="text-[1.4375rem]">MINS</span>
+              </p>
+              <p
+                class="text-[2rem] font-alt text-dark font-bold leading-[1.875rem]"
+              >
+                {{ breaksCountdown.mins }} :
+                {{ padZero(breaksCountdown.seconds) }}
+                <span class="text-[1.4375rem]">MINS</span>
+              </p>
+            </div>
+
             <span class="">
               <nuxt-icon name="audio" filled />
             </span>
