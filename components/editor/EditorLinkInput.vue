@@ -1,11 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+type Content = {
+  type: string;
+  content: any;
+};
+
+const url = ref("");
+const emits = defineEmits<{ submit: [content: Content] }>();
+const handleSubmit = () => {
+  emits("submit", { type: "link", content: url.value });
+  url.value = "";
+};
+</script>
 
 <template>
   <div class="editor-link-input">
     <input
+      v-model="url"
       type="url"
-      name=""
       placeholder="Copy & paste or type url to import media"
+      @keyup.enter="handleSubmit"
     />
   </div>
 </template>
