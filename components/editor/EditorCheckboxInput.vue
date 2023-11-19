@@ -13,10 +13,11 @@ const checkboxes: Ref<Check[]> = ref([]);
 const emits = defineEmits<{ submit: [content: Content] }>();
 const handleSubmit = () => {
   emits("submit", {
-    type: "image",
+    type: "checkbox",
     content: { title: title.value, checkboxes: checkboxes.value },
   });
   title.value = "";
+  checkboxes.value = [];
 };
 const addCheckbox = () => {
   checkboxes.value.push({ check: checkbox.value, selected: true });
@@ -36,7 +37,8 @@ const addCheckbox = () => {
         type="text"
         placeholder="Add an item"
         class="placeholder:font-medium font-medium"
-        @keyup.enter="addCheckbox"
+        @keyup.exact.enter="addCheckbox"
+        @keyup.ctrl.exact="handleSubmit"
       />
     </div>
     <div>

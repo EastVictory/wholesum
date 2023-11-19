@@ -10,10 +10,11 @@ const list: Ref<string[]> = ref([]);
 const emits = defineEmits<{ submit: [content: Content] }>();
 const handleSubmit = () => {
   emits("submit", {
-    type: "image",
+    type: "list",
     content: { title: title.value, list: list.value },
   });
   title.value = "";
+  list.value = [];
 };
 const addList = () => {
   list.value.push(text.value);
@@ -33,7 +34,8 @@ const addList = () => {
           type="text"
           placeholder="Add an item"
           class="placeholder:font-medium font-medium"
-          @keyup.enter="addList"
+          @keyup.exact.enter="addList"
+          @keyup.ctrl.enter="handleSubmit"
         />
       </li>
       <li v-for="(entry, i) in list" :key="`entry-${i}`" class="">
