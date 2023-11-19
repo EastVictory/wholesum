@@ -12,10 +12,8 @@ const isActive = (control: string) => {
 </script>
 
 <template>
-  <div
-    class="bg-white rounded-lg border-2 border-dark-puce w-full py-6 flex flex-col items-center"
-  >
-    <div class="flex gap-6">
+  <div class="rounded-lg w-full py-6 flex flex-col items-center">
+    <div class="flex gap-6 items-center">
       <button
         class="editor-control"
         :class="{ active: isActive('text') }"
@@ -51,6 +49,7 @@ const isActive = (control: string) => {
       >
         <nuxt-icon name="link" filled />
       </button>
+      <button class="editor-save">ADD</button>
     </div>
   </div>
 </template>
@@ -58,10 +57,15 @@ const isActive = (control: string) => {
 <style scoped lang="scss">
 .editor {
   &-control {
-    @apply border-2 border-platinum rounded-lg py-[0.56rem] hover:border-cardinal w-[2.5rem] inline-flex justify-center items-center h-[2.5rem];
+    @apply border border-transparent rounded-lg py-[0.56rem] hover:border-cardinal w-[2.5rem] inline-flex justify-center items-center h-[2.5rem] transition-all;
     &.active {
-      @apply border-cardinal;
+      @apply border-2 border-cardinal;
     }
+  }
+  &-save {
+    @apply bg-[#26F] border rounded-[0.36331rem] text-white transition-all;
+    @apply h-[2.9375rem] w-[5.75rem] p-6 font-medium text-xs inline-flex justify-center items-center;
+    @apply hover:text-cardinal hover:border-cardinal hover:bg-transparent;
   }
 }
 </style>

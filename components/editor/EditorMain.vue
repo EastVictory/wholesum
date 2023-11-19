@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { type Component } from "vue";
-import EditorTextInput from "~/components/editor/EditorTextInput.vue";
-import EditorCheckboxInput from "~/components/editor/EditorCheckboxInput.vue";
-import EditorListInput from "~/components/editor/EditorListInput.vue";
-import EditorImageInput from "~/components/editor/EditorImageInput.vue";
-import EditorLinkInput from "~/components/editor/EditorLinkInput.vue";
+import { DateTime } from "luxon";
+import EditorTextInput from "~/components/editor/inputs/EditorTextInput.vue";
+import EditorCheckboxInput from "~/components/editor/inputs/EditorCheckboxInput.vue";
+import EditorListInput from "~/components/editor/inputs/EditorListInput.vue";
+import EditorImageInput from "~/components/editor/inputs/EditorImageInput.vue";
+import EditorLinkInput from "~/components/editor/inputs/EditorLinkInput.vue";
 import EditorTextContent from "~/components/editor/contents/EditorTextContent.vue";
 import EditorCheckboxContent from "~/components/editor/contents/EditorCheckboxContent.vue";
 import EditorListContent from "~/components/editor/contents/EditorListContent.vue";
@@ -18,8 +19,9 @@ type Displays = {
   [key: string]: Component;
 };
 
-withDefaults(defineProps<{ activeControl?: string }>(), {
+withDefaults(defineProps<{ activeControl?: string; startEditing: boolean }>(), {
   activeControl: "text",
+  startEditing: false,
 });
 
 const contents = ref({});
@@ -46,29 +48,48 @@ const handleSubmit = (data: any) => {
 const getDisplay = (key: string) => {
   return displays[key];
 };
+defineEmits<{
+  (e: "showControls", value: boolean): void;
+}>();
 </script>
 
 <template>
-  <div class="editor-main">
-    <div class="flex-1 flex flex-col w-full">
-      <Component
-        :is="getDisplay(content?.type)"
-        v-for="[key, content] in Object.entries(contents)"
-        :key="key"
-        :content="content?.content"
-      />
+  <section class="editor-main">
+    <p
+      v-if="!Object.entries(contents).length"
+      class="mb-4 px-10 pt-6 text-black font-alt text-xs"
+    >
+      {{ DateTime.now().toFormat(`d LLL '"'yy '.' ta`) }}
+    </p>
+    <div v-if="startEditing" class="flex flex-col h-full min-h-[47.0625rem]">
+      <div class="flex-1 flex flex-col w-full">
+        <Component
+          :is="getDisplay(content?.type)"
+          v-for="[key, content] in Object.entries(contents)"
+          :key="key"
+          :content="content?.content"
+        />
+      </div>
+      <hr class="border-t-2 border-dark-puce w-full" />
+      <div class="p-4 w-full">
+        <Component :is="controls[activeControl]" @submit="handleSubmit" />
+      </div>
     </div>
-    <hr class="border-t-2 border-dark-puce w-full" />
-    <div class="p-4 w-full">
-      <Component :is="controls[activeControl]" @submit="handleSubmit" />
+    <div v-else class="flex justify-start px-10">
+      <button
+        class="text-dark font-garamond font-medium text-sm"
+        @click="$emit('showControls', true)"
+      >
+        + Add a note
+      </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
 .editor {
   &-main {
-    @apply bg-white rounded-lg border-2 border-dark-puce w-full pt-6 flex flex-col items-center min-h-[47.0625rem];
+    @apply bg-white rounded-lg border-2 border-dark-puce w-full pt-6 flex flex-col min-h-[47.0625rem];
   }
 }
 </style>
