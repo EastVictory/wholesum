@@ -1,7 +1,13 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ content?: any }>(), {
-  content: {},
-});
+import { DateTime } from "luxon";
+
+const props = withDefaults(
+  defineProps<{ content?: any; createdAt?: string }>(),
+  {
+    content: {},
+    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+  }
+);
 
 const checkboxes = ref(props.content?.checkboxes || []);
 const selected = computed(() => {
@@ -15,7 +21,7 @@ const selected = computed(() => {
       <p
         class="font-garamond text-xs text-black leading-[0.8378rem] mb-[0.91rem] uppercase"
       >
-        22 May ‘23 . LIST. {{ selected }}/{{ content?.checkboxes.length }}
+        {{ createdAt }} . LIST. {{ selected }}/{{ content?.checkboxes.length }}
       </p>
       <div class="">
         <div>

@@ -1,6 +1,9 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ content?: any }>(), {
+import { DateTime } from "luxon";
+
+withDefaults(defineProps<{ content?: any; createdAt?: string }>(), {
   content: {},
+  createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
 });
 </script>
 
@@ -10,21 +13,14 @@ withDefaults(defineProps<{ content?: any }>(), {
       <p
         class="font-garamond text-xs text-black leading-[0.8378rem] mb-[0.91rem] uppercase"
       >
-        22 May ‘23 . LIST. 0/{{ content?.list.length }}
+        {{ createdAt }} . LIST. 0/{{ content?.list.length }}
       </p>
       <div class="">
-        <div>
-          <p
-            class="text-black font-garamond text-sm font-semibold leading-5 mb-[0.91rem]]"
-          >
-            {{ content?.title }}
-          </p>
-        </div>
         <ul class="list-disc ml-4">
           <li
             v-for="(entry, i) in content?.list || []"
             :key="`entry-${i}`"
-            class="mb-[0.91rem]"
+            class=""
           >
             <p
               :for="`entry-${i}`"

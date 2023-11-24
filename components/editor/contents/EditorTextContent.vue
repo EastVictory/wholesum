@@ -1,7 +1,11 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ content?: any }>(), {
+import { DateTime } from "luxon";
+
+withDefaults(defineProps<{ content?: any; createdAt?: string }>(), {
   content: {},
+  createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
 });
+const textLimit = ref(102);
 </script>
 
 <template>
@@ -10,7 +14,7 @@ withDefaults(defineProps<{ content?: any }>(), {
       <p
         class="font-garamond text-xs text-black leading-[0.8378rem] mb-4 uppercase"
       >
-        22 May ‘23 . {{ content.length }}/102 WORDS
+        {{ createdAt }} . {{ content.length }}/{{ textLimit }} WORDS
       </p>
       <p
         class="flex flex-row items-center font-garamond font-medium text-sm leading-5 gap-4 text-dark"
