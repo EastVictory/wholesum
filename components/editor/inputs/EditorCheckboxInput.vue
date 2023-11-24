@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { useEventBus } from "@vueuse/core";
+import { DateTime } from "luxon";
+
 type Content = {
   type: string;
   content: any;
+  createdAt: string;
 };
 type Check = {
   check: string;
   selected: boolean;
 };
+
+const bus = useEventBus<string>("controls:save");
+
 const title = ref("");
 const checkbox = ref("");
 const checkboxes: Ref<Check[]> = ref([]);
@@ -15,23 +22,37 @@ const handleSubmit = () => {
   emits("submit", {
     type: "checkbox",
     content: { title: title.value, checkboxes: checkboxes.value },
+    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
   });
   title.value = "";
   checkboxes.value = [];
 };
 const addCheckbox = () => {
-  checkboxes.value.push({ check: checkbox.value, selected: true });
-  checkbox.value = "";
+  if (checkbox.value.length) {
+    checkboxes.value.push({ check: checkbox.value, selected: true });
+    checkbox.value = "";
+  }
 };
+
+bus.on((event: string) => {
+  if (event && checkboxes.value.length) {
+    handleSubmit();
+  }
+});
 </script>
 
 <template>
   <div class="editor-checkbox-input">
     <div>
-      <input v-model="title" type="text" placeholder="Title" class="mb-2" />
+      <input
+        v-model="title"
+        type="text"
+        placeholder="Checklist"
+        class="mb-2 focus-within:bg-[#76D7EA] p-1"
+      />
     </div>
     <div class="flex gap-2">
-      <input type="checkbox" readonly />
+      <input type="checkbox" readonly disabled />
       <input
         v-model="checkbox"
         type="text"
@@ -66,10 +87,10 @@ const addCheckbox = () => {
 <style scoped lang="scss">
 .editor {
   &-checkbox-input {
-    @apply w-full;
+    @apply w-full h-full;
     input {
-      @apply text-sm text-dark;
-      @apply focus:outline-0 placeholder:font-garamond placeholder:text-sm placeholder:italic placeholder:text-dark;
+      @apply text-sm text-dark font-garamond;
+      @apply focus:outline-0 placeholder:font-garamond placeholder:text-sm placeholder:text-dark;
     }
   }
 }
