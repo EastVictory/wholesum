@@ -10,7 +10,7 @@ import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
       <nuxt-icon name="box" filled />
     </div>
     <p
-      class="max-w-[14.0625rem] mx-auto text-center text-dark text-base leading-6 mb-6"
+      class="max-w-[14.0625rem] mx-auto text-center text-dark text-base leading-6 mb-6 font-title"
     >
       You don’t have any Tasks in your Library
     </p>

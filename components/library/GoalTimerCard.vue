@@ -36,8 +36,8 @@ const handleMinus = () => {
           class="flex flex-row justify-center gap-8 mb-[1.19rem] items-center"
         >
           <ShieButton
-            variant="secondary"
-            class="flex-1 !px-4 h-[1.875rem] text-center font-medium"
+            variant=""
+            class="flex-1 !px-4 h-[1.875rem] text-center font-medium border-2 border-dark-puce bg-transparent text-black hover:bg-crayola"
             @click="handleMinus"
           >
             -
@@ -48,8 +48,8 @@ const handleMinus = () => {
             class="appearance-none w-8 text-center outline-none text-[2.5rem] font-medium text-dark leading-[3rem]"
           />
           <ShieButton
-            variant="secondary"
-            class="flex-1 !px-4 h-[1.875rem] text-center font-medium"
+            variant=""
+            class="flex-1 !px-4 h-[1.875rem] text-center font-medium border-2 border-dark-puce bg-transparent text-black hover:bg-crayola"
             @click="time += 1"
           >
             +
