@@ -1,4 +1,14 @@
 <script setup lang="ts">
+import { useEventBus } from "@vueuse/core";
+
+const bus = useEventBus<string>("controls:save");
+
+type Control = {
+  name: string;
+  icon: string;
+  saveButton: string;
+};
+
 const props = withDefaults(defineProps<{ activeControl?: string }>(), {
   activeControl: "text",
 });
@@ -9,47 +19,60 @@ const emit = defineEmits<{ toggleControls: [name: string] }>();
 const isActive = (control: string) => {
   return control === props.activeControl;
 };
+
+const activeControls = computed(() => {
+  return controls.find((control) => control.name === props.activeControl);
+});
+
+const controls: Control[] = [
+  {
+    name: "text",
+    icon: "abc",
+    saveButton: "ADD",
+  },
+  {
+    name: "checkbox",
+    icon: "checkboxes",
+    saveButton: "ADD",
+  },
+  {
+    name: "list",
+    icon: "list",
+    saveButton: "ADD",
+  },
+  {
+    name: "image",
+    icon: "pic-thumb",
+    saveButton: "UPLOAD",
+  },
+  {
+    name: "link",
+    icon: "link",
+    saveButton: "INSERT",
+  },
+];
+
+const handleSave = () => {
+  bus.emit("controls:save", true);
+};
 </script>
 
 <template>
   <div class="rounded-lg w-full py-6 flex flex-col items-center">
     <div class="flex gap-6 items-center">
       <button
+        v-for="control in controls"
+        :key="control.name"
         class="editor-control"
-        :class="{ active: isActive('text') }"
-        @click="selectControl('text')"
+        :class="{ active: isActive(control.name) }"
+        @click="selectControl(control.name)"
       >
-        <nuxt-icon name="abc" filled />
+        <nuxt-icon :name="control.icon" filled />
       </button>
-      <button
-        class="editor-control"
-        :class="{ active: isActive('checkbox') }"
-        @click="selectControl('checkbox')"
-      >
-        <nuxt-icon name="checkboxes" filled />
+
+      <button class="editor-save" @click="handleSave">
+        {{ activeControls?.saveButton }}
       </button>
-      <button
-        class="editor-control"
-        :class="{ active: isActive('list') }"
-        @click="selectControl('list')"
-      >
-        <nuxt-icon name="list" filled />
-      </button>
-      <button
-        class="editor-control"
-        :class="{ active: isActive('image') }"
-        @click="selectControl('image')"
-      >
-        <nuxt-icon name="pic-thumb" filled />
-      </button>
-      <button
-        class="editor-control"
-        :class="{ active: isActive('link') }"
-        @click="selectControl('link')"
-      >
-        <nuxt-icon name="link" filled />
-      </button>
-      <button class="editor-save">ADD</button>
     </div>
   </div>
 </template>
@@ -59,7 +82,7 @@ const isActive = (control: string) => {
   &-control {
     @apply border border-transparent rounded-lg py-[0.56rem] hover:border-cardinal w-[2.5rem] inline-flex justify-center items-center h-[2.5rem] transition-all;
     &.active {
-      @apply border-2 border-cardinal;
+      @apply border-2 border-cardinal bg-white;
     }
   }
   &-save {
