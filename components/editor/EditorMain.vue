@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Component } from "vue";
+import { type Component, Ref } from "vue";
 import { DateTime } from "luxon";
 import EditorTextInput from "~/components/editor/inputs/EditorTextInput.vue";
 import EditorCheckboxInput from "~/components/editor/inputs/EditorCheckboxInput.vue";
@@ -19,12 +19,19 @@ type Displays = {
   [key: string]: Component;
 };
 
+type Content = {
+  type: string;
+  content?: any;
+  createdAt?: string;
+};
+
 withDefaults(defineProps<{ activeControl?: string; startEditing: boolean }>(), {
   activeControl: "text",
   startEditing: false,
 });
 
-const contents = ref({});
+const contents: Ref<Content | object> = ref({});
+const editorMain: Ref<HTMLDivElement | null> = ref(null);
 
 const controls: Controls = {
   text: EditorTextInput,
@@ -48,40 +55,72 @@ const handleSubmit = (data: any) => {
 const getDisplay = (key: string) => {
   return displays[key];
 };
-defineEmits<{
+const emit = defineEmits<{
   (e: "showControls", value: boolean): void;
 }>();
+
+const showControls = () => {
+  emit("showControls", true);
+  setTimeout(() => {
+    window.scroll({
+      top: editorMain.value?.offsetTop,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, 500);
+};
 </script>
 
 <template>
-  <section class="editor-main">
-    <p
-      v-if="!Object.entries(contents).length"
-      class="mb-4 px-10 pt-6 text-black font-alt text-xs"
+  <section ref="editorMain" class="editor-main">
+    <div
+      class="shie-black-border pt-6 flex-1 flex flex-col h-full min-h-[47.0625rem] rounded-lg"
+      :class="{
+        'border-b-0': startEditing,
+        '!rounded-br-none': startEditing,
+        '!rounded-bl-none': startEditing,
+      }"
     >
-      {{ DateTime.now().toFormat(`d LLL '"'yy '.' ta`) }}
-    </p>
-    <div v-if="startEditing" class="flex flex-col h-full min-h-[47.0625rem]">
-      <div class="flex-1 flex flex-col w-full">
+      <div v-if="!Object.entries(contents).length" class="mb-4 px-10 pt-6">
+        <p class="text-black font-alt text-xs">
+          {{ DateTime.now().toFormat(`d LLL '"'yy '.' a`) }}
+        </p>
+        <p
+          v-if="startEditing"
+          class="text-sm font-medium text-taupe-gray font-garamond mt-4"
+        >
+          You don’t have any Notes added yet
+        </p>
+      </div>
+      <div v-if="!startEditing" class="flex justify-start px-10">
+        <button
+          class="text-dark font-garamond font-medium text-sm hover:bg-[#F8F8F8] rounded py-2 px-3 w-full text-left"
+          @click="showControls"
+        >
+          + Add a note
+        </button>
+      </div>
+      <div v-else class="flex-1 flex flex-col w-full">
         <Component
           :is="getDisplay(content?.type)"
           v-for="[key, content] in Object.entries(contents)"
           :key="key"
           :content="content?.content"
+          :created-at="content?.createdAt"
         />
       </div>
-      <hr class="border-t-2 border-dark-puce w-full" />
-      <div class="p-4 w-full">
+    </div>
+    <div
+      v-if="startEditing"
+      class="flex flex-col h-[6rem] rounded-lg shie-black-border focus-within:border-[#26F] transition-all overflow-auto"
+      :class="{
+        '!rounded-tr-none': startEditing,
+        '!rounded-tl-none': startEditing,
+      }"
+    >
+      <div class="p-4 w-full flex-1">
         <Component :is="controls[activeControl]" @submit="handleSubmit" />
       </div>
-    </div>
-    <div v-else class="flex justify-start px-10">
-      <button
-        class="text-dark font-garamond font-medium text-sm"
-        @click="$emit('showControls', true)"
-      >
-        + Add a note
-      </button>
     </div>
   </section>
 </template>
@@ -89,7 +128,7 @@ defineEmits<{
 <style scoped lang="scss">
 .editor {
   &-main {
-    @apply bg-white rounded-lg border-2 border-dark-puce w-full pt-6 flex flex-col min-h-[47.0625rem];
+    @apply bg-white rounded-lg w-full flex flex-col min-h-[47.0625rem];
   }
 }
 </style>
