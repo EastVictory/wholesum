@@ -1,7 +1,13 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ content?: any }>(), {
-  content: [],
-});
+import { DateTime } from "luxon";
+
+const props = withDefaults(
+  defineProps<{ content?: any; createdAt?: string }>(),
+  {
+    content: [],
+    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+  }
+);
 const images = props.content.map((file: any) => {
   return { url: URL.createObjectURL(file) };
 });
@@ -13,7 +19,7 @@ const images = props.content.map((file: any) => {
       <p
         class="font-garamond text-xs text-black leading-[0.8378rem] mb-4 uppercase"
       >
-        22 May ‘23. Images
+        {{ createdAt }} . Images
       </p>
       <div>
         <img v-for="(image, i) in images" :key="i" :src="image.url" alt="..." />

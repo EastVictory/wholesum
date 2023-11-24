@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import ShieButton from "~/components/buttons/ShieButton.vue";
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     title: string;
     description: string;
+    min: number;
+    max: number;
   }>(),
-  {}
+  {
+    min: 0,
+    max: 0,
+  }
 );
-const time = ref(0);
+const time = ref(props.min);
 
 const handleMinus = () => {
-  if (time.value === 1) {
+  if (time.value === props.min) {
     return;
   }
   time.value -= 1;
+};
+const handleAddition = () => {
+  if (time.value === props.max) {
+    return;
+  }
+  time.value += 1;
 };
 
 const id = Math.random();
@@ -38,23 +49,31 @@ watch(time, (val) => {
       {{ title }} <span class="lowercase">(mins)</span>
     </p>
     <div class="w-[6.875rem] mb-[2.37rem]">
-      <input
-        v-model="time"
-        type="number"
-        class="appearance-none w-full shie-black-border rounded-[0.36rem] py-4 text-center inline-block mb-2 focus-visible:border-cardinal outline-none h-[2.875rem]"
-      />
+      <div
+        class="flex items-center justify-center w-full border-2 shie-black-border rounded-[0.36rem] py-4 h-[2.875rem] mb-2 text-[1.25rem]"
+      >
+        <input
+          v-model="time"
+          type="number"
+          :min="min"
+          :max="max"
+          class="appearance-none inline-block focus-visible:border-cardinal outline-none w-1/2 text-right font-semibold"
+        />
+        <span class="w-1/2 font-semibold">/{{ max }}</span>
+      </div>
+
       <div class="flex flex-row gap-2">
         <ShieButton
-          variant="secondary"
-          class="flex-1 !px-2 h-[1.875rem] text-center font-medium"
+          variant=""
+          class="flex-1 !px-2 h-[1.875rem] text-center font-medium border-2 border-dark-puce bg-transparent text-black hover:bg-crayola"
           @click="handleMinus"
         >
           -
         </ShieButton>
         <ShieButton
-          variant="secondary"
-          class="flex-1 !px-2 h-[1.875rem] text-center font-medium"
-          @click="time += 1"
+          variant=""
+          class="flex-1 !px-2 h-[1.875rem] text-center font-medium border-2 border-dark-puce bg-transparent text-black hover:bg-crayola"
+          @click="handleAddition"
         >
           +
         </ShieButton>
