@@ -41,5 +41,8 @@
     "vue3-dropzone": "^2.1.2",
     "vue3-lottie": "^3.2.0",
     "vue3-otp-input": "^0.4.1"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }
