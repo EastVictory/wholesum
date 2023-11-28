@@ -1,9 +1,22 @@
 <script setup lang="ts">
 import { DateTime } from "luxon";
 
-withDefaults(defineProps<{ content?: any; createdAt?: string }>(), {
-  content: {},
-  createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+const props = withDefaults(
+  defineProps<{ content?: any; createdAt?: string }>(),
+  {
+    content: {},
+    createdAt: DateTime.now().toFormat(`d LLL '‘'yy '.' t a`),
+  }
+);
+
+const textLimit = ref(102);
+
+const totalTextLimit = computed(() => {
+  const { content } = props;
+  if (content?.list) {
+    return content?.list.join().length;
+  }
+  return 0;
 });
 </script>
 
@@ -13,7 +26,7 @@ withDefaults(defineProps<{ content?: any; createdAt?: string }>(), {
       <p
         class="font-garamond text-xs text-black leading-[0.8378rem] mb-[0.91rem] uppercase"
       >
-        {{ createdAt }} . LIST. 0/{{ content?.list.length }}
+        {{ createdAt }} . {{ totalTextLimit }}/{{ textLimit }} WORDS
       </p>
       <div class="">
         <ul class="list-disc ml-4">

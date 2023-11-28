@@ -5,7 +5,7 @@ const props = withDefaults(
   defineProps<{ content?: any; createdAt?: string }>(),
   {
     content: {},
-    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+    createdAt: DateTime.now().toFormat(`d LLL '‘'yy '.' t a`),
   }
 );
 
@@ -21,7 +21,9 @@ const selected = computed(() => {
       <p
         class="font-garamond text-xs text-black leading-[0.8378rem] mb-[0.91rem] uppercase"
       >
-        {{ createdAt }} . LIST. {{ selected }}/{{ content?.checkboxes.length }}
+        {{ createdAt }} . CHECKLIST . {{ selected }}/{{
+          content?.checkboxes.length
+        }}
       </p>
       <div class="">
         <div>
