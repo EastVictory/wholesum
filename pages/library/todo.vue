@@ -11,7 +11,7 @@ const categories = ["EDUCATION", "SOCIAL", "SELF CARE", "FITNESS"];
 const activeCategory = ref("EDUCATION");
 const timerDuration = ref(0);
 const breakDuration = ref(0);
-
+const notEditing = ref(true);
 const handleRename = () => {
   todoInput.value?.focus();
 };
@@ -45,18 +45,23 @@ const taskActions = [
         class="max-w-[64.91375em] mx-auto flex items-center justify-between mb-[1.84rem]"
       >
         <div class="flex flex-row items-center">
-          <p class="font-title text-dark-puce leading-[1.125rem] text-base h-4">
+          <p
+            v-if="notEditing"
+            class="font-title text-dark-puce leading-[1.125rem] text-base"
+          >
             TODO /
           </p>
           <input
             ref="todoInput"
             type="text"
-            class="text-dark leading-[1.125rem] text-base min-w-[11.5rem] mb-0 inline-block ml-1 bg-transparent hover:bg-[#FFC700] focus-visible:outline-none placeholder:text-dark"
+            class="text-dark leading-[1.125rem] text-base min-w-[6.5rem] mb-0 inline-block ml-1 bg-transparent focus:hover:bg-transparent hover:bg-crayola py-2 focus-visible:outline-none placeholder:text-dark font-title"
             :placeholder="`${
               ($route.query.copy && '[COPY] ') || ''
             }UNTITLED TASK`"
+            @focusin="notEditing = false"
+            @blur="notEditing = true"
           />
-          <ShieDropdown auto-close="true">
+          <ShieDropdown v-if="notEditing" auto-close="true">
             <template #default>
               <span class="rotate-90 inline-block">
                 <nuxt-icon name="chevron-right" filled class="" />
@@ -120,7 +125,7 @@ const taskActions = [
 
           <ShieButton
             variant="secondary"
-            class="!px-4 !bg-white !w-[12.5625rem]"
+            class="!px-4 !bg-white !w-[12.5625rem] !h-[4rem]"
           >
             MARK AS DONE
           </ShieButton>
