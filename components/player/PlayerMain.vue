@@ -6,7 +6,7 @@ const playerSession: any = ref(null);
 
 const sessionActive = ref(true);
 const isPlaying = ref(false);
-const duration = 1;
+const duration = 30;
 const breaks = 5;
 const speed = ref(1);
 const durationInSeconds = ref(duration * 60);

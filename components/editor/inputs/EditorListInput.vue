@@ -11,9 +11,9 @@ type Content = {
 const bus = useEventBus<string>("controls:save");
 
 const text = ref("");
-const textLimit = ref(102);
+const textLimit = ref(10);
 const totalTextLimit = computed(() => {
-  return list.value.join().length;
+  return text.value.length + list.value.join().length;
 });
 
 const list: Ref<string[]> = ref([]);
@@ -22,12 +22,12 @@ const handleSubmit = () => {
   emits("submit", {
     type: "list",
     content: { list: list.value },
-    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+    createdAt: DateTime.now().toFormat(`d LLL '‘'yy '.' t a`),
   });
   list.value = [];
 };
 const addList = () => {
-  if (text.value.length) {
+  if (text.value.length && totalTextLimit.value <= textLimit.value) {
     list.value.push(text.value);
     text.value = "";
   }
@@ -49,7 +49,6 @@ bus.on((event: string) => {
           type="text"
           placeholder="Start typing"
           class="placeholder:font-medium font-medium"
-          :disabled="totalTextLimit > textLimit"
           @keyup.exact.enter="addList"
         />
       </li>

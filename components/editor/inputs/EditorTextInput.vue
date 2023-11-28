@@ -16,7 +16,7 @@ const handleSubmit = () => {
   emits("submit", {
     type: "text",
     content: text.value,
-    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+    createdAt: DateTime.now().toFormat(`d LLL '‘'yy '.' t a`),
   });
   text.value = "";
 };

@@ -1,13 +1,41 @@
 <script setup lang="ts">
+import { Ref } from "vue";
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
 import TimerCard from "~/components/resources/TimerCard.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
+import ShieDropdown from "~/components/buttons/ShieDropdown.vue";
 
+const todoInput: Ref<HTMLInputElement | null> = ref(null);
 const categories = ["EDUCATION", "SOCIAL", "SELF CARE", "FITNESS"];
 const activeCategory = ref("EDUCATION");
 const timerDuration = ref(0);
 const breakDuration = ref(0);
+const notEditing = ref(true);
+const handleRename = () => {
+  todoInput.value?.focus();
+};
+const handleDuplicate = () => {
+  window.location.replace("/library/todo?copy=1");
+};
+const handleDelete = async () => {
+  await navigateTo({ path: "/library" });
+};
+
+const taskActions = [
+  {
+    name: "Rename",
+    action: handleRename,
+  },
+  {
+    name: "Duplicate",
+    action: handleDuplicate,
+  },
+  {
+    name: "Delete",
+    action: handleDelete,
+  },
+];
 </script>
 
 <template>
@@ -17,17 +45,45 @@ const breakDuration = ref(0);
         class="max-w-[64.91375em] mx-auto flex items-center justify-between mb-[1.84rem]"
       >
         <div class="flex flex-row items-center">
-          <p class="font-title text-dark-puce leading-[1.125rem] text-base h-4">
+          <p
+            v-if="notEditing"
+            class="font-title text-dark-puce leading-[1.125rem] text-base"
+          >
             TODO /
           </p>
           <input
+            ref="todoInput"
             type="text"
-            class="text-dark leading-[1.125rem] text-base w-[8.5rem] mb-0 inline-block ml-1 bg-transparent hover:bg-[#FFC700] focus-visible:outline-none placeholder:text-dark"
-            placeholder="UNTITLED TASK"
+            class="text-dark leading-[1.125rem] text-base min-w-[6.5rem] mb-0 inline-block ml-1 bg-transparent focus:hover:bg-transparent hover:bg-crayola py-2 focus-visible:outline-none placeholder:text-dark font-title"
+            :placeholder="`${
+              ($route.query.copy && '[COPY] ') || ''
+            }UNTITLED TASK`"
+            @focusin="notEditing = false"
+            @blur="notEditing = true"
           />
-          <button class="">
-            <nuxt-icon name="chevron-right" filled />
-          </button>
+          <ShieDropdown v-if="notEditing" auto-close="true">
+            <template #default>
+              <span class="rotate-90 inline-block">
+                <nuxt-icon name="chevron-right" filled class="" />
+              </span>
+            </template>
+
+            <template #options>
+              <ul class="min-w-[14.3125rem]">
+                <li
+                  v-for="(taskAction, i) in taskActions"
+                  :key="`task-action-${i}`"
+                >
+                  <button
+                    class="hover:bg-crayola rounded tex-sm font-medium leading-[2.5rem] text-black px-4 py-4 uppercase w-full text-left"
+                    @click="taskAction.action"
+                  >
+                    {{ taskAction.name }}
+                  </button>
+                </li>
+              </ul>
+            </template>
+          </ShieDropdown>
         </div>
         <div class="flex flex-row items-center gap-2">
           <ShiePillButton>{{ activeCategory }}</ShiePillButton>
@@ -39,12 +95,37 @@ const breakDuration = ref(0);
         class="mb-[5.62rem] max-w-[45.8125rem] p-6 mx-auto flex justify-between items-center"
       >
         <div class="flex gap-4">
-          <button class="shie-black-border rounded p-5 h-[4rem]">
-            <nuxt-icon name="three-dots" filled />
-          </button>
+          <ShieDropdown>
+            <template #default>
+              <span
+                class="shie-black-border rounded p-5 h-[4rem] inline-block hover:bg-crayola"
+              >
+                <nuxt-icon name="three-dots" filled />
+              </span>
+            </template>
+            <template #options>
+              <ul class="min-w-[14.3125rem]">
+                <li>
+                  <button
+                    class="hover:bg-crayola rounded tex-sm font-medium leading-[2.5rem] text-black px-4 py-4 uppercase w-full text-left"
+                  >
+                    DOWNLOAD NOTES
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="hover:bg-crayola rounded tex-sm font-medium leading-[2.5rem] text-black px-4 py-4 uppercase w-full text-left"
+                  >
+                    SEND COPY
+                  </button>
+                </li>
+              </ul>
+            </template>
+          </ShieDropdown>
+
           <ShieButton
             variant="secondary"
-            class="!px-4 !bg-white !w-[12.5625rem]"
+            class="!px-4 !bg-white !w-[12.5625rem] !h-[4rem]"
           >
             MARK AS DONE
           </ShieButton>

@@ -67,6 +67,7 @@ export default defineNuxtConfig({
   ],
   modules: [
     "nuxt-icons",
+    "@pinia/nuxt",
     [
       "@nuxtjs/google-fonts",
       {

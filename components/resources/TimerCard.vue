@@ -44,7 +44,7 @@ watch(time, (val) => {
     class="timer-card border-2 border-dark-puce bg-white rounded py-6 px-4 inline-flex flex-col items-center"
   >
     <p
-      class="text-dark font-medium leading-[0.58rem] text-base uppercase mb-[1.66rem] text-center"
+      class="text-dark font-medium leading-[0.58rem] text-base uppercase mb-[1.66rem] text-center font-title"
     >
       {{ title }} <span class="lowercase">(mins)</span>
     </p>

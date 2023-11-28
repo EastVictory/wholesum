@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 
 withDefaults(defineProps<{ content?: any; createdAt?: string }>(), {
   content: {},
-  createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+  createdAt: DateTime.now().toFormat(`d LLL '‘'yy '.' t a`),
 });
 const textLimit = ref(102);
 </script>

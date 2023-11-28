@@ -22,7 +22,7 @@ const handleSubmit = () => {
   emits("submit", {
     type: "checkbox",
     content: { title: title.value, checkboxes: checkboxes.value },
-    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+    createdAt: DateTime.now().toFormat(`d LLL '‘'yy '.' t a`),
   });
   title.value = "";
   checkboxes.value = [];
@@ -48,7 +48,7 @@ bus.on((event: string) => {
         v-model="title"
         type="text"
         placeholder="Checklist"
-        class="mb-2 focus-within:bg-[#76D7EA] p-1"
+        class="mb-2 focus:hover:bg-transparent hover:bg-[#76D7EA] p-1"
       />
     </div>
     <div class="flex gap-2">

@@ -83,7 +83,7 @@ const showControls = () => {
     >
       <div v-if="!Object.entries(contents).length" class="mb-4 px-10 pt-6">
         <p class="text-black font-alt text-xs">
-          {{ DateTime.now().toFormat(`d LLL '"'yy '.' a`) }}
+          {{ DateTime.now().toFormat(`d LLL '‘'yy '.' t a`) }}
         </p>
         <p
           v-if="startEditing"

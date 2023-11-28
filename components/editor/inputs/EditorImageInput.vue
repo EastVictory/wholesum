@@ -16,7 +16,7 @@ const handleSubmit = (files: any) => {
   emits("submit", {
     type: "image",
     content: files,
-    createdAt: DateTime.now().toFormat(`d LLL '"'yy '.' ta`),
+    createdAt: DateTime.now().toFormat(`d LLL '‘'yy '.' t a`),
   });
 };
 
