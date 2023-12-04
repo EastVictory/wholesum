@@ -99,7 +99,7 @@ const filteredTasks = computed(() => {
     }
     if (search.value) {
       filtered = filtered.filter((rTask) =>
-        rTask.text.toLowerCase().includes(search.value)
+        rTask.text.toLowerCase().includes(search.value.toLowerCase())
       );
     }
     if (sortBy.value) {
@@ -121,11 +121,16 @@ const resetSearch = () => {
 };
 const toggleAction = (action: keyof typeof actions.value) => {
   resetSearch();
+  filterActions.value = { title: false, created: false, status: false };
   actions.value[action] = !actions.value[action];
 };
 
 const toggleFilterAction = (action: keyof typeof filterActions.value) => {
   resetSearch();
+  actions.value = {
+    search: false,
+    edit: false,
+  };
   Object.keys(filterActions.value).forEach(
     (key: keyof typeof filterActions.value) => {
       if (key === action) {
@@ -139,6 +144,10 @@ const toggleFilterAction = (action: keyof typeof filterActions.value) => {
 
 const handleStatusSelect = (status: string) => {
   activeStatus.value = status === activeStatus.value ? "" : status;
+};
+
+const handleSearch = () => {
+  search.value = tempSearch.value;
 };
 </script>
 
@@ -155,7 +164,10 @@ const handleStatusSelect = (status: string) => {
           <ShiePillButton
             v-for="[action, value] in Object.entries(actions)"
             :key="action"
-            :class="{ ['!bg-crayola']: value }"
+            :class="{
+              ['!bg-dark-puce']: value,
+              '!text-conditioner': value,
+            }"
             @click="toggleAction(action as keyof typeof actions)"
           >
             {{ action }}
@@ -163,7 +175,9 @@ const handleStatusSelect = (status: string) => {
           <ShieDropdown
             :position="''"
             auto-close="true"
-            button-class="shie-black-border rounded-[1.375rem] text-dark-puce font-title uppercase px-4 leading-6 text-xs hover:bg-crayola h-[1.5rem] items-center inline-flex justify-center whitespace-nowrap"
+            :button-class="`shie-black-border rounded-[1.375rem] text-dark-puce font-title uppercase px-4 leading-6 text-xs hover:bg-crayola h-[1.5rem] items-center inline-flex justify-center whitespace-nowrap ${
+              activeFilter ? '!bg-dark-puce !text-conditioner' : ''
+            }`"
           >
             <template #default>
               <span
@@ -221,8 +235,7 @@ const handleStatusSelect = (status: string) => {
           <div v-if="actions.search">
             <form
               class="flex border-b-2 border-dark-puce pl-2.5"
-              :class="{ 'rounded-br': tempSearch }"
-              @submit.prevent="search = tempSearch"
+              @submit.prevent="handleSearch"
             >
               <input
                 v-model="tempSearch"
@@ -230,11 +243,11 @@ const handleStatusSelect = (status: string) => {
                 class="bg-transparent w-full focus:outline-0 text-dark-puce placeholder:text-dark-puce"
                 placeholder="Search"
               />
-              <button class="p-3" @click="resetSearch">
+              <button class="p-3" type="button" @click.prevent="resetSearch">
                 <nuxt-icon name="close"></nuxt-icon>
               </button>
               <ShieButton
-                v-if="tempSearch"
+                v-if="false"
                 class="whitespace-nowrap !text-dark-puce !max-w-[9.6875rem] !bg-white !border-[#4D3B3C] !border-2 !rounded mb-[-1px]"
               >
                 Search
