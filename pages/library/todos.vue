@@ -124,6 +124,10 @@ const toggleAction = (action: keyof typeof actions.value) => {
 };
 const toggleFilterAction = (action: keyof typeof filterActions.value) => {
   resetSearch();
+  actions.value = {
+    search: false,
+    edit: false,
+  };
   Object.keys(filterActions.value).forEach(
     (key: keyof typeof filterActions.value) => {
       if (key === action) {
@@ -188,17 +192,13 @@ const filteredTasks = computed(() => {
           <ShieDropdown
             :position="''"
             auto-close="true"
-            button-class="shie-black-border rounded-[1.375rem] text-dark-puce font-title uppercase px-4 leading-6 text-xs hover:bg-crayola h-[1.5rem] items-center inline-flex justify-center whitespace-nowrap"
+            :button-class="`shie-black-border rounded-[1.375rem] text-dark-puce font-title uppercase px-4 leading-6 text-xs hover:bg-crayola h-[1.5rem] items-center inline-flex justify-center whitespace-nowrap ${
+              activeFilter ? '!bg-dark-puce !text-conditioner' : ''
+            }`"
           >
             <template #default>
-              <span
-                class="h-4"
-                :class="{
-                  'bg-dark-puce': activeFilter,
-                  '!text-conditioner': activeFilter,
-                }"
-              >
-                {{ activeFilter || "filter" }}
+              <span class="h-4">
+                {{ activeFilter || "sort" }}
               </span>
             </template>
             <template #options>
@@ -255,8 +255,9 @@ const filteredTasks = computed(() => {
           </div>
           <div
             class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center justify-between"
+            v-if="actions.edit"
           >
-            <div class="flex flex-col lg:flex-row flex-wrap gap-4">
+            <div class="flex flex-col lg:flex-row flex-wrap gap-4 mt-4">
               <div
                 v-if="selectedTodos.length"
                 class="flex flex-col lg:flex-row flex-wrap gap-4"
@@ -282,15 +283,9 @@ const filteredTasks = computed(() => {
                 class="bg-transparent w-full focus:outline-0 text-dark-puce placeholder:text-dark-puce"
                 placeholder="Search"
               />
-              <button class="p-3" @click="resetSearch">
+              <button class="p-3" type="button" @click="resetSearch">
                 <nuxt-icon name="close"></nuxt-icon>
               </button>
-              <ShieButton
-                v-if="tempSearch"
-                class="whitespace-nowrap !text-dark-puce !max-w-[9.6875rem] !bg-white !border-[#4D3B3C] !border-2 !rounded mb-[-1px]"
-              >
-                Search
-              </ShieButton>
             </form>
           </div>
           <div
