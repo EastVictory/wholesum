@@ -5,7 +5,9 @@ import ShieButton from "~/components/buttons/ShieButton.vue";
 import TimerCard from "~/components/resources/TimerCard.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import ShieDropdown from "~/components/buttons/ShieDropdown.vue";
+import ShieModal from "~/components/modals/ShieModal.vue";
 
+const confirmModal: any = ref(null);
 const todoInput: Ref<HTMLInputElement | null> = ref(null);
 const categories = ["EDUCATION", "SOCIAL", "SELF CARE", "FITNESS"];
 const activeCategory = ref("EDUCATION");
@@ -18,7 +20,11 @@ const handleRename = () => {
 const handleDuplicate = () => {
   window.location.replace("/library/todo?copy=1");
 };
-const handleDelete = async () => {
+const handleDelete = () => {
+  confirmModal.value?.handleClick();
+};
+
+const confirmDelete = async () => {
   await navigateTo({ path: "/library" });
 };
 
@@ -199,6 +205,7 @@ const taskActions = [
           />
         </section>
       </article>
+      <ShieModal ref="confirmModal" @yes-action="confirmDelete" />
     </div>
   </DashboardLayout>
 </template>
