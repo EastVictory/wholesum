@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { Ref } from "vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import TaskCard from "~/components/library/TaskCard.vue";
+import ShieDropdown from "~/components/buttons/ShieDropdown.vue";
 
 type RecentTask = {
   text: string;
@@ -11,12 +13,42 @@ type RecentTask = {
   createdAt: string;
 };
 
+type FilterAction = {
+  [key: string]: Boolean;
+};
+
 const categories = ["EDUCATION", "SELF CARE", "SOCIALITY", "FITNESS"];
 const statuses = ["DRAFT", "ONGOING", "COMPLETED"];
 const activeCtg = ref("EDUCATION");
 const activeStatus = ref("");
+const tempSearch = ref("");
+const search = ref("");
+const sortBy = ref("");
+const actions = ref({
+  search: false,
+  edit: false,
+});
 
+const activeFilter = computed(() => {
+  const filter = Object.entries(filterActions.value).find((entry) => {
+    const key: keyof FilterAction = entry[0];
+    return filterActions.value[key];
+  });
+  return (filter && filter[0]) || "";
+});
+
+const filterActions: Ref<FilterAction> = ref({
+  title: false,
+  created: false,
+  status: false,
+});
 const recentTasks: RecentTask[] = [
+  {
+    text: "Write Documentation",
+    status: "DRAFT",
+    category: "EDUCATION",
+    createdAt: "3 mins ago",
+  },
   {
     text: "Complete User Interface Design",
     status: "DRAFT",
@@ -42,12 +74,6 @@ const recentTasks: RecentTask[] = [
     createdAt: "3 mins ago",
   },
   {
-    text: "Write Documentation",
-    status: "DRAFT",
-    category: "EDUCATION",
-    createdAt: "3 mins ago",
-  },
-  {
     text: "Plan Team Building Workshop",
     status: "ONGOING",
     category: "FITNESS",
@@ -63,16 +89,53 @@ const recentTasks: RecentTask[] = [
 
 const filteredTasks = computed(() => {
   if (activeCtg.value) {
-    const filtered = recentTasks.filter(
+    let filtered = recentTasks.filter(
       (rTask) => rTask.category === activeCtg.value
     );
     if (activeStatus.value) {
-      return filtered.filter((rTask) => rTask.status === activeStatus.value);
+      filtered = filtered.filter(
+        (rTask) => rTask.status === activeStatus.value
+      );
+    }
+    if (search.value) {
+      filtered = filtered.filter((rTask) =>
+        rTask.text.toLowerCase().includes(search.value)
+      );
+    }
+    if (sortBy.value) {
+      filtered = [...filtered].sort((a, b) => {
+        if (sortBy.value === "z-a") {
+          return b.text.toLowerCase().localeCompare(a.text.toLowerCase());
+        }
+        return a.text.toLowerCase().localeCompare(b.text.toLowerCase());
+      });
     }
     return filtered;
   }
   return recentTasks;
 });
+
+const resetSearch = () => {
+  search.value = "";
+  tempSearch.value = "";
+};
+const toggleAction = (action: keyof typeof actions.value) => {
+  resetSearch();
+  actions.value[action] = !actions.value[action];
+};
+
+const toggleFilterAction = (action: keyof typeof filterActions.value) => {
+  resetSearch();
+  Object.keys(filterActions.value).forEach(
+    (key: keyof typeof filterActions.value) => {
+      if (key === action) {
+        filterActions.value[key] = !filterActions.value[key];
+      } else {
+        filterActions.value[key] = false;
+      }
+    }
+  );
+};
 
 const handleStatusSelect = (status: string) => {
   activeStatus.value = status === activeStatus.value ? "" : status;
@@ -82,11 +145,58 @@ const handleStatusSelect = (status: string) => {
 <template>
   <DashboardLayout title="Library | Tasks">
     <div class="max-w-[69.25rem] mx-auto pb-[4rem]">
-      <p
-        class="text-dark-puce font-title uppercase leading-[1.125rem] text-base"
-      >
-        LIBRARY / <span class="text-dark">TASKS</span>
-      </p>
+      <div class="flex justify-between items-center">
+        <p
+          class="text-dark-puce font-title uppercase leading-[1.125rem] text-base"
+        >
+          LIBRARY / <span class="text-dark">TASKS</span>
+        </p>
+        <div class="flex gap-2 items-center">
+          <ShiePillButton
+            v-for="[action, value] in Object.entries(actions)"
+            :key="action"
+            :class="{ ['!bg-crayola']: value }"
+            @click="toggleAction(action as keyof typeof actions)"
+          >
+            {{ action }}
+          </ShiePillButton>
+          <ShieDropdown
+            :position="''"
+            auto-close="true"
+            button-class="shie-black-border rounded-[1.375rem] text-dark-puce font-title uppercase px-4 leading-6 text-xs hover:bg-crayola h-[1.5rem] items-center inline-flex justify-center whitespace-nowrap"
+          >
+            <template #default>
+              <span
+                class="h-4"
+                :class="{
+                  'bg-dark-puce': activeFilter,
+                  '!text-conditioner': activeFilter,
+                }"
+              >
+                {{ activeFilter || "filter" }}
+              </span>
+            </template>
+            <template #options>
+              <ul class="min-w-[14.3125rem]">
+                <li
+                  v-for="[action] in Object.entries(filterActions)"
+                  :key="action"
+                >
+                  <button
+                    class="hover:bg-crayola rounded tex-sm font-medium leading-[2.5rem] text-black px-4 py-4 uppercase w-full text-left"
+                    @click="
+                      toggleFilterAction(action as keyof typeof filterActions)
+                    "
+                  >
+                    {{ action }}
+                  </button>
+                </li>
+              </ul>
+            </template>
+          </ShieDropdown>
+        </div>
+      </div>
+
       <article class="max-w-[37.1875rem] mx-auto">
         <section
           class="sticky bg-conditioner top-[2rem] z-[3] pt-[4rem] mb-[2.31rem]"
@@ -108,25 +218,80 @@ const handleStatusSelect = (status: string) => {
               {{ category }}
             </ShieButton>
           </div>
-          <div
-            class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center justify-between"
-          >
-            <div class="flex flex-col lg:flex-row flex-wrap gap-4">
-              <ShiePillButton
-                v-for="(status, i) in statuses"
-                :key="`status-${i}`"
-                class="min-w-[5.8125rem]"
-                :class="`${
-                  activeStatus === status ? '!bg-dark-puce !text-white' : ''
-                }`"
-                @click="handleStatusSelect(status)"
+          <div v-if="actions.search">
+            <form
+              class="flex border-b-2 border-dark-puce pl-2.5"
+              :class="{ 'rounded-br': tempSearch }"
+              @submit.prevent="search = tempSearch"
+            >
+              <input
+                v-model="tempSearch"
+                type="text"
+                class="bg-transparent w-full focus:outline-0 text-dark-puce placeholder:text-dark-puce"
+                placeholder="Search"
+              />
+              <button class="p-3" @click="resetSearch">
+                <nuxt-icon name="close"></nuxt-icon>
+              </button>
+              <ShieButton
+                v-if="tempSearch"
+                class="whitespace-nowrap !text-dark-puce !max-w-[9.6875rem] !bg-white !border-[#4D3B3C] !border-2 !rounded mb-[-1px]"
               >
-                {{ status }}
-              </ShiePillButton>
+                Search
+              </ShieButton>
+            </form>
+          </div>
+          <div v-if="filterActions.status">
+            <div
+              class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center justify-between"
+            >
+              <div class="flex flex-col lg:flex-row flex-wrap gap-4">
+                <ShiePillButton
+                  v-for="(status, i) in statuses"
+                  :key="`status-${i}`"
+                  class="min-w-[5.8125rem]"
+                  :class="`${
+                    activeStatus === status ? '!bg-dark-puce !text-white' : ''
+                  }`"
+                  @click="handleStatusSelect(status)"
+                >
+                  {{ status }}
+                </ShiePillButton>
+              </div>
+              <p v-if="activeStatus && filteredTasks.length">
+                {{ filteredTasks.length }} tasks filtered
+              </p>
             </div>
-            <p v-if="activeStatus && filteredTasks.length">
-              {{ filteredTasks.length }} tasks filtered
-            </p>
+          </div>
+          <div
+            v-if="filterActions.title"
+            class="flex flex-col lg:flex-row flex-wrap gap-4"
+          >
+            <ShiePillButton
+              class="w-[8.8125rem]"
+              :class="{ '!bg-crayola': sortBy === 'a-z' }"
+              @click="sortBy = 'a-z'"
+            >
+              A - Z
+            </ShiePillButton>
+            <ShiePillButton
+              class="w-[8.8125rem]"
+              :class="{ '!bg-crayola': sortBy === 'z-a' }"
+              @click="sortBy = 'z-a'"
+            >
+              Z - A
+            </ShiePillButton>
+          </div>
+          <div
+            v-if="filterActions.created"
+            class="flex flex-col lg:flex-row flex-wrap gap-4"
+          >
+            <ShiePillButton class="w-[8.8125rem]">
+              OLDEST FIRST
+            </ShiePillButton>
+            <ShiePillButton class="w-[8.8125rem]">
+              NEWEST FIRST
+            </ShiePillButton>
           </div>
         </section>
         <section class="flex flex-col min-h-[60vh] justify-between">

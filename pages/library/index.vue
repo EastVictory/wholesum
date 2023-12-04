@@ -55,7 +55,7 @@ const goals = 0;
         <p
           class="font-title leading-[1.004rem] text-[1.3125rem] text-dark mb-2"
         >
-          {{ streak > 0 ? `${streak} days` : 0 }}
+          {{ streak > 0 ? streak : 0 }} days
         </p>
         <nuxt-link
           to="#"
