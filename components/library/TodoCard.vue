@@ -14,7 +14,6 @@ defineProps<{
     <div class="flex flex-row items-center gap-[0.44rem] flex-1">
       <div class="flex justify-between items-center flex-1">
         <div class="flex items-center">
-          <nuxt-icon name="triangle-alt" filled />
           <p
             class="flex items-center text-base leading-[1.1875rem] text-dark-puce ml-3"
           >
