@@ -7,6 +7,7 @@ import TaskCard from "~/components/library/TaskCard.vue";
 import ShieDropdown from "~/components/buttons/ShieDropdown.vue";
 
 type RecentTask = {
+  id: number;
   text: string;
   status: string;
   category: string;
@@ -22,6 +23,7 @@ const statuses = ["DRAFT", "ONGOING", "COMPLETED"];
 const activeCtg = ref("EDUCATION");
 const activeStatus = ref("");
 const tempSearch = ref("");
+const selectedTasks = ref<Array<number>>([]);
 const search = ref("");
 const sortBy = ref("");
 const actions = ref({
@@ -42,44 +44,63 @@ const filterActions: Ref<FilterAction> = ref({
   created: false,
   status: false,
 });
+
+const handleSelectAll = () => {
+  const ids = recentTasks.map((rTask) => rTask.id);
+  selectedTasks.value = selectedTasks.value.length < ids.length ? ids : [];
+};
+
 const recentTasks: RecentTask[] = [
   {
+    id: 1,
     text: "Write Documentation",
     status: "DRAFT",
     category: "EDUCATION",
     createdAt: "3 mins ago",
   },
   {
+    id: 2,
+
     text: "Complete User Interface Design",
     status: "DRAFT",
     category: "EDUCATION",
     createdAt: "3 mins ago",
   },
   {
+    id: 3,
+
     text: "Conduct User Interviews",
     status: "ONGOING",
     category: "SOCIALITY",
     createdAt: "3 mins ago",
   },
   {
+    id: 4,
+
     text: "Test Bug Fixes",
     status: "ON GOING",
     category: "EDUCATION",
     createdAt: "3 mins ago",
   },
   {
+    id: 5,
+
     text: "Update Database Schema",
     status: "ARCHIVED",
     category: "SELF CARE",
     createdAt: "3 mins ago",
   },
   {
+    id: 6,
+
     text: "Plan Team Building Workshop",
     status: "ONGOING",
     category: "FITNESS",
     createdAt: "3 mins ago",
   },
   {
+    id: 7,
+
     text: "Code Refactoring",
     status: "ONGOING",
     category: "SOCIALITY",
@@ -218,6 +239,16 @@ const handleSearch = () => {
           <div
             class="flex flex-col lg:flex-row gap-[1.76rem] mb-[2.31rem] items-center justify-center"
           >
+            <div v-if="actions.edit" class="">
+              <input
+                id="checkboxNoLabel"
+                class="task-checkbox"
+                type="checkbox"
+                :checked="selectedTasks.length > 0"
+                aria-label="..."
+                @click="handleSelectAll"
+              />
+            </div>
             <ShieButton
               v-for="(category, i) in categories"
               :key="`ctg-${i}`"
@@ -232,6 +263,25 @@ const handleSearch = () => {
               {{ category }}
             </ShieButton>
           </div>
+          <div
+            v-if="actions.edit && selectedTasks.length"
+            class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center justify-between"
+          >
+            <div class="flex flex-col lg:flex-row flex-wrap gap-4 mt-4">
+              <div
+                v-if="selectedTasks.length"
+                class="flex flex-col lg:flex-row flex-wrap gap-4"
+              >
+                <ShiePillButton class="w-[8.4375rem]">
+                  Archive TASKS
+                </ShiePillButton>
+                <ShiePillButton class="w-[8.4375rem]">
+                  Mark as done
+                </ShiePillButton>
+              </div>
+            </div>
+          </div>
+
           <div v-if="actions.search">
             <form
               class="flex border-b-2 border-dark-puce pl-2.5"
@@ -309,11 +359,23 @@ const handleSearch = () => {
         </section>
         <section class="flex flex-col min-h-[60vh] justify-between">
           <div class="flex flex-col gap-4">
-            <TaskCard
+            <div
               v-for="(task, i) in filteredTasks"
               :key="i"
-              :task="task"
-            />
+              class="flex gap-2 items-center"
+            >
+              <div v-if="actions.edit">
+                <input
+                  id="checkboxNoLabel"
+                  v-model="selectedTasks"
+                  class="task-checkbox"
+                  type="checkbox"
+                  :value="task.id"
+                  aria-label="..."
+                />
+              </div>
+              <TaskCard :task="task" />
+            </div>
           </div>
           <div class="mt-[1.56rem] flex justify-between items-center">
             <p class="text-black font-medium text-sm">Page 1 of 12</p>
@@ -350,5 +412,8 @@ const handleSearch = () => {
   .resource-tag__label {
     @apply border-solid;
   }
+}
+.task-checkbox {
+  @apply relative float-left -ml-[1.5rem] mr-[6px] mt-[0.15rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:content-[''] checked:border-cardinal checked:bg-cardinal checked:before:opacity-[0.16] checked:after:absolute checked:after:-mt-px checked:after:ml-[0.25rem] checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12]  focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100  checked:focus:after:-mt-px checked:focus:after:ml-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent dark:border-neutral-600 dark:checked:border-cardinal dark:checked:bg-cardinal;
 }
 </style>

@@ -118,10 +118,13 @@ const resetSearch = () => {
   search.value = "";
   tempSearch.value = "";
 };
+
 const toggleAction = (action: keyof typeof actions.value) => {
   resetSearch();
+  filterActions.value = { title: false, created: false, status: false };
   actions.value[action] = !actions.value[action];
 };
+
 const toggleFilterAction = (action: keyof typeof filterActions.value) => {
   resetSearch();
   actions.value = {
@@ -184,7 +187,10 @@ const filteredTasks = computed(() => {
           <ShiePillButton
             v-for="[action, value] in Object.entries(actions)"
             :key="action"
-            :class="{ ['!bg-crayola']: value }"
+            :class="{
+              ['!bg-dark-puce']: value,
+              '!text-conditioner': value,
+            }"
             @click="toggleAction(action as keyof typeof actions)"
           >
             {{ action }}
@@ -227,7 +233,7 @@ const filteredTasks = computed(() => {
           class="sticky bg-conditioner top-[2rem] z-[3] pt-[4rem] mb-[2.31rem]"
         >
           <div
-            class="flex flex-col lg:flex-row flex-wrap gap-4 items-center justify-between"
+            class="flex flex-col lg:flex-row flex-wrap gap-4 items-center justify-between mb-[2.31rem]"
           >
             <div v-if="actions.edit" class="">
               <input
@@ -254,8 +260,8 @@ const filteredTasks = computed(() => {
             </ShieButton>
           </div>
           <div
+            v-if="actions.edit && selectedTodos.length"
             class="flex flex-col lg:flex-row flex-wrap gap-4 mb-[2.31rem] items-center justify-between"
-            v-if="actions.edit"
           >
             <div class="flex flex-col lg:flex-row flex-wrap gap-4 mt-4">
               <div
