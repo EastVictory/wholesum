@@ -15,7 +15,7 @@ const links: Link[] = [
   <div
     class="max-w-[64.91375em] mx-auto flex items-center gap-[4.62rem] w-full px-[2.25rem] lg:px-0 justify-between pt-[1.12rem] pb-[1.25rem] mb-4 bg-conditioner"
   >
-    <nuxt-link to="/" class="">
+    <nuxt-link to="/library" class="">
       <nuxt-icon name="logo-text" filled />
     </nuxt-link>
     <nav class="flex">
