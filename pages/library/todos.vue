@@ -118,10 +118,13 @@ const resetSearch = () => {
   search.value = "";
   tempSearch.value = "";
 };
+
 const toggleAction = (action: keyof typeof actions.value) => {
   resetSearch();
+  filterActions.value = { title: false, created: false, status: false };
   actions.value[action] = !actions.value[action];
 };
+
 const toggleFilterAction = (action: keyof typeof filterActions.value) => {
   resetSearch();
   actions.value = {
@@ -184,7 +187,10 @@ const filteredTasks = computed(() => {
           <ShiePillButton
             v-for="[action, value] in Object.entries(actions)"
             :key="action"
-            :class="{ ['!bg-crayola']: value }"
+            :class="{
+              ['!bg-dark-puce']: value,
+              '!text-conditioner': value,
+            }"
             @click="toggleAction(action as keyof typeof actions)"
           >
             {{ action }}
