@@ -5,7 +5,7 @@ type Link = {
 };
 const links: Link[] = [
   { title: "Library", link: "/library" },
-  { title: "Insights", link: "" },
+  { title: "Insights", link: "/insights" },
   { title: "Account", link: "" },
   { title: "Contact", link: "" },
 ];
