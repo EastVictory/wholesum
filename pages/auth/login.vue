@@ -66,7 +66,7 @@ const fullyFilled = computed(() => {
         type="submit"
         :disabled="fullyFilled.length > 0"
       >
-        <span>Create account</span>
+        <span>Sign in</span>
       </button>
 
       <hr class="h-[0.125rem] bg-dark-puce opacity-100 w-11/12 mx-auto" />
