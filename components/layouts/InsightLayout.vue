@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Ref } from "vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
-type Duration = "today" | "weekly" | "monthly" | "yearly";
-const durations: Array<Duration> = ["today", "weekly", "monthly", "yearly"];
+type Duration = "today" | "weekly" | "monthly" | "calendar";
+const durations: Array<Duration> = ["today", "weekly", "monthly", "calendar"];
 
 const activeDuration: Ref<Duration> = ref("today");
 </script>
