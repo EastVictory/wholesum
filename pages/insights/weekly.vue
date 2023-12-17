@@ -3,7 +3,7 @@ import { Ref } from "vue";
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import InsightLayout from "~/components/layouts/InsightLayout.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
-import NotificationsTab from "~/components/insights/daily/NotificationsTab.vue";
+import PlotLine from "~/components/insights/weekly/PlotLine.vue";
 import BarChartTab from "~/components/insights/daily/BarChartTab.vue";
 
 const stats = [
@@ -58,7 +58,7 @@ const activeTab: Ref<Tab> = ref("line plot");
         </div>
       </section>
       <section v-if="activeTab === 'line plot'">
-        <NotificationsTab />
+        <PlotLine />
       </section>
       <section v-if="activeTab === 'bar chart'">
         <BarChartTab />
