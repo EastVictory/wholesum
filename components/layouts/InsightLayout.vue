@@ -4,10 +4,10 @@ import { DateTime, Duration } from "luxon";
 import ShieButton from "~/components/buttons/ShieButton.vue";
 type Time = "today" | "weekly" | "monthly" | "calendar";
 
-withDefaults(defineProps<{ time?: Time }>(), { time: "today" });
+const props = withDefaults(defineProps<{ time?: Time }>(), { time: "today" });
 
 const durations: Array<Time> = ["today", "weekly", "monthly", "calendar"];
-const activeDuration: Ref<Time> = ref("today");
+const activeDuration: Ref<Time> = ref(props.time);
 const activeDay = ref("");
 
 const generateTodayDates = () => {
@@ -41,7 +41,7 @@ const toggleActiveDuration = (duration: Time) => {
     class="max-w-[74.135rem] flex w-full gap-[6rem] mx-auto mb-[1.81rem] flex-row justify-between mt-[5.5rem]"
   >
     <div>
-      <p>Date</p>
+      <p class="mb-[2.25rem]">Date</p>
       <div class="flex flex-col gap-[2.25rem]">
         <div v-for="(day, i) in times[time]" :key="`day-${i}`" class="w-full">
           <label
