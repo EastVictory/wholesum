@@ -4,7 +4,9 @@ import { DateTime } from "luxon";
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import InsightLayout from "~/components/layouts/InsightLayout.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
-import NotificationsTab from "~/components/insights/NotificationsTab.vue";
+import NotificationsTab from "~/components/insights/daily/NotificationsTab.vue";
+import PackedCirclesTab from "~/components/insights/daily/PackedCirclesTab.vue";
+import BarChartTab from "~/components/insights/daily/BarChartTab.vue";
 
 const stats = [
   { text: "DAILY STREAK", value: "18 days" },
@@ -22,7 +24,7 @@ const currentDate = DateTime.now().toFormat(`d LLL yyyy`);
 
 <template>
   <DashboardLayout title="Insights">
-    <InsightLayout>
+    <InsightLayout time="today">
       <section class="flex flex-col lg:flex-row gap-4 mb-[2.56rem]">
         <div
           v-for="(stat, i) in stats"
@@ -61,6 +63,12 @@ const currentDate = DateTime.now().toFormat(`d LLL yyyy`);
       </section>
       <section v-if="activeTab === 'notifications'">
         <NotificationsTab />
+      </section>
+      <section v-if="activeTab === 'packed circles'">
+        <PackedCirclesTab />
+      </section>
+      <section v-if="activeTab === 'bar chart'">
+        <BarChartTab />
       </section>
     </InsightLayout>
   </DashboardLayout>
