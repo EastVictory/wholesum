@@ -1,30 +1,26 @@
 <script setup lang="ts">
 import { Ref } from "vue";
-import { DateTime } from "luxon";
 import DashboardLayout from "~/components/layouts/DashboardLayout.vue";
 import InsightLayout from "~/components/layouts/InsightLayout.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import NotificationsTab from "~/components/insights/daily/NotificationsTab.vue";
-import PackedCirclesTab from "~/components/insights/daily/PackedCirclesTab.vue";
 import BarChartTab from "~/components/insights/daily/BarChartTab.vue";
 
 const stats = [
-  { text: "DAILY STREAK", value: "18 days" },
+  { text: "WEEKLY STREAK", value: "3 weeks" },
   { text: "DAILY GOALS", value: "69/100 mins" },
   { text: "ALL TODO TIME", value: "2,017 mins" },
 ];
 
-type Tab = "notifications" | "packed circles" | "monthly" | "bar chart";
+type Tab = "line plot" | "bar chart";
 
-const tabs: Tab[] = ["notifications", "packed circles", "bar chart"];
-const activeTab: Ref<Tab> = ref("notifications");
-
-const currentDate = DateTime.now().toFormat(`d LLL yyyy`);
+const tabs: Tab[] = ["line plot", "bar chart"];
+const activeTab: Ref<Tab> = ref("line plot");
 </script>
 
 <template>
   <DashboardLayout title="Insights">
-    <InsightLayout time="today">
+    <InsightLayout time="weekly">
       <section class="flex flex-col lg:flex-row gap-4 mb-[2.56rem]">
         <div
           v-for="(stat, i) in stats"
@@ -44,7 +40,7 @@ const currentDate = DateTime.now().toFormat(`d LLL yyyy`);
         </div>
       </section>
       <section class="flex items-center justify-between mb-[2.56rem]">
-        <p class="font-title text-dark h-4">{{ currentDate }}</p>
+        <p class="font-title text-dark h-4">Last 2 days</p>
         <div class="flex gap-4">
           <ShiePillButton
             v-for="tab in tabs"
@@ -61,11 +57,8 @@ const currentDate = DateTime.now().toFormat(`d LLL yyyy`);
           </ShiePillButton>
         </div>
       </section>
-      <section v-if="activeTab === 'notifications'">
+      <section v-if="activeTab === 'line plot'">
         <NotificationsTab />
-      </section>
-      <section v-if="activeTab === 'packed circles'">
-        <PackedCirclesTab />
       </section>
       <section v-if="activeTab === 'bar chart'">
         <BarChartTab />
