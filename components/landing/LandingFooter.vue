@@ -6,10 +6,9 @@ type Link = {
   href: string;
 };
 const footerMainLinks: Link[] = [
-  { name: "Our Story", href: "/story" },
-  { name: "Contact", href: "/contact" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Resources", href: "/resources" },
+  { name: "Features", href: "#features" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const socials: Link[] = [
@@ -47,25 +46,24 @@ const footerAltLinks: Link[] = [
         </section>
         <section>
           <p class="text-white font-title leading-[1.375rem] mb-8 uppercase">
-            Stay in touch
+            keep in touch WITH US.
           </p>
           <p
-            class="lg:max-w-[17.1875rem] text-conditioner text-xs leading-6 font-light mb-6"
+            class="lg:max-w-[17.1875rem] text-white text-xs leading-6 font-light mb-6 uppercase"
           >
-            Get periodic updates from the Wholesum team to know what we’ve been
-            up to.
+            READ updates from the team to know what we’ve been up to...
           </p>
           <form action="" class="flex flex-col">
             <input
               type="text"
               placeholder="Name"
-              class="bg-white rounded-lg px-2 py-5 placeholder:font-title text-dark-puce mb-2"
+              class="bg-white rounded-lg px-2 py-5 placeholder:font-title text-dark-puce mb-2 placeholder:text-dark-puce"
             />
             <input
               type="email"
               placeholder="Email address"
               required
-              class="bg-white rounded-lg px-2 py-5 font-title text-dark-puce mb-6"
+              class="bg-white rounded-lg px-2 py-5 font-title text-dark-puce mb-6 placeholder:text-dark-puce"
             />
             <ShieButton plain variant="secondary" type="submit">
               SUBSCRIBE
@@ -82,7 +80,7 @@ const footerAltLinks: Link[] = [
             >
               <nuxt-link
                 :to="link.href"
-                class="text-xs font-light leading-[1.125rem] p-2 text-conditioner hover:text-white uppercase"
+                class="text-xs font-medium leading-[1.125rem] p-2 text-conditioner hover:text-white uppercase"
               >
                 {{ link.name }}
               </nuxt-link>

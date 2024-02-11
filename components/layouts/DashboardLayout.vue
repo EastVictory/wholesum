@@ -5,7 +5,7 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
 </script>
 
 <template>
-  <div class="min-h-screen bg-conditioner">
+  <div class="min-h-screen bg-[#FFFFCC]">
     <slot name="head">
       <Head>
         <Title>{{ title }}</Title>
