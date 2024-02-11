@@ -76,6 +76,7 @@ export default defineNuxtConfig({
           Borel: true,
           "Cormorant+SC": true,
           "Cormorant+Garamond": true,
+          "JetBrains+Mono": true,
         },
       },
     ],

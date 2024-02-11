@@ -4,16 +4,15 @@ type Link = {
   href: string;
 };
 const links: Link[] = [
-  { name: "Our Story", href: "/story" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Contact", href: "/contact" },
-  { name: "Resources", href: "/resources" },
+  { name: "Features", href: "#features" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Contact", href: "#contact" },
 ];
 </script>
 
 <template>
   <div
-    class="sticky pt-[1.5rem] top-0 z-[10] max-w-[76.5rem] mx-auto bg-conditioner rounded-b-[1.375rem]"
+    class="sticky pt-[1.5rem] top-0 z-[10] max-w-[76.5rem] mx-auto bg-[#F7F1E5] rounded-b-[1.375rem]"
   >
     <header class="sticky-app-nav">
       <nav class="flex items-center justify-center">
@@ -43,7 +42,7 @@ const links: Link[] = [
     @apply block;
   }
   a.router-link-active {
-    text-decoration: line-through;
+    //text-decoration: line-through;
   }
 }
 </style>
