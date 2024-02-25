@@ -33,7 +33,7 @@ const processSubmit = () => {
     </Head>
     <h1 class="page-title">Create an account to get started</h1>
     <form
-      class="flex flex-col gap-y-[0.75rem] mb-[3.25rem]"
+      class="flex flex-col gap-y-[3.125rem] mb-[3.25rem]"
       @submit.prevent="processSubmit"
     >
       <div class="shie-input-group">
@@ -58,7 +58,8 @@ const processSubmit = () => {
 
       <div class="shie-input-group">
         <label for="" class="shie-input-label">
-          Alias <span class="lowercase">(optional)</span>
+          Alias <br />
+          <span class="">(OPTIONAL)</span>
         </label>
         <input
           v-model="optionalFormData.alias"
@@ -129,7 +130,7 @@ const processSubmit = () => {
 <style scoped lang="scss">
 .signup-layout {
   .page-title {
-    @apply font-subtitle text-[2rem] leading-[2.58rem] mb-[2.81rem] text-center;
+    @apply font-subtitle text-[2rem] leading-[2.58rem] mb-[2.81rem] text-center text-dark;
   }
 }
 </style>

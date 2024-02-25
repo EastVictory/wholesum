@@ -1,19 +1,15 @@
 .shie-input {
-  @apply p-2.5 text-center text-dark text-[1.375rem] leading-[2.5rem] pt-0;
+  @apply border-[0.125rem] border-[#87848A] rounded-[0.5rem] bg-white px-[1.90625rem] py-[0.3125rem] text-[1.125rem] w-full;
+  @apply placeholder:
   &:focus {
-    @apply outline-none border-none caret-cardinal;
   }
   &--password {
-    @apply w-full mx-auto text-left lg:pl-12 tracking-[0.625rem] placeholder:tracking-normal;
   }
   &-group {
-    @apply border-2 border-dark-puce bg-white rounded-[0.875rem] flex flex-col items-center py-2 transition-all;
-    &:focus-within {
-      @apply border-cardinal;
-    }
+    @apply flex items-center;
   }
   &-label {
-    @apply text-outer-space text-base font-title uppercase leading-[2.5rem] text-center w-full p-2.5 pb-0;
+    @apply max-w-[10.625rem] w-full uppercase text-[#4D3B3C] font-title;
   }
   & + .password-toggle {
     @apply content-[''] w-4 h-4 absolute top-[50%] right-[1.625rem] -translate-y-[50%] cursor-pointer;

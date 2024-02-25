@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="auth-layout mx-auto bg-conditioner">
+  <div class="auth-layout mx-auto bg-[#F7F1E5]">
     <div class="logo-wrapper flex justify-center pb-[3.69rem]">
       <nuxt-link to="/" class="text-black">
         <nuxt-icon

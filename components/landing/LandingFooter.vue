@@ -19,6 +19,8 @@ const footerAltLinks: Link[] = [
   { name: "Terms OF USE", href: "/terms" },
   { name: "Privacy policy", href: "/privacy" },
 ];
+
+const email = ref("");
 </script>
 
 <template>
@@ -60,12 +62,18 @@ const footerAltLinks: Link[] = [
               class="bg-white rounded-lg px-2 py-5 placeholder:font-title text-dark-puce mb-2 placeholder:text-dark-puce"
             />
             <input
+              v-model="email"
               type="email"
               placeholder="Email address"
               required
               class="bg-white rounded-lg px-2 py-5 font-title text-dark-puce mb-6 placeholder:text-dark-puce"
             />
-            <ShieButton plain variant="secondary" type="submit">
+            <ShieButton
+              plain
+              variant="secondary"
+              type="submit"
+              :disabled="email == ''"
+            >
               SUBSCRIBE
             </ShieButton>
           </form>
