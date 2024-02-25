@@ -92,6 +92,8 @@ useIntersectionObserver(featuresTarget, ([{ isIntersecting }]) => {
     intervalId = setInterval(() => {
       countDown();
     }, 1000);
+  } else {
+    clearInterval(intervalId);
   }
   targetIsVisible.value = isIntersecting;
 });
