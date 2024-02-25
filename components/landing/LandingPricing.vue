@@ -9,7 +9,7 @@ import ShieButton from "~/components/buttons/ShieButton.vue";
     >
       <nuxt-icon name="logo-icon" filled class="w-[4.1875rem] inline-block" />
       <p class="font-title text-[2.5rem] leading-[3.4375rem] h-4">
-        every idea begings with a note...
+        every idea begins with a note...
       </p>
     </div>
     <div class="flex gap-[3rem] items-end">
@@ -20,7 +20,7 @@ import ShieButton from "~/components/buttons/ShieButton.vue";
           <div
             class="px-[3.25rem] pt-[3.5rem] border-b-2 border-dark-puce border-dotted"
           >
-            <p class="text-[2rem] font-title">Free</p>
+            <p class="text-[2rem] font-title">Creator</p>
             <p class="text-[3rem] font-semibold text-dark">A$0</p>
           </div>
           <div class="px-[1.625rem] text-center pt-[2.3125rem]">
