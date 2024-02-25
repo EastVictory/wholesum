@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { useIntersectionObserver } from "@vueuse/core";
 import FeatureRow from "~/components/landing/FeatureRow.vue";
+
+const featuresTarget = ref(null);
+const targetIsVisible = ref(false);
 
 type Feature = {
   title: string;
@@ -88,10 +92,19 @@ onBeforeUnmount(() => {
     clearInterval(intervalId);
   }
 });
+
+useIntersectionObserver(featuresTarget, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    intervalId = setInterval(() => {
+      countDown();
+    }, 1000);
+  }
+  targetIsVisible.value = isIntersecting;
+});
 </script>
 
 <template>
-  <div class="flex gap-[2.625rem] justify-center">
+  <div ref="featuresTarget" class="flex gap-[2.625rem] justify-center">
     <section
       class="max-w-[25.8125rem] text-center flex flex-col items-center py-[3.69rem]"
     >

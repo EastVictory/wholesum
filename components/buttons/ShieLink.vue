@@ -16,9 +16,10 @@ withDefaults(
     class="shie-link"
     :class="{ [`shie-link--${variant}`]: true, [`shie-link--${color}`]: true }"
   >
+    <slot name="content"></slot>
     <span class="h-[1.75rem]">
       <slot></slot>
-      <nuxt-icon v-if="icon" :name="icon" />
+      <nuxt-icon v-if="icon" :name="icon" filled />
     </span>
   </nuxt-link>
 </template>

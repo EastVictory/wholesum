@@ -7,11 +7,10 @@ const processSubmit = () => {
 </script>
 
 <template>
-  <AuthLayout class="signup-layout layout">
+  <AuthLayout class="signup-layout layout" title="Set a new password">
     <Head>
       <Title>Request Password Reset</Title>
     </Head>
-    <h1 class="page-title">Set a new password</h1>
     <form
       class="flex flex-col gap-y-[2.5rem] mb-[3.25rem]"
       @submit.prevent="processSubmit"
@@ -25,7 +24,7 @@ const processSubmit = () => {
           class="shie-input w-full"
         />
       </div>
-      <p class="text-dark-puce text-xs leading-[1.125rem]">
+      <p class="text-dark text-lg leading-[1.125rem] w-2/3">
         You’ll receive a temporary log in code. Please check your inbox and
         paste the log in code below.
       </p>
@@ -33,16 +32,13 @@ const processSubmit = () => {
         <button class="shie-auth-btn" type="submit" :disabled="email === ''">
           <span>Send code</span>
         </button>
-
-        <hr class="h-[0.125rem] bg-dark-puce opacity-100 w-11/12 mx-auto" />
-
         <button class="shie-auth-btn shie-auth-btn--google" type="button">
           <nuxt-icon name="google" filled class="mr-[1.26rem]" />
           <span class="text-center">Continue with Google</span>
         </button>
       </div>
     </form>
-    <p class="mb-6 text-dark text-xs font-medium w-4/5 text-center mx-auto">
+    <p class="mb-6 text-dark text-lg font-medium w-4/5 text-center mx-auto">
       By continuing with Email or Google, you agree to Shie’s
       <nuxt-link class="underline hover:text-cardinal">
         Terms of Service
@@ -52,7 +48,7 @@ const processSubmit = () => {
         Privacy Policy
       </nuxt-link>
     </p>
-    <p class="text-dark text-xs font-medium text-center">
+    <p class="text-dark text-lg font-medium text-center">
       Don’t have an account?
       <nuxt-link to="/auth/login" class="underline hover:text-cardinal">
         Proceed to login

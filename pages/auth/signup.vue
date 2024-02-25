@@ -27,13 +27,15 @@ const processSubmit = () => {
 </script>
 
 <template>
-  <AuthLayout class="signup-layout layout">
+  <AuthLayout
+    class="signup-layout layout"
+    title="Create an account to get started"
+  >
     <Head>
       <Title>Sign Up</Title>
     </Head>
-    <h1 class="page-title">Create an account to get started</h1>
     <form
-      class="flex flex-col gap-y-[0.75rem] mb-[3.25rem]"
+      class="flex flex-col gap-y-[3.125rem] mb-[3.25rem]"
       @submit.prevent="processSubmit"
     >
       <div class="shie-input-group">
@@ -58,7 +60,8 @@ const processSubmit = () => {
 
       <div class="shie-input-group">
         <label for="" class="shie-input-label">
-          Alias <span class="lowercase">(optional)</span>
+          Alias <br />
+          <span class="">(OPTIONAL)</span>
         </label>
         <input
           v-model="optionalFormData.alias"
@@ -107,7 +110,9 @@ const processSubmit = () => {
         <span class="text-center">Continue with Google</span>
       </button>
     </form>
-    <p class="mb-6 text-dark text-xs font-medium w-4/5 text-center mx-auto">
+    <p
+      class="mb-6 text-dark-puce text-lg font-medium w-4/5 text-center mx-auto"
+    >
       By continuing with Email or Google, you agree to Shie’s
       <nuxt-link class="underline hover:text-cardinal">
         Terms of Service
@@ -117,7 +122,7 @@ const processSubmit = () => {
         Privacy Policy
       </nuxt-link>
     </p>
-    <p class="text-dark text-xs font-medium text-center">
+    <p class="text-dark text-lg font-medium text-center">
       Already signed up?
       <nuxt-link to="/auth/login" class="underline hover:text-cardinal">
         Proceed to login
@@ -129,7 +134,7 @@ const processSubmit = () => {
 <style scoped lang="scss">
 .signup-layout {
   .page-title {
-    @apply font-subtitle text-[2rem] leading-[2.58rem] mb-[2.81rem] text-center;
+    @apply font-subtitle text-[2rem] leading-[2.58rem] mb-[2.81rem] text-center text-dark;
   }
 }
 </style>

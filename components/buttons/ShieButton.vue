@@ -28,6 +28,9 @@ withDefaults(
 .shie-button {
   @apply rounded-[0.326rem] uppercase;
   @apply py-[0.6375rem] text-center w-full px-[3.3rem] justify-center items-center gap-[0.92rem] inline-flex;
+  &:disabled {
+    @apply bg-[#FFFFCC] hover:bg-[#FFFFCC] border-none;
+  }
   &--primary {
     @apply bg-cardinal text-white;
     @apply border-dark-puce border-x-[0.41rem] border-t-[0.25rem] border-b-[0.5rem];
