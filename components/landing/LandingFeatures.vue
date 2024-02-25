@@ -69,12 +69,6 @@ const countDown = () => {
   counter.value += 1;
 };
 
-onMounted(() => {
-  intervalId = setInterval(() => {
-    countDown();
-  }, 1000);
-});
-
 watch(counter, (val) => {
   if (val > 5) {
     clearInterval(intervalId);
@@ -104,14 +98,17 @@ useIntersectionObserver(featuresTarget, ([{ isIntersecting }]) => {
 </script>
 
 <template>
-  <div ref="featuresTarget" class="flex gap-[2.625rem] justify-center">
+  <div class="flex gap-[2.625rem] justify-center">
     <section
       class="max-w-[25.8125rem] text-center flex flex-col items-center py-[3.69rem]"
     >
       <div class="w-[4.94731rem] h-[3.29819rem] mx-auto mb-[3.58rem]">
         <nuxt-icon name="logo-icon" filled />
       </div>
-      <div class="flex flex-col items-center gap-[2.1875rem]">
+      <div
+        ref="featuresTarget"
+        class="flex flex-col items-center gap-[2.1875rem]"
+      >
         <p
           class="text-dark-puce text-[2.625rem] font-subtitle mb-[1.31rem] text-left leading-[3.38625rem] max-w-[25.8125rem]"
         >
