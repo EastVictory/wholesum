@@ -31,7 +31,7 @@
     "@lottiefiles/vue-lottie-player": "^1.1.0",
     "@pinia/nuxt": "^0.5.1",
     "@tailwindcss/typography": "^0.5.9",
-    "@vueuse/core": "^10.6.1",
+    "@vueuse/core": "^10.8.0",
     "apexcharts": "^3.45.0",
     "luxon": "^3.4.4",
     "nuxt-icons": "^3.2.1",

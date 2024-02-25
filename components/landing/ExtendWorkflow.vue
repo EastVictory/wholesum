@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { useIntersectionObserver } from "@vueuse/core";
 import ProgressBar from "~/components/landing/ProgressBar.vue";
-
+const workflowTarget = ref(null);
+const targetIsVisible = ref(false);
 const currentProgress = ref(0);
 const currentCard = ref(0);
 const counter = ref(0);
@@ -27,12 +29,6 @@ const countDown = () => {
   counter.value += 1;
 };
 
-onMounted(() => {
-  intervalId = setInterval(() => {
-    countDown();
-  }, 1000);
-});
-
 watch(counter, (val) => {
   if (val > 5) {
     clearInterval(intervalId);
@@ -50,10 +46,19 @@ onBeforeUnmount(() => {
     clearInterval(intervalId);
   }
 });
+
+useIntersectionObserver(workflowTarget, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    intervalId = setInterval(() => {
+      countDown();
+    }, 1000);
+  }
+  targetIsVisible.value = isIntersecting;
+});
 </script>
 
 <template>
-  <section class="shie-container">
+  <section ref="workflowTarget" class="shie-container">
     <div class="max-w-[69.6875rem] mx-auto">
       <div class="flex justify-between gap-[7.0625rem]">
         <div class="flex-1">

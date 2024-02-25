@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { useIntersectionObserver } from "@vueuse/core";
+
 import ProgressBar from "~/components/landing/ProgressBar.vue";
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import ShieButton from "~/components/buttons/ShieButton.vue";
+const timeTarget = ref(null);
+const targetIsVisible = ref(false);
+
 const time = ref(25);
 const min = 0;
 const max = 90;
@@ -45,12 +50,6 @@ const countDown = () => {
   counter.value += 1;
 };
 
-onMounted(() => {
-  intervalId = setInterval(() => {
-    countDown();
-  }, 1000);
-});
-
 watch(counter, (val) => {
   if (val > 5) {
     clearInterval(intervalId);
@@ -68,10 +67,19 @@ onBeforeUnmount(() => {
     clearInterval(intervalId);
   }
 });
+
+useIntersectionObserver(timeTarget, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    intervalId = setInterval(() => {
+      countDown();
+    }, 1000);
+  }
+  targetIsVisible.value = isIntersecting;
+});
 </script>
 
 <template>
-  <section class="shie-container">
+  <section ref="timeTarget" class="shie-container">
     <div class="max-w-[69.6875rem] mx-auto">
       <div class="flex justify-between gap-[7.0625rem]">
         <section class="max-w-[22.1875rem]">
