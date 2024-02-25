@@ -39,7 +39,7 @@ withDefaults(
 
   &__contents {
     @apply max-w-[45.1875rem] mx-auto;
-    @apply px-5 pb-4  lg:pb-[11.5rem];
+    @apply px-5 pb-4;
   }
 }
 </style>

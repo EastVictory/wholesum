@@ -57,7 +57,7 @@ const fullyFilled = computed(() => {
         </div>
       </div>
 
-      <p class="text-xs text-dark">
+      <p class="text-lg text-dark">
         Forgot password?
         <nuxt-link to="/auth/request" class="underline hover:text-cardinal"
           >Reset password</nuxt-link
@@ -76,7 +76,7 @@ const fullyFilled = computed(() => {
         <span class="text-center">Continue with Google</span>
       </button>
     </form>
-    <p class="mb-6 text-dark text-xs font-medium w-4/5 text-center mx-auto">
+    <p class="mb-6 text-dark text-lg font-medium w-4/5 text-center mx-auto">
       By continuing with Email or Google, you agree to Shie’s
       <nuxt-link class="underline hover:text-cardinal">
         Terms of Service
@@ -86,7 +86,7 @@ const fullyFilled = computed(() => {
         Privacy Policy
       </nuxt-link>
     </p>
-    <p class="text-dark text-xs font-medium text-center">
+    <p class="text-dark text-lg font-medium text-center">
       Don’t have an account?
       <nuxt-link to="/auth/signup" class="underline hover:text-cardinal">
         Sign up

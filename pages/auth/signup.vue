@@ -34,77 +34,74 @@ const processSubmit = () => {
     <Head>
       <Title>Sign Up</Title>
     </Head>
-    <form
-      class="flex flex-col gap-y-[3.125rem] mb-[3.25rem]"
-      @submit.prevent="processSubmit"
-    >
-      <div class="shie-input-group">
-        <label for="" class="shie-input-label">First Name</label>
-        <input
-          v-model="formData.firstName"
-          type="text"
-          placeholder="First name"
-          class="shie-input w-full"
-        />
-      </div>
-
-      <div class="shie-input-group">
-        <label for="" class="shie-input-label">Last Name</label>
-        <input
-          v-model="formData.lastName"
-          type="text"
-          placeholder="Last name"
-          class="shie-input w-full"
-        />
-      </div>
-
-      <div class="shie-input-group">
-        <label for="" class="shie-input-label">
-          Alias <br />
-          <span class="">(OPTIONAL)</span>
-        </label>
-        <input
-          v-model="optionalFormData.alias"
-          type="text"
-          placeholder="Last name"
-          class="shie-input w-full"
-        />
-      </div>
-
-      <div class="shie-input-group">
-        <label for="" class="shie-input-label">Email</label>
-        <input
-          v-model="formData.email"
-          type="email"
-          placeholder="Email"
-          class="shie-input w-full"
-        />
-      </div>
-
-      <div class="shie-input-group">
-        <label for="" class="shie-input-label">Password</label>
-        <div class="shie-input-password-group relative w-full">
+    <form class="flex flex-col mb-[3.25rem]" @submit.prevent="processSubmit">
+      <div class="flex flex-col gap-y-[3.125rem] mb-[3.125rem]">
+        <div class="shie-input-group">
+          <label for="" class="shie-input-label">First Name</label>
           <input
-            ref="pwdRef"
-            v-model="formData.password"
-            type="password"
-            placeholder="At least 8 characters"
-            min="8"
-            class="shie-input shie-input--password"
+            v-model="formData.firstName"
+            type="text"
+            placeholder="First name"
+            class="shie-input w-full"
           />
-          <span class="password-toggle" @click="togglePassword" />
+        </div>
+
+        <div class="shie-input-group">
+          <label for="" class="shie-input-label">Last Name</label>
+          <input
+            v-model="formData.lastName"
+            type="text"
+            placeholder="Last name"
+            class="shie-input w-full"
+          />
+        </div>
+
+        <div class="shie-input-group">
+          <label for="" class="shie-input-label">
+            Alias <br />
+            <span class="">(OPTIONAL)</span>
+          </label>
+          <input
+            v-model="optionalFormData.alias"
+            type="text"
+            placeholder="Last name"
+            class="shie-input w-full"
+          />
+        </div>
+
+        <div class="shie-input-group">
+          <label for="" class="shie-input-label">Email</label>
+          <input
+            v-model="formData.email"
+            type="email"
+            placeholder="Email"
+            class="shie-input w-full"
+          />
+        </div>
+
+        <div class="shie-input-group">
+          <label for="" class="shie-input-label">Password</label>
+          <div class="shie-input-password-group relative w-full">
+            <input
+              ref="pwdRef"
+              v-model="formData.password"
+              type="password"
+              placeholder="At least 8 characters"
+              min="8"
+              class="shie-input shie-input--password"
+            />
+            <span class="password-toggle" @click="togglePassword" />
+          </div>
         </div>
       </div>
+
       <button
-        class="shie-auth-btn mt-[1.75rem]"
+        class="shie-auth-btn mt-[1.75rem] mb-6"
         type="submit"
         :disabled="fullyFilled.length > 0"
       >
         <span>Create account</span>
       </button>
-
-      <hr class="h-[0.125rem] bg-dark-puce opacity-100 w-11/12 mx-auto" />
-
       <button class="shie-auth-btn shie-auth-btn--google" type="button">
         <nuxt-icon name="google" filled class="mr-[1.26rem]" />
         <span class="text-center">Continue with Google</span>
