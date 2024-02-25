@@ -57,7 +57,7 @@ const fullyFilled = computed(() => {
         </div>
       </div>
 
-      <p class="text-xs text-dark">
+      <p class="text-lg text-dark">
         Forgot password?
         <nuxt-link to="/auth/request" class="underline hover:text-cardinal"
           >Reset password</nuxt-link
