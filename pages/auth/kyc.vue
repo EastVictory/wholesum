@@ -1,10 +1,31 @@
 <script setup lang="ts">
 import ShieLink from "~/components/buttons/ShieLink.vue";
+import ShieButton from "~/components/buttons/ShieButton.vue";
+type Question = {
+  key: number;
+  title: string;
+  name: string;
+  questions?: {
+    key: string;
+    value: string;
+  }[];
+};
 
-const questions = [
+type Answer = {
+  [key in Question["name"]]: string;
+};
+
+const answers = ref<Answer>({
+  description: "",
+  intention: "",
+  industry: "",
+});
+
+const questions: Question[] = [
   {
     key: 2,
     title: "Which of the following best describes you?",
+    name: "description",
     questions: [
       {
         key: "Student",
@@ -27,6 +48,7 @@ const questions = [
   {
     key: 3,
     title: "How do you intend to use wholesum?",
+    name: "intention",
     questions: [
       {
         key: "Study",
@@ -49,6 +71,7 @@ const questions = [
   {
     key: 4,
     title: "What industry are you most closely associated with?",
+    name: "industry",
     questions: [
       {
         key: "Science and Technology",
@@ -78,8 +101,28 @@ const questions = [
   },
 ];
 
-console.log(questions);
 const currentState = ref(1);
+const updateState = (progress: number) => {
+  currentState.value = progress;
+};
+
+const currentQuestions = computed(() => {
+  return (
+    questions.find((question) => question.key === currentState.value) || {
+      key: 0,
+      questions: [],
+      title: "",
+      name: "",
+    }
+  );
+});
+const progressQuestion = () => {
+  if (currentState.value === 4) {
+    navigateTo("/library");
+    return;
+  }
+  currentState.value += 1;
+};
 </script>
 
 <template>
@@ -138,7 +181,7 @@ const currentState = ref(1);
             </p>
           </div>
 
-          <form>
+          <form @submit.prevent="updateState(2)">
             <button class="shie-auth-btn mb-[1.75rem]" type="submit">
               <span>LET'S DO IT</span>
             </button>
@@ -154,7 +197,64 @@ const currentState = ref(1);
             </ShieLink>
           </form>
         </div>
-        <div v-else></div>
+        <div
+          v-else
+          class="pt-[3.125rem] max-w-[44.375rem] mx-auto w-[44.375rem]"
+        >
+          <form action="" class="w-full">
+            <h2
+              class="text-center font-title text-black text-[1.375rem] leading-[2rem] mb-[3.9375rem]"
+            >
+              {{ currentQuestions?.title }}
+            </h2>
+            <section
+              class="flex flex-col max-w-[40.875rem] mx-auto gap-4 pb-[10.25rem]"
+            >
+              <div
+                v-for="question in currentQuestions?.questions"
+                :key="question.key"
+                class="kyc-question"
+                :class="{
+                  selected: answers[currentQuestions.name] === question.key,
+                }"
+              >
+                <input
+                  :id="`${question.key}-${currentQuestions.name}`"
+                  v-model="answers[currentQuestions.name]"
+                  type="radio"
+                  :name="currentQuestions.name"
+                  :value="question.value"
+                  class="hidden"
+                />
+                <span class="radio"></span>
+                <label
+                  :for="`${question.key}-${currentQuestions.name}`"
+                  class="text-black text-lg font-title h-4 cursor-pointer"
+                >
+                  {{ question.key }}
+                </label>
+              </div>
+            </section>
+            <div class="flex justify-between items-center w-full">
+              <ShieButton
+                type="button"
+                variant="secondary"
+                class="!bg-white h-[4rem] !max-w-[11.9375rem] !py-0"
+                @click="updateState(currentState - 1)"
+              >
+                <nuxt-icon name="chevron-left" filled class="h-3 w-6" />
+              </ShieButton>
+              <button
+                class="shie-auth-btn h-[4rem] !max-w-[24.875rem]"
+                type="button"
+                :disabled="answers[currentQuestions.name] === ''"
+                @click.prevent="progressQuestion"
+              >
+                <span>CONTINUE</span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -168,8 +268,8 @@ const currentState = ref(1);
   }
 
   &__contents {
-    @apply max-w-[45.1875rem] mx-auto flex-1 flex flex-col;
-    @apply px-5 pb-4  lg:pb-[11.5rem] h-full;
+    @apply mx-auto flex-1 flex flex-col max-w-[44.375rem];
+    @apply px-5 pb-4 h-full;
   }
   .kyc-progress {
     @apply flex gap-6 items-center;
@@ -177,6 +277,22 @@ const currentState = ref(1);
       @apply block w-[3.1875rem] h-[1.25rem] border-2 border-dark-puce bg-white rounded;
       &.completed {
         @apply bg-dark-puce;
+      }
+    }
+  }
+  .kyc-question {
+    @apply bg-white border-2 border-dotted border-dark-puce px-6 py-4 rounded-full inline-flex gap-6 items-center;
+    .radio {
+      @apply h-6 w-6 rounded-full border-2 border-dark;
+    }
+    &.selected {
+      @apply border-solid bg-dark-puce text-conditioner;
+      .radio {
+        @apply bg-conditioner border-conditioner;
+      }
+
+      label {
+        @apply text-conditioner;
       }
     }
   }
