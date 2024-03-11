@@ -81,6 +81,7 @@ export default defineNuxtConfig({
       },
     ],
     "@nuxtjs/tailwindcss",
+    "@samk-dev/nuxt-vcalendar",
     [
       "@nuxtjs/eslint-module",
       {

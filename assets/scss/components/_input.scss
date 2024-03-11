@@ -1,6 +1,6 @@
 .shie-input {
   @apply border-[0.125rem] border-[#87848A] rounded-[0.5rem] bg-white px-[1.90625rem] py-[0.3125rem] text-[1.125rem] w-full;
-  @apply placeholder:text-taupe-gray text-[#1A1110];
+  @apply placeholder:text-taupe-gray text-licorice;
   &:focus,
   &:focus-within {
     @apply border-dark-puce #{

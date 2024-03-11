@@ -46,6 +46,8 @@ export default <Partial<Config>>{
         crayola: "#76D7EA",
         "dark-liver": "#4D4D4D",
         "dark-puce": "#4D3B3C",
+        "aero-blue": "#CCF6EC",
+        licorice: "#1A1110",
       },
     },
   },
