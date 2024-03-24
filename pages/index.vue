@@ -86,7 +86,7 @@ const links: Link[] = [
           </p>
           <div>
             <button
-              class="w-[3.4375rem] rounded-xl h-[3.4375rem] bg-[#1A1110] inline-block p-4 bounce-top"
+              class="w-[3.4375rem] rounded-xl h-[3.4375rem] bg-licorice inline-block p-4 bounce-top"
             >
               <nuxt-icon name="chevron-down" filled class="w-4 h-4" />
             </button>
