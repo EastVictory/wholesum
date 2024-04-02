@@ -1,7 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="border-b border-dotted border-dark-puce pt-[6.75rem] pb-[8.75rem]">
+  <div
+    class="border-b border-dotted border-dark-puce pt-[6.75rem] pb-[8.75rem]"
+  >
     <section class="max-w-[59rem] mx-auto">
       <h2
         class="font-subtitle text-[2.5rem] leading-[2.5rem] text-dark mb-[7.12rem] pl-[9.56rem]"

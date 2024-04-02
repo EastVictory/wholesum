@@ -4,6 +4,7 @@ withDefaults(
     variant?: string;
     to?: string;
     icon?: string | null;
+    color?: string;
   }>(),
   { variant: "primary", icon: null, to: "" }
 );
@@ -13,11 +14,12 @@ withDefaults(
   <nuxt-link
     :to="to"
     class="shie-link"
-    :class="{ [`shie-link--${variant}`]: true }"
+    :class="{ [`shie-link--${variant}`]: true, [`shie-link--${color}`]: true }"
   >
+    <slot name="content"></slot>
     <span class="h-[1.75rem]">
       <slot></slot>
-      <nuxt-icon v-if="icon" :name="icon" />
+      <nuxt-icon v-if="icon" :name="icon" filled />
     </span>
   </nuxt-link>
 </template>
@@ -27,15 +29,18 @@ withDefaults(
   @apply text-[1.375rem] rounded-[0.326rem] uppercase whitespace-nowrap h-[4rem] items-center;
   @apply py-[0.6375rem] text-center w-full px-[3.3rem] justify-center items-center gap-[0.92rem] inline-flex;
   &--primary {
-    @apply bg-cardinal text-white;
-    @apply border-dark-puce border-l-[0.38rem] border-r-[0.19rem] border-t-[0.25rem] border-b-[0.5rem];
+    @apply text-white;
+    @apply border-dark-puce border-x-[0.27rem] border-t-[0.22rem] border-b-[0.5rem];
     @apply hover:bg-transparent hover:text-dark-puce;
     &:disabled {
       @apply border-platinum bg-platinum;
     }
   }
   &--secondary {
-    @apply border-2 border-dark-puce bg-crayola text-black hover:bg-transparent;
+    @apply border-2 border-dark-puce text-black hover:bg-transparent hover:border-black;
+  }
+  &--cardinal {
+    @apply bg-crayola text-dark-puce;
   }
 }
 </style>

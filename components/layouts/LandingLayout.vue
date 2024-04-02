@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-conditioner">
+  <div class="bg-[#F7F1E5]">
     <slot name="head">
       <Head>
         <Title>{{ title }}</Title>

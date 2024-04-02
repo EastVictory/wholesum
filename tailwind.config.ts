@@ -21,6 +21,7 @@ export default <Partial<Config>>{
       subtitle: ["Peachi", "system-ui", "sans-serif"],
       alt: ["Cormorant SC", "system-ui", "sans-serif"],
       garamond: ["Cormorant Garamond", "system-ui", "sans-serif"],
+      jetbrains: ["JetBrains Mono", "system-ui", "sans-serif"],
     },
     extend: {
       fontSize: {
@@ -45,6 +46,8 @@ export default <Partial<Config>>{
         crayola: "#76D7EA",
         "dark-liver": "#4D4D4D",
         "dark-puce": "#4D3B3C",
+        "aero-blue": "#CCF6EC",
+        licorice: "#1A1110",
       },
     },
   },

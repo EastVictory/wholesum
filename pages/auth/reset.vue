@@ -6,7 +6,6 @@ const route = useRoute();
 const { email } = route.query;
 const otp = ref("");
 const otpComplete = ref(false);
-const otpInput = ref<InstanceType<typeof VOtpInput> | null>(null);
 const handleOnComplete = () => {
   otpComplete.value = true;
 };
@@ -80,21 +79,14 @@ const processSubmit = () => {
       </div>
       <div class="shie-input-group">
         <label for="" class="shie-input-label">Passcode</label>
-        <div class="otp-container">
-          <v-otp-input
-            ref="otpInput"
-            :value="otp"
-            input-classes="otp-input"
-            separator=""
-            :num-inputs="4"
-            :should-auto-focus="true"
-            input-type="number"
-            :placeholder="['0', '0', '0', '0']"
-            @on-complete="handleOnComplete"
-          />
-        </div>
+        <input
+          type="number"
+          placeholder="0 0 0 0"
+          class="shie-input w-full"
+          v-model="otp"
+        />
       </div>
-      <p class="text-dark-puce text-xs leading-[1.125rem]">
+      <p class="text-dark-puce text-lg leading-[1.125rem] w-2/3">
         Retrieve the code from your email above, Paste in the space above to get
         started.
       </p>

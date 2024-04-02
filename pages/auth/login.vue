@@ -23,39 +23,41 @@ const fullyFilled = computed(() => {
 </script>
 
 <template>
-  <AuthLayout class="signup-layout layout">
+  <AuthLayout class="signup-layout layout" title="Sign into your account">
     <Head>
       <Title>Sign Up</Title>
     </Head>
-    <h1 class="page-title">Sign into your account</h1>
     <form
-      class="flex flex-col gap-y-[0.75rem] mb-[3.25rem]"
+      class="flex flex-col gap-y-[1rem] mb-[3.25rem]"
       @submit.prevent="processSubmit"
     >
-      <div class="shie-input-group">
-        <label for="" class="shie-input-label">Email</label>
-        <input
-          v-model="formData.email"
-          type="email"
-          placeholder="Email"
-          class="shie-input w-full"
-        />
-      </div>
-
-      <div class="shie-input-group">
-        <label for="" class="shie-input-label">Password</label>
-        <div class="shie-input-password-group relative w-full">
+      <div class="flex flex-col gap-y-[3.125rem]">
+        <div class="shie-input-group">
+          <label for="" class="shie-input-label">Email</label>
           <input
-            ref="pwdRef"
-            v-model="formData.password"
-            type="password"
-            placeholder="Password"
-            class="shie-input shie-input--password"
+            v-model="formData.email"
+            type="email"
+            placeholder="Email"
+            class="shie-input w-full"
           />
-          <span class="password-toggle" @click="togglePassword" />
+        </div>
+
+        <div class="shie-input-group">
+          <label for="" class="shie-input-label">Password</label>
+          <div class="shie-input-password-group relative w-full">
+            <input
+              ref="pwdRef"
+              v-model="formData.password"
+              type="password"
+              placeholder="Password"
+              class="shie-input shie-input--password"
+            />
+            <span class="password-toggle" @click="togglePassword" />
+          </div>
         </div>
       </div>
-      <p class="text-xs text-dark">
+
+      <p class="text-lg text-dark">
         Forgot password?
         <nuxt-link to="/auth/request" class="underline hover:text-cardinal"
           >Reset password</nuxt-link
@@ -69,14 +71,12 @@ const fullyFilled = computed(() => {
         <span>Sign in</span>
       </button>
 
-      <hr class="h-[0.125rem] bg-dark-puce opacity-100 w-11/12 mx-auto" />
-
       <button class="shie-auth-btn shie-auth-btn--google" type="button">
         <nuxt-icon name="google" filled class="mr-[1.26rem]" />
         <span class="text-center">Continue with Google</span>
       </button>
     </form>
-    <p class="mb-6 text-dark text-xs font-medium w-4/5 text-center mx-auto">
+    <p class="mb-6 text-dark text-lg font-medium w-4/5 text-center mx-auto">
       By continuing with Email or Google, you agree to Shie’s
       <nuxt-link class="underline hover:text-cardinal">
         Terms of Service
@@ -86,7 +86,7 @@ const fullyFilled = computed(() => {
         Privacy Policy
       </nuxt-link>
     </p>
-    <p class="text-dark text-xs font-medium text-center">
+    <p class="text-dark text-lg font-medium text-center">
       Don’t have an account?
       <nuxt-link to="/auth/signup" class="underline hover:text-cardinal">
         Sign up

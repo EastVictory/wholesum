@@ -10,12 +10,7 @@ const props = defineProps<{
   tasks: Task[];
 }>();
 
-const categories = [
-  "EDUCATION",
-  "SOCIAL",
-  "SELF CARE",
-  "FITNESS",
-];
+const categories = ["EDUCATION", "SOCIAL", "SELF CARE", "FITNESS"];
 
 const activities = ["ALL ACTIVITIES", "TIMER", "STOPWATCH"];
 const selectedTasks = ref<string[]>([]);
@@ -94,7 +89,7 @@ const selectedAll = computed(() => {
                 </button>
               </p>
               <ul class="flex flex-col gap-1">
-                <li v-for="(category, i) in categories" :key="category">
+                <li v-for="category in categories" :key="category">
                   <div class="flex px-2.5 py-0 items-center">
                     <button class="text-xxs font-medium text-dark py-2">
                       {{ category }}

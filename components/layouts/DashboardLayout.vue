@@ -5,7 +5,7 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
 </script>
 
 <template>
-  <div class="min-h-screen bg-conditioner">
+  <div class="min-h-screen bg-aero-blue">
     <slot name="head">
       <Head>
         <Title>{{ title }}</Title>
@@ -15,7 +15,7 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
     <header class="dashboard-header">
       <AppNav />
     </header>
-    <main class="pb-6">
+    <main class="pb-6 max-w-[90rem] mx-auto">
       <slot />
     </main>
   </div>
