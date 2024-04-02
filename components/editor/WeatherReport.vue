@@ -57,7 +57,7 @@ const getUserLocation = () => {
     async (position) => {
       const { latitude, longitude } = position.coords;
       const data = await $fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${key}&q=${latitude},${longitude}`
+        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${latitude},${longitude}`
       );
       weather.value = data as WeatherData;
     },
