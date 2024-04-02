@@ -31,7 +31,7 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
         </template>
       </AppNav>
     </header>
-    <main class="pb-6 max-w-[90rem]">
+    <main class="pb-6 max-w-[90rem] mx-auto">
       <slot />
     </main>
   </div>
