@@ -24,17 +24,34 @@ const attrs = ref([
         <nuxt-icon name="chevron-right" class="text-dark-puce h-2 w-2" filled />
       </nuxt-link>
     </div>
-    <div class="pt-4">
+    <div class="pt-4 text-center">
       <client-only>
-        <VDatePicker v-model="date" :attributes="attrs" />
+        <VCalendar
+          v-model="date"
+          borderless
+          transparent
+          :attributes="attrs"
+          class="daily-calendar__calendar"
+        />
       </client-only>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .shie-button {
   @apply border-2 border-dark-puce text-sm inline-flex items-center;
   @apply rounded-full;
+}
+.daily-calendar__calendar {
+  &.vc-container {
+    width: 100%;
+    max-width: 28.125rem;
+    margin: 0 auto;
+  }
+  .vc-pane-container {
+    background: transparent;
+    border: none;
+  }
 }
 </style>

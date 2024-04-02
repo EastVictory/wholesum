@@ -1,6 +1,22 @@
 <script setup lang="ts">
 import { DateTime } from "luxon";
 const date = DateTime.now().toFormat("DDD");
+
+const getUserLocation = () => {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      console.log(position.coords.latitude);
+      console.log(position.coords.longitude);
+    },
+    (error) => {
+      console.log(error.message);
+    }
+  );
+};
+
+onMounted(() => {
+  getUserLocation();
+});
 </script>
 
 <template>

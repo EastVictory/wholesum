@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ShieButton from "~/components/buttons/ShieButton.vue";
 
+const noteName = ref("");
 const noteTye = ref("Entry");
 const noteTypes = ["Entry", "Checklist", "radio button", "image", "link"];
 
@@ -9,8 +10,8 @@ const noteLabel = ref("education");
 const noteLabels = ["education", "sociality", "self care", "fitness"];
 const time = ref(25);
 const time2 = ref(5);
-const min = 0;
-const min2 = 0;
+const min = 1;
+const min2 = 1;
 const max = 90;
 const max2 = 30;
 const handleMinus = () => {
@@ -39,6 +40,10 @@ const handleAddition2 = () => {
   }
   time2.value += 1;
 };
+
+const createNote = () => {
+  navigateTo("/editor/create");
+};
 </script>
 
 <template>
@@ -46,6 +51,7 @@ const handleAddition2 = () => {
     <div class="mb-12">
       <input
         type="text"
+        v-model="noteName"
         placeholder="/New note"
         class="bg-transparent text-dark-puce placeholder:text-dark-puce text-2xl font-title placeholder:font-title py-6 outline-0 inline-flex items-center align-middle"
       />
@@ -182,10 +188,8 @@ const handleAddition2 = () => {
         </div>
       </div>
     </div>
-    <div class="flex justify-between items-center">
-      <p class="text-dark-puce font-title h-4 leading-[0.65rem]">
-        WHEN TIMER ENDS
-      </p>
+    <div class="flex justify-between items-center mb-12">
+      <p class="text-dark-puce font-title h-4">WHEN TIMER ENDS</p>
       <select
         id=""
         name="timerEnd"
@@ -194,6 +198,16 @@ const handleAddition2 = () => {
         <option value="HARP" selected>HARP</option>
         <option value="HARP">FLUTE</option>
       </select>
+    </div>
+    <div>
+      <ShieButton class="!bg-conditioner !py-4" @click="createNote">
+        <span
+          class="h-4 font-medium text-outer-space font-title w-full text-center flex-1"
+        >
+          START TO-DO
+        </span>
+        <nuxt-icon name="logo-icon" filled class="rotate-90 w-5" />
+      </ShieButton>
     </div>
   </section>
 </template>
