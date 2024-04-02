@@ -15,25 +15,28 @@ const links: Link[] = [
     <div
       class="pt-[1.12rem] pb-[1.25rem] max-w-[90rem] mx-auto flex items-center gap-[4.62rem] w-full px-[2.25rem] lg:px-0 justify-between bg-aero-blue"
     >
-      <nuxt-link to="/" class="text-black">
-        <nuxt-icon
-          name="logo-text"
-          class="w-[12.0625rem] h-[2.6875rem] text-black"
-          filled
-        />
-      </nuxt-link>
-      <section class="kyc-progress">
-        <ul class="flex items-center gap-6">
-          <li v-for="link in links" :key="link.title">
-            <nuxt-link
-              :to="link.url"
-              class="font-title text-sm text-dark-puce uppercase"
-            >
-              {{ link.title }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </section>
+      <slot name="left-content">
+        <nuxt-link to="/" class="text-black">
+          <nuxt-icon
+            name="logo-text"
+            class="w-[12.0625rem] h-[2.6875rem] text-black"
+            filled
+          />
+        </nuxt-link>
+        <section class="kyc-progress">
+          <ul class="flex items-center gap-6">
+            <li v-for="link in links" :key="link.title">
+              <nuxt-link
+                :to="link.url"
+                class="font-title text-sm text-dark-puce uppercase"
+              >
+                {{ link.title }}
+              </nuxt-link>
+            </li>
+          </ul>
+        </section>
+      </slot>
+
       <div>
         <button class="inline-flex gap-2 items-center text-dark h-6">
           <span class="w-6 h-6 bg-dark rounded text-[#F7F1E5]">S</span>
