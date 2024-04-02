@@ -70,20 +70,28 @@ const getUserLocation = () => {
 onMounted(() => {
   getUserLocation();
 });
-
-console.log(weather.value);
 </script>
 
 <template>
   <div class="weather__report">
     <p class="mb-6 text-2xl text-licorice font-mono">WEATHER TODAY</p>
-    <div class="text-licorice pl-[2.1875rem] font-mono">
+    <div v-if="weather" class="text-licorice pl-[2.1875rem] font-mono">
       <p class="mb-6 text-2xl">{{ date }}</p>
       <p class="mb-6">
         {{ weather?.location?.name }}, {{ weather?.location?.region }} as of
-        {{ weather?.location?.localtime }}
+        {{
+          DateTime.fromSeconds(weather?.location?.localtime_epoch).toFormat(
+            "ttt"
+          )
+        }}
       </p>
-      <p class="mb-6">17° • Cloudy • Day 22° • Night 15°</p>
+      <p class="mb-6">
+        {{ weather?.current?.temp_c }}° •
+        {{ weather?.current?.condition?.text }}
+      </p>
+    </div>
+    <div v-else>
+      <p>Please allow user location</p>
     </div>
   </div>
 </template>
