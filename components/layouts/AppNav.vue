@@ -13,7 +13,7 @@ const links: Link[] = [
 <template>
   <div class="navbar">
     <div
-      class="pt-[1.12rem] pb-[1.25rem] max-w-[90rem] mx-auto flex items-center gap-[4.62rem] w-full px-[2.25rem] lg:px-0 justify-between bg-aero-blue"
+      class="pt-[1.12rem] pb-[1.25rem] max-w-[90rem] mx-auto flex items-center gap-[4.62rem] w-full lg:px-0 justify-between bg-aero-blue px-12"
     >
       <slot name="left-content">
         <nuxt-link to="/" class="text-black">
