@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ShieButton from "~/components/buttons/ShieButton.vue";
+import TimerInput from "~/components/editor/commons/TimerInput.vue";
 
 const noteName = ref("");
 const noteTye = ref("Entry");
@@ -9,37 +10,7 @@ const noteLabel = ref("education");
 
 const noteLabels = ["education", "sociality", "self care", "fitness"];
 const time = ref(25);
-const time2 = ref(5);
-const min = 1;
-const min2 = 1;
-const max = 90;
-const max2 = 30;
-const handleMinus = () => {
-  if (time.value === min) {
-    return;
-  }
-  time.value -= 1;
-};
-const handleMinus2 = () => {
-  if (time2.value === min2) {
-    return;
-  }
-  time2.value -= 1;
-};
-
-const handleAddition = () => {
-  if (time2.value === max) {
-    return;
-  }
-  time.value += 1;
-};
-
-const handleAddition2 = () => {
-  if (time2.value === max2) {
-    return;
-  }
-  time2.value += 1;
-};
+const duration = ref(5);
 
 const createNote = () => {
   navigateTo("/editor/create");
@@ -50,10 +21,10 @@ const createNote = () => {
   <section class="py-[3.3125rem] px-[4.75rem]">
     <div class="mb-12">
       <input
-        type="text"
         v-model="noteName"
+        type="text"
         placeholder="/New note"
-        class="bg-transparent text-dark-puce placeholder:text-dark-puce text-2xl font-title placeholder:font-title py-6 outline-0 inline-flex items-center align-middle"
+        class="bg-transparent text-dark-puce placeholder:text-dark-puce text-[1.5rem] leading-[1.5rem] font-title placeholder:font-title py-6 outline-0 inline-flex items-center align-middle h-8"
       />
     </div>
     <div class="flex max-w-[29.375rem] flex-wrap gap-3 mb-12">
@@ -116,76 +87,8 @@ const createNote = () => {
     <div class="mb-12">
       <p class="text-dark-puce mb-3">POMODORO TIMER</p>
       <div class="flex gap-[6.25rem] px-4">
-        <div class="w-[8.875rem]">
-          <div class="flex gap-2 items-center">
-            <div
-              class="flex items-center justify-center w-full border-2 shie-black-border rounded-[0.36rem] py-4 h-[2.875rem] mb-2 text-[1.25rem] bg-transparent min-w-[6.875rem]"
-            >
-              <input
-                v-model="time"
-                type="number"
-                :min="min"
-                :max="max"
-                class="appearance-none inline-block focus-visible:border-cardinal outline-none w-1/2 text-right font-semibold bg-transparent text-dark"
-              />
-              <span class="w-1/2 font-semibold text-[#87848A]">/{{ max }}</span>
-            </div>
-            <p class="font-medium text-outer-space font-mono">Mins</p>
-          </div>
-
-          <div class="flex flex-row gap-2 w-[6.875rem]">
-            <ShieButton
-              variant=""
-              class="flex-1 !px-2 h-[1.875rem] text-center font-medium border-2 border-dark-puce text-black !bg-crayola"
-              @click="handleMinus"
-            >
-              -
-            </ShieButton>
-            <ShieButton
-              variant=""
-              class="flex-1 !px-2 h-[1.875rem] text-center font-medium border-2 border-dark-puce text-black !bg-crayola"
-              @click="handleAddition"
-            >
-              +
-            </ShieButton>
-          </div>
-        </div>
-        <div class="w-[8.875rem]">
-          <div class="flex gap-2 items-center">
-            <div
-              class="flex items-center justify-center w-full border-2 shie-black-border rounded-[0.36rem] py-4 h-[2.875rem] mb-2 text-[1.25rem] bg-transparent min-w-[6.875rem]"
-            >
-              <input
-                v-model="time2"
-                type="number"
-                :min="min2"
-                :max="max2"
-                class="appearance-none inline-block focus-visible:border-cardinal outline-none w-1/2 text-right font-semibold bg-transparent text-dark"
-              />
-              <span class="w-1/2 font-semibold text-[#87848A]"
-                >/{{ max2 }}</span
-              >
-            </div>
-            <p class="font-medium text-outer-space font-mono">Mins</p>
-          </div>
-
-          <div class="flex flex-row gap-2 w-[6.875rem]">
-            <ShieButton
-              variant=""
-              class="flex-1 !px-2 h-[1.875rem] text-center font-medium border-2 border-dark-puce text-black !bg-crayola"
-              @click="handleMinus2"
-            >
-              -
-            </ShieButton>
-            <ShieButton
-              variant=""
-              class="flex-1 !px-2 h-[1.875rem] text-center font-medium border-2 border-dark-puce text-black !bg-crayola"
-              @click="handleAddition2"
-            >
-              +
-            </ShieButton>
-          </div>
-        </div>
+        <TimerInput :min="0" :max="90" />
+        <TimerInput :min="0" :max="25" />
       </div>
     </div>
     <div class="flex justify-between items-center mb-12">
