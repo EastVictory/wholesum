@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import AppNav from "~/components/layouts/AppNav.vue";
-
+import { useEditorStore } from "~/store/editor";
+const editorStore = useEditorStore();
+const { configuration } = storeToRefs(editorStore);
 withDefaults(defineProps<{ title: string | null }>(), { title: null });
 </script>
 
@@ -24,9 +26,11 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
               />
             </nuxt-link>
             <p class="font-title text-2xl h-4 text-licorice">
-              West African Jollof Recipe
+              {{ configuration.title }}
             </p>
-            <span class="px-4 bg-white">SELF-CARE</span>
+            <span class="px-4 bg-white uppercase">{{
+              configuration.category
+            }}</span>
           </div>
         </template>
       </AppNav>

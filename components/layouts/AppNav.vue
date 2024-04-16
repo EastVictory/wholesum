@@ -1,13 +1,32 @@
 <script setup lang="ts">
+import { useEditorStore } from "~/store/editor";
+
+const editorStore = useEditorStore();
+
+const { saveEditor } = editorStore;
+
 type Link = {
   title: string;
   url: string;
 };
 const links: Link[] = [
-  { title: "Today", url: "/editor" },
+  { title: "Home", url: "/editor" },
   { title: "Library", url: "/library" },
   { title: "Charts", url: "" },
 ];
+
+const config = ref({
+  title: "Untitled Note",
+  category: "Text",
+  label: "education",
+  duration: 25,
+  break: 10,
+  onTimerEnd: "HARP",
+});
+const createNote = () => {
+  saveEditor(config.value);
+  navigateTo("/editor/create");
+};
 </script>
 
 <template>
@@ -23,7 +42,7 @@ const links: Link[] = [
             filled
           />
         </nuxt-link>
-        <section class="kyc-progress">
+        <section class="kyc-progress flex">
           <ul class="flex items-center gap-6">
             <li v-for="link in links" :key="link.title">
               <nuxt-link
@@ -35,6 +54,22 @@ const links: Link[] = [
             </li>
           </ul>
         </section>
+
+        <div class="flex gap-[2.0625rem]">
+          <button
+            class="bg-[#2E52B2] rounded inline-flex gap-4 items-center text-white py-3 px-4 font-medium font-mono min-w-[11.5625rem]"
+            @click="createNote"
+          >
+            <span
+              class="rounded-lg border border-white h-6 w-6 inline-flex justify-center items-center"
+              >+</span
+            >
+            Quick Pomo
+          </button>
+          <button>
+            <nuxt-icon name="info" filled />
+          </button>
+        </div>
       </slot>
 
       <div>
