@@ -6,6 +6,7 @@ export const EditorDetailsSchema = z.object({
   label: z.string(),
   duration: z.number(),
   break: z.number(),
+  onTimerEnd: z.string(),
 });
 
 export type EditorDetailsType = z.infer<typeof EditorDetailsSchema>;
