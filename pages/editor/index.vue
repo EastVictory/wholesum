@@ -11,14 +11,14 @@ import NewNote from "~/components/editor/NewNote.vue";
   <DashboardLayout title="Editor">
     <section class="flex">
       <div
-        class="w-full lg:!w-1/2 pl-[9.4375rem] pr-[3.375rem] pt-4 editor-half"
+        class="w-full lg:!w-1/2 pl-[9.4375rem] pr-[3.375rem] pt-[3.0625rem] editor-half"
       >
         <WeatherReport class="mb-12" />
         <DailyCalendar class="mb-12" />
         <DailyCharts class="mb-12" />
         <RecentActivity />
       </div>
-      <div class="w-full lg:!w-1/2">
+      <div class="w-full lg:!w-1/2 pt-[3.0625rem]">
         <NewNote />
       </div>
     </section>

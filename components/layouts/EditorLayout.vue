@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import AppNav from "~/components/layouts/AppNav.vue";
-
+import { useEditorStore } from "~/store/editor";
+const editorStore = useEditorStore();
+const { configuration } = storeToRefs(editorStore);
 withDefaults(defineProps<{ title: string | null }>(), { title: null });
 </script>
 
 <template>
-  <div class="min-h-screen bg-aero-blue">
+  <div class="min-h-screen bg-aero-blue flex flex-col">
     <slot name="head">
       <Head>
         <Title>{{ title }}</Title>
@@ -24,14 +26,16 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
               />
             </nuxt-link>
             <p class="font-title text-2xl h-4 text-licorice">
-              West African Jollof Recipe
+              {{ configuration.title }}
             </p>
-            <span class="px-4 bg-white">SELF-CARE</span>
+            <span class="px-4 bg-white uppercase">{{
+              configuration.category
+            }}</span>
           </div>
         </template>
       </AppNav>
     </header>
-    <main class="pb-6 max-w-[90rem] mx-auto">
+    <main class="mx-auto flex flex-col w-full h-full flex-1">
       <slot />
     </main>
   </div>
