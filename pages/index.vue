@@ -20,7 +20,7 @@ const links: Link[] = [
 </script>
 
 <template>
-  <LandingLayout>
+  <LandingLayout title="Home">
     <div class="shie-container pt-6">
       <section
         class="max-w-[76.5rem] mx-auto w-full rounded-[1.375rem] border-2 border-dark-puce p-6 bg-white mb-[3.19rem] relative"

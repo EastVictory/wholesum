@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Wholesum" || process.env.npm_package_name,
+      title: process.env.npm_package_name || "Wholesum",
       htmlAttrs: {
         lang: "en",
       },

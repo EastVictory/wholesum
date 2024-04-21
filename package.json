@@ -38,6 +38,7 @@
     "luxon": "^3.4.4",
     "nuxt-icons": "^3.2.1",
     "pinia": "^2.1.7",
+    "quill": "2.0.0",
     "sass": "^1.63.3",
     "tw-elements": "^1.0.0-beta3",
     "typescript": "^5.1.3",

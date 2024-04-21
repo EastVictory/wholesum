@@ -20,7 +20,7 @@ const config = ref({
   category: "Text",
   label: "education",
   duration: 25,
-  break: 10,
+  break: 5,
   onTimerEnd: "HARP",
 });
 const createNote = () => {
