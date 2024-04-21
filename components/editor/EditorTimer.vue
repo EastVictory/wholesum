@@ -131,7 +131,7 @@ onMounted(() => {
         <nuxt-icon name="audio" class="h-3 w-3" filled />
       </button>
       <button
-        class="bg-[#2E52B2] px-5 py-4 rounded-lg text-white font-mono text-xs whitespace-nowrap"
+        class="bg-[#2E52B2] px-3 py-4 rounded-lg text-white font-mono text-xs whitespace-nowrap"
         @click="startBreak"
       >
         END POMO SESSION
