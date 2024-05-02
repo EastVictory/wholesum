@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ShiePillButton from "~/components/buttons/ShiePillButton.vue";
 import TaskEditor from "~/components/editor/TaskEditor.vue";
-import PlayerMain from "~/components/player/PlayerMain.vue";
 </script>
 
 <template>
@@ -35,7 +34,6 @@ import PlayerMain from "~/components/player/PlayerMain.vue";
         </div>
       </div>
       <div class="flex gap-6 justify-between max-w-[57.5625rem] mx-auto">
-        <PlayerMain />
         <section class="max-w-[24.3125rem] w-full">
           <TaskEditor />
         </section>

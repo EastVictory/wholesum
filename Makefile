@@ -1,2 +1,2 @@
-shie:
-	yarn run dev
+wholesum:
+	pnpm dev

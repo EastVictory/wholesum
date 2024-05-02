@@ -95,7 +95,9 @@ const startBreak = () => {
 };
 
 onMounted(() => {
-  startPlayer();
+  if (durationInSeconds.value > 0) {
+    startPlayer();
+  }
 });
 </script>
 

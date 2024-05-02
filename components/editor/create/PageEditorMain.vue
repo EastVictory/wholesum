@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import Quill from "quill";
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
+import { useEditor, EditorContent } from "@tiptap/vue-3";
+import StarterKit from "@tiptap/starter-kit";
+import Image from "@tiptap/extension-image";
 
 const fontSize = ref(12);
-const quillEditor = ref();
-const quillEditorToolbar = ref();
 
-onMounted(() => {
-  quillEditor.value = new Quill(quillEditor.value, {
-    modules: {
-      toolbar: quillEditorToolbar.value,
-    },
-    theme: "snow",
-    placeholder: "Let’s rock and roll...",
-  });
+const editor = useEditor({
+  content: "<p>Let’s rock and roll...</p>",
+  extensions: [StarterKit, Image],
 });
+
+const addImage = () => {
+  const url = window.prompt("URL");
+
+  if (url) {
+    editor.value?.chain().focus().setImage({ src: url }).run();
+  }
+};
 </script>
 
 <template>
@@ -47,6 +48,7 @@ onMounted(() => {
         <div class="flex gap-12 items-center">
           <button
             class="!h-10 !w-10 !p-2 !border-solid !border-2 !border-dark-puce rounded"
+            @click="editor?.chain().focus().setParagraph().run()"
           >
             <nuxt-icon name="toolbar-text" filled class="h-4 w-4" />
           </button>
@@ -57,7 +59,7 @@ onMounted(() => {
           </button>
           <button
             class="!h-10 !w-10 !p-2 !border-solid !border-2 !border-dark-puce rounded ql-list"
-            value="bullet"
+            @click="editor?.chain().focus().toggleBulletList().run()"
           >
             <nuxt-icon name="toolbar-radio" filled class="h-4 w-4" />
           </button>
@@ -107,17 +109,20 @@ onMounted(() => {
         </div>
       </section>
     </div>
-    <section id="editor" ref="quillEditor"></section>
+    <section class="editor-wrapper">
+      <editor-content :editor="editor" />
+    </section>
   </section>
 </template>
 
 <style scoped lang="scss">
-.wholesum-page-editor {
-  .ql-toolbar.ql-snow {
-    @apply border-t-0 border-l-0 border-r-0 border-b border-[#CCCCCC];
+.editor-wrapper {
+  @apply border-none flex-1 h-full max-w-[50rem] mx-auto w-full pt-6 flex;
+  & > div {
+    @apply flex-1 h-full;
   }
-  .ql-container.ql-snow {
-    @apply border-none flex-1 h-full max-w-[50rem] mx-auto w-full pt-6;
+  *:focus-visible {
+    @apply border-0 outline-0;
   }
 }
 </style>

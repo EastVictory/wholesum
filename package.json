@@ -6,11 +6,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "lint": "yarn lint:js && yarn lint:prettier",
+    "lint": "pnpm lint:js && yarn lint:prettier",
     "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint:fix": "prettier --write --list-different . && yarn lint:js --fix"
+    "lint:fix": "prettier --write --list-different . && pnpm lint:js --fix"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.1.5",
@@ -33,6 +32,10 @@
     "@pinia/nuxt": "^0.5.1",
     "@popperjs/core": "^2.11.8",
     "@tailwindcss/typography": "^0.5.9",
+    "@tiptap/extension-image": "^2.3.1",
+    "@tiptap/pm": "^2.3.1",
+    "@tiptap/starter-kit": "^2.3.1",
+    "@tiptap/vue-3": "^2.3.1",
     "@vueuse/core": "^10.8.0",
     "apexcharts": "^3.46.0",
     "luxon": "^3.4.4",
@@ -45,7 +48,6 @@
     "v-calendar": "^3.1.2",
     "vue3-apexcharts": "^1.5.2",
     "vue3-dropzone": "^2.1.2",
-    "vue3-lottie": "^3.2.0",
     "vue3-otp-input": "^0.4.1",
     "zod": "^3.22.4"
   },
