@@ -95,24 +95,25 @@ const startBreak = () => {
 };
 
 onMounted(() => {
-  startPlayer();
+  if (durationInSeconds.value > 0) {
+    startPlayer();
+  }
 });
 </script>
 
 <template>
-  <section class="flex flex-1 w-full justify-evenly">
+  <section class="flex flex-1 w-full">
     <div>
       <p class="text-licorice text-[1.5625rem] font-mono">
         <span v-if="isPlaying || sessionActive">
-          {{ countdown.mins }} minutes : {{ countdown.seconds }} seconds left
+          {{ countdown.mins }} Mins : {{ countdown.seconds }} Secs
         </span>
         <span v-else-if="!sessionActive">
-          {{ breaksCountdown.mins }} minutes :
-          {{ breaksCountdown.seconds }} seconds left
+          {{ breaksCountdown.mins }} Mins : {{ breaksCountdown.seconds }} Secs
         </span>
       </p>
     </div>
-    <div class="flex gap-4">
+    <div class="flex gap-8 w-full flex-1 justify-center">
       <button v-if="isPlaying" class="p-3" @click="pausePlayer">
         <nuxt-icon name="pause" class="h-3 w-3" filled />
       </button>
@@ -130,6 +131,12 @@ onMounted(() => {
       </button>
       <button>
         <nuxt-icon name="audio" class="h-3 w-3" filled />
+      </button>
+      <button
+        class="bg-[#2E52B2] px-3 py-4 rounded-lg text-white font-mono text-xs whitespace-nowrap"
+        @click="startBreak"
+      >
+        END POMO SESSION
       </button>
     </div>
   </section>

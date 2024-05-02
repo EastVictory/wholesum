@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import ShieButton from "~/components/buttons/ShieButton.vue";
-import PlayerMainSession from "~/components/player/PlayerMainSession.vue";
 import PlayerMainBreak from "~/components/player/PlayerMainBreak.vue";
 const playerSession: any = ref(null);
 
@@ -105,14 +104,7 @@ const handlePlayerComplete = () => {
 
 <template>
   <section class="w-full flex-1">
-    <PlayerMainSession
-      v-if="sessionActive"
-      ref="playerSession"
-      :countdown="countdown"
-      :speed="speed"
-      @on-complete="handlePlayerComplete"
-    />
-    <PlayerMainBreak v-else :countdown="breaksCountdown" />
+    <PlayerMainBreak  :countdown="breaksCountdown" />
 
     <div class="px-6 flex gap-[1.5rem] justify-center">
       <ShieButton
