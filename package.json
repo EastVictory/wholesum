@@ -28,7 +28,6 @@
     "prettier": "^2.8.8"
   },
   "dependencies": {
-    "@lottiefiles/vue-lottie-player": "^1.1.0",
     "@pinia/nuxt": "^0.5.1",
     "@popperjs/core": "^2.11.8",
     "@tailwindcss/typography": "^0.5.9",
