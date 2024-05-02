@@ -104,7 +104,7 @@ const handlePlayerComplete = () => {
 
 <template>
   <section class="w-full flex-1">
-    <PlayerMainBreak  :countdown="breaksCountdown" />
+    <PlayerMainBreak :countdown="breaksCountdown" />
 
     <div class="px-6 flex gap-[1.5rem] justify-center">
       <ShieButton
