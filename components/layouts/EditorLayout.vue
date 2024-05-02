@@ -14,7 +14,7 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
       </Head>
     </slot>
 
-    <header class="dashboard-header">
+    <header class="editor-header">
       <AppNav>
         <template #left-content>
           <div class="flex items-center gap-4">
@@ -28,9 +28,13 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
             <p class="font-title text-2xl h-4 text-licorice">
               {{ configuration.title }}
             </p>
-            <span class="px-4 bg-white uppercase">{{
-              configuration.category
-            }}</span>
+            <span
+              class="px-5 bg-white uppercase rounded-full py-1 h-6 inline-flex items-center justify-center"
+            >
+              <span class="font-title h-3 text-xs inline-block mt-1">
+                {{ configuration.category }}
+              </span>
+            </span>
           </div>
         </template>
       </AppNav>
@@ -41,8 +45,11 @@ withDefaults(defineProps<{ title: string | null }>(), { title: null });
   </div>
 </template>
 
-<style scoped lang="scss">
-.dashboard-header {
+<style lang="scss">
+.editor-header {
   @apply sticky top-0 z-10;
+  .navbar__wrapper {
+    @apply pt-[1.875rem] pb-[2.5625rem];
+  }
 }
 </style>

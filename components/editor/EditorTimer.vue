@@ -114,14 +114,30 @@ onMounted(() => {
       </p>
     </div>
     <div class="flex gap-8 w-full flex-1 justify-center">
-      <button v-if="isPlaying" class="p-3" @click="pausePlayer">
-        <nuxt-icon name="pause" class="h-3 w-3" filled />
+      <button
+        v-if="isPlaying"
+        class="h-[2.5rem] w-[2.5rem]"
+        @click="pausePlayer"
+      >
+        <nuxt-icon
+          name="pause"
+          class="h-[0.875rem] w-[0.875rem] inline-block"
+          filled
+        />
       </button>
-      <button v-else class="p-3" @click="startPlayer">
-        <nuxt-icon name="start" class="h-3 w-3" filled />
+      <button v-else class="h-[2.5rem] w-[2.5rem]" @click="startPlayer">
+        <nuxt-icon
+          name="start"
+          class="h-[0.875rem] w-[0.875rem] inline-block"
+          filled
+        />
       </button>
-      <button class="p-3" @click="stopPlayer">
-        <nuxt-icon name="stop" class="h-3 w-3" filled />
+      <button class="h-[2.5rem] w-[2.5rem]" @click="stopPlayer">
+        <nuxt-icon
+          name="stop-3"
+          class="h-[0.875rem] w-[0.875rem] inline-block"
+          filled
+        />
       </button>
       <button
         class="bg-conditioner px-5 py-4 rounded-lg text-licorice font-mono text-xs whitespace-nowrap"
@@ -129,8 +145,12 @@ onMounted(() => {
       >
         START BREAK
       </button>
-      <button>
-        <nuxt-icon name="audio" class="h-3 w-3" filled />
+      <button class="">
+        <nuxt-icon
+          name="audio"
+          class="h-[2.5rem] w-[2.5rem] inline-block"
+          filled
+        />
       </button>
       <button
         class="bg-[#2E52B2] px-3 py-4 rounded-lg text-white font-mono text-xs whitespace-nowrap"

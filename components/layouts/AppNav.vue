@@ -31,9 +31,7 @@ const createNote = () => {
 
 <template>
   <div class="navbar">
-    <div
-      class="pt-[1.12rem] pb-[1.25rem] max-w-[90rem] mx-auto flex items-center gap-[4.62rem] w-full lg:px-0 justify-between bg-aero-blue px-12"
-    >
+    <div class="navbar__wrapper">
       <slot name="left-content">
         <nuxt-link to="/" class="text-black">
           <nuxt-icon
@@ -88,6 +86,9 @@ const createNote = () => {
 .navbar > div {
   @apply bg-[url('/images/svg/border-dashes-horizontal.svg')] bg-no-repeat bg-left-bottom  bg-contain;
   background-size: 100%;
+}
+.navbar__wrapper {
+  @apply pt-[1.12rem] pb-[1.25rem] max-w-[90rem] mx-auto flex items-center gap-[4.62rem] w-full lg:px-0 justify-between bg-aero-blue px-12;
 }
 .router-link-exact-active {
   @apply text-licorice;
