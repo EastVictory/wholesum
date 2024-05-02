@@ -31,7 +31,7 @@ const createNote = () => {
 </script>
 
 <template>
-  <form class="px-[4.75rem]" @submit.prevent="createNote">
+  <form class="px-[4.75rem] lg:sticky top-[8rem]" @submit.prevent="createNote">
     <div class="mb-12">
       <input
         v-model="config.title"
