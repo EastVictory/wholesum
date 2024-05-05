@@ -14,10 +14,6 @@ import Link from "@tiptap/extension-link";
 const editor = ref();
 const fontSize = ref(12);
 
-const CustomTaskItem = TaskItem.extend({
-  content: "inline*",
-});
-
 const CustomTableCell = TableCell.extend({
   addAttributes() {
     return {
@@ -98,6 +94,11 @@ const setLink = () => {
     .extendMarkRange("link")
     .setLink({ href: url })
     .run();
+
+  const jso = editor.value?.getJSON();
+  const htm = editor.value?.getHTML();
+  const hte = editor.value?.getText();
+  console.log(jso, htm, hte);
 };
 </script>
 
@@ -142,7 +143,7 @@ const setLink = () => {
           >
             <nuxt-icon name="toolbar-radio" filled class="h-4 w-4" />
           </button>
-          <button class="editor-option">
+          <button class="editor-option" @click="addImage">
             <nuxt-icon name="toolbar-image" filled class="h-4 w-4" />
           </button>
           <button class="editor-option" @click="setLink">
@@ -162,9 +163,9 @@ const setLink = () => {
             <nuxt-icon name="toolbar-table" filled class="h-4 w-4" />
           </button>
           <button
+            v-else
             class="editor-option"
             @click="editor?.chain().focus().deleteTable().run()"
-            v-else
           >
             X
           </button>
@@ -190,16 +191,16 @@ const setLink = () => {
             </button>
           </div>
 
-          <button class="p-3">
+          <button class="p-3" @click="editor.chain().focus().undo().run()">
             <nuxt-icon name="undo" filled />
           </button>
-          <button class="p-3">
+          <button class="p-3" @click="editor.chain().focus().redo().run()">
             <nuxt-icon name="redo" filled />
           </button>
         </div>
       </section>
     </div>
-    <section class="editor-wrapper prose prose-p:m-0" v-if="editor">
+    <section v-if="editor" class="editor-wrapper prose prose-p:m-0">
       <editor-content :editor="editor" />
     </section>
   </section>
@@ -290,7 +291,6 @@ const setLink = () => {
   }
 
   .resize-cursor {
-    cursor: ew-resize;
     cursor: col-resize;
   }
   ul[data-type="taskList"] {
