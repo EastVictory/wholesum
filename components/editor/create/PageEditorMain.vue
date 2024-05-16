@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { Editor, EditorContent } from "@tiptap/vue-3";
-import Table from "@tiptap/extension-table";
-import TableCell from "@tiptap/extension-table-cell";
-import TableHeader from "@tiptap/extension-table-header";
-import TableRow from "@tiptap/extension-table-row";
-import StarterKit from "@tiptap/starter-kit";
-import TaskItem from "@tiptap/extension-task-item";
-import TaskList from "@tiptap/extension-task-list";
-import Image from "@tiptap/extension-image";
-import Placeholder from "@tiptap/extension-placeholder";
-import Link from "@tiptap/extension-link";
+import TTable from "@tiptap/extension-table";
+import TTableCell from "@tiptap/extension-table-cell";
+import TTableHeader from "@tiptap/extension-table-header";
+import TTableRow from "@tiptap/extension-table-row";
+import TStarterKit from "@tiptap/starter-kit";
+import TTaskItem from "@tiptap/extension-task-item";
+import TTaskList from "@tiptap/extension-task-list";
+import TImage from "@tiptap/extension-image";
+import TPlaceholder from "@tiptap/extension-placeholder";
+import TLink from "@tiptap/extension-link";
 
 const editor = ref();
 const fontSize = ref(12);
 
-const CustomTableCell = TableCell.extend({
+const CustomTableCell = TTableCell.extend({
   addAttributes() {
     return {
       // extend the existing attributes …
@@ -39,24 +39,24 @@ onMounted(() => {
   editor.value = new Editor({
     content: "",
     extensions: [
-      StarterKit,
-      TaskList,
-      TaskItem.configure({
+      TStarterKit,
+      TTaskList,
+      TTaskItem.configure({
         nested: true,
       }),
-      Image.configure({
+      TImage.configure({
         allowBase64: true,
       }),
-      Table.configure({
+      TTable.configure({
         resizable: true,
       }),
-      TableRow,
-      TableHeader,
+      TTableRow,
+      TTableHeader,
       CustomTableCell,
-      Placeholder.configure({
+      TPlaceholder.configure({
         placeholder: "Let’s rock and roll..",
       }),
-      Link.configure({
+      TLink.configure({
         openOnClick: false,
       }),
     ],
@@ -94,11 +94,6 @@ const setLink = () => {
     .extendMarkRange("link")
     .setLink({ href: url })
     .run();
-
-  const jso = editor.value?.getJSON();
-  const htm = editor.value?.getHTML();
-  const hte = editor.value?.getText();
-  console.log(jso, htm, hte);
 };
 </script>
 
@@ -133,12 +128,14 @@ const setLink = () => {
           </button>
           <button
             class="editor-option"
+            :class="{ active: editor?.isActive('taskList') }"
             @click="editor?.chain().focus().toggleTaskList().run()"
           >
             <nuxt-icon name="toolbar-checkbox" filled class="h-4 w-4" />
           </button>
           <button
             class="editor-option"
+            :class="{ active: editor?.isActive('bulletList') }"
             @click="editor?.chain().focus().toggleBulletList().run()"
           >
             <nuxt-icon name="toolbar-radio" filled class="h-4 w-4" />
@@ -164,10 +161,10 @@ const setLink = () => {
           </button>
           <button
             v-else
-            class="editor-option"
+            class="editor-option active"
             @click="editor?.chain().focus().deleteTable().run()"
           >
-            X
+            <nuxt-icon name="toolbar-table" filled class="h-4 w-4" />
           </button>
         </div>
         <div class="flex items-center gap-6">
@@ -191,10 +188,18 @@ const setLink = () => {
             </button>
           </div>
 
-          <button class="p-3" @click="editor.chain().focus().undo().run()">
+          <button
+            class="p-3 disabled:opacity-60"
+            :disabled="!editor?.can()?.chain().focus().undo().run()"
+            @click="editor.chain().focus().undo().run()"
+          >
             <nuxt-icon name="undo" filled />
           </button>
-          <button class="p-3" @click="editor.chain().focus().redo().run()">
+          <button
+            class="p-3 disabled:opacity-60"
+            :disabled="!editor?.can()?.chain().focus().redo().run()"
+            @click="editor.chain().focus().redo().run()"
+          >
             <nuxt-icon name="redo" filled />
           </button>
         </div>
@@ -211,6 +216,9 @@ const setLink = () => {
   @apply flex gap-12 items-center;
   .editor-option {
     @apply h-10 w-10 p-2 border-solid border-2 border-dark-puce rounded;
+    &.active {
+      @apply bg-[#CCCCCC] border-none;
+    }
   }
 }
 .editor-wrapper {
