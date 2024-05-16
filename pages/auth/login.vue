@@ -14,7 +14,7 @@ const togglePassword = () => {
   }
 };
 const processSubmit = () => {
-  navigateTo("/library");
+  navigateTo("/editor");
 };
 
 const fullyFilled = computed(() => {

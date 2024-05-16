@@ -22,7 +22,7 @@ const fullyFilled = computed(() => {
 });
 
 const processSubmit = () => {
-  navigateTo("/");
+  navigateTo("/editor");
 };
 </script>
 
