@@ -28,8 +28,10 @@ const attrs = ref([
       <client-only>
         <VCalendar
           v-model="date"
+          :first-day-of-week="7"
           borderless
           transparent
+          :locale="{ masks: { weekdays: 'WWW' } }"
           :attributes="attrs"
           class="daily-calendar__calendar"
         />
@@ -52,6 +54,16 @@ const attrs = ref([
   .vc-pane-container {
     background: transparent;
     border: none;
+  }
+  .vc-header,
+  .vc-pane-header-wrapper {
+    @apply hidden;
+  }
+  .vc-weekdays {
+    @apply mb-[1.875rem];
+  }
+  .vc-weekday {
+    @apply font-medium text-licorice text-[1.25rem] leading-normal;
   }
 }
 </style>
