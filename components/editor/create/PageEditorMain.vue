@@ -205,7 +205,10 @@ const setLink = () => {
         </div>
       </section>
     </div>
-    <section v-if="editor" class="editor-wrapper prose prose-p:m-0">
+    <section
+      v-if="editor"
+      class="editor-wrapper prose prose-p:m-0 font-garamond"
+    >
       <editor-content :editor="editor" />
     </section>
   </section>
