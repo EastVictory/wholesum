@@ -1,0 +1,68 @@
+<script setup lang="ts">
+import FeatureCircle from "~/components/landing/FeatureCircle.vue";
+import { useCarousel } from "assets/composables/useCarousel";
+const { handleCustomCarousel } = useCarousel();
+const features = [
+  {
+    title: "Insights",
+    text: "Mark your progress with intuitive goal-setting and insightful charts.",
+    color: "#76D7EA",
+  },
+  {
+    title: "Pomodoro Power",
+    text: "Work at a natural pace and enhance your focus and deep work.",
+    color: "#6693FA",
+  },
+  {
+    title: "To Do Manager",
+    text: "Schedule your tasks effortlessly with timely reminders.",
+    color: "#76D7AE",
+  },
+  {
+    title: "Notetaking",
+    text: "Capture thoughts and record memos effortlessly, while learning, collaborating, or connecting with loved ones.",
+    color: "#DCC2EE",
+  },
+];
+onMounted(() => {
+  handleCustomCarousel("#features-slider");
+});
+</script>
+
+<template>
+  <div class="w-full border-b-2 border-black relative overflow-hidden">
+    <section class="relative md:max-w-[74.4375rem] mx-auto overflow-hidden">
+      <button class="slider-controls slider-controls__prev">
+        <nuxt-icon name="chevron-left" class="w-6 h-6 no-fill" />
+      </button>
+      <section id="features-slider" class="features-slider --scrollbar-hidden">
+        <FeatureCircle
+          v-for="feature in features"
+          :key="feature.title"
+          :feature="feature"
+          class="slider-item"
+        />
+      </section>
+      <button class="slider-controls slider-controls__next">
+        <nuxt-icon name="chevron-right" class="w-6 h-6 no-fill" />
+      </button>
+    </section>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.slider-controls {
+  @apply hidden md:inline-flex absolute w-[4.625rem] h-[4.625rem] bg-licorice z-[2] top-[1rem] rounded-full justify-center items-center text-white;
+  @apply transition-all;
+  &__next {
+    @apply right-0;
+  }
+  &.disabled {
+    @apply border-licorice/20 text-licorice/20 border-2 bg-transparent;
+  }
+}
+.features-slider {
+  @apply w-full max-w-[74.4375rem] overflow-x-auto items-center justify-start flex gap-x-[3.125rem] mx-auto relative scroll-smooth px-12;
+  @apply flex-col md:flex-row;
+}
+</style>
