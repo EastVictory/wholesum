@@ -62,7 +62,7 @@ const getUserLocation = () => {
       weather.value = data as WeatherData;
     },
     (error) => {
-      console.log(error.message);
+      console.error(error.message);
     }
   );
 };
@@ -73,26 +73,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="weather__report">
-    <p class="mb-6 text-2xl text-licorice font-mono">WEATHER TODAY</p>
-    <div v-if="weather" class="text-licorice pl-[2.1875rem] font-mono">
-      <p class="mb-6 text-2xl">{{ date }}</p>
-      <p class="mb-6">
-        {{ weather?.location?.name }}, {{ weather?.location?.region }} as of
-        {{
-          DateTime.fromSeconds(weather?.location?.localtime_epoch).toFormat(
-            "ttt"
-          )
-        }}
-      </p>
-      <p class="mb-6">
-        {{ weather?.current?.temp_c }}° •
-        {{ weather?.current?.condition?.text }}
+  <div class="max-w-[13.1875rem] font-mono text-licorice">
+    <div v-if="weather">
+      <p class="mb-2 text-lg">{{ date }}</p>
+      <p class="mb-1 text-sm font-light">
+        It is about {{ weather?.current?.temp_c }}° near
+        {{ weather?.location?.name }},
+        {{ weather?.location?.region }}
       </p>
     </div>
-    <div v-else>
-      <p>Please allow user location</p>
-    </div>
+    <p v-else>Please allow user location</p>
+
+    <button class="text-xs">Change location</button>
   </div>
 </template>
 

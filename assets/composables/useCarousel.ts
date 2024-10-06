@@ -1,18 +1,16 @@
 export function useCarousel() {
   const handleCustomCarousel = (carouselId: string) => {
-    const carouselPrevBtn = document.querySelector(".carousel-prev-btn");
-    const carouselNextBtn = document.querySelector(".carousel-next-btn");
+    const carouselPrevBtn = document.querySelector(".slider-controls__prev");
+    const carouselNextBtn = document.querySelector(".slider-controls__next");
     const carousel = document.querySelector(carouselId);
-    const carouselItems = carousel.querySelectorAll(".carousel-item");
-    const carouselItem = (carouselItems.length && carouselItems[0]) || null;
-    const firstItem = carousel.querySelector(".carousel-item:first-of-type");
-    const lastItem = carousel.querySelector(".carousel-item:last-of-type");
+    const carouselItems = carousel?.querySelectorAll(".feature-circle");
+    const carouselItem = (carouselItems?.length && carouselItems[0]) || null;
+    const firstItem = carouselItem;
+    const lastItem = carouselItems[carouselItems.length - 1];
     const scrollWidth =
       (carouselItem && (carouselItem as HTMLElement).offsetWidth) || 360;
-
     const disableIntersectionHandling = false;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const intersectionObserver = (entry, button) =>
+    const intersectionObserver = (_entry, button: HTMLElement | null) =>
       new IntersectionObserver(
         (entry) =>
           handleIntersection(entry, button, disableIntersectionHandling),
@@ -23,10 +21,12 @@ export function useCarousel() {
         }
       );
 
-    carouselPrevBtn.addEventListener("click", () => {
+    carouselPrevBtn?.addEventListener("click", () => {
+      if (!carousel) return;
       carousel.scrollLeft -= scrollWidth;
     });
-    carouselNextBtn.addEventListener("click", () => {
+    carouselNextBtn?.addEventListener("click", () => {
+      if (!carousel) return;
       carousel.scrollLeft += scrollWidth;
     });
 
