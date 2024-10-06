@@ -52,7 +52,7 @@ type WeatherData = {
 
 const weather = ref<WeatherData | null>(null);
 const getUserLocation = () => {
-  const key = `4fb9229cc7d44583805144215241103`;
+  const key = useRuntimeConfig().public.weatherKey;
   navigator.geolocation.getCurrentPosition(
     async (position) => {
       const { latitude, longitude } = position.coords;

@@ -84,6 +84,11 @@ export default defineNuxtConfig({
     "@samk-dev/nuxt-vcalendar",
   ],
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      weatherKey: "",
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
