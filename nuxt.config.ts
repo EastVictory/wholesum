@@ -12,7 +12,9 @@ export default defineNuxtConfig({
         {
           hid: "description",
           name: "description",
-          content: process.env.npm_package_description || "Shie",
+          content:
+            process.env.npm_package_description ||
+            "Turn your to do list into a fun space for your ideas, where getting things done feels like play.",
         },
         {
           hid: "og:site_name",
@@ -24,7 +26,7 @@ export default defineNuxtConfig({
           name: "apple-mobile-web-app-title",
           content: "Shie",
         },
-        { hid: "og:title", name: "og:title", content: "Shie" },
+        { hid: "og:title", name: "og:title", content: "Wholesum" },
         { name: "msapplication-TileColor", content: "#D55816" },
         {
           name: "msapplication-TileImage",

@@ -1,5 +1,6 @@
 {
-  "name": "nuxt-app",
+  "name": "wholesum",
+  "description": "Turn your to do list into a fun space for your ideas, where getting things done feels like play.",
   "private": true,
   "scripts": {
     "build": "nuxt build",

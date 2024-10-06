@@ -2,6 +2,19 @@
 import FeatureSlider from "~/components/landing/FeatureSlider.vue";
 import LandingBanner from "~/components/landing/LandingBanner.vue";
 import WeatherReport from "~/components/landing/WeatherReport.vue";
+useHead({
+  title: "Wholesum",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Turn your to do list into a fun space for your ideas, where getting things done feels like play.",
+    },
+  ],
+});
+useSeoMeta({
+  title: "Wholesum",
+});
 </script>
 
 <template>
