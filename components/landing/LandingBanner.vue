@@ -41,7 +41,10 @@ const readyForLaunch = ref(false);
         Get it on Google Play
       </a>
     </div>
-    <div v-else class="flex justify-end items-center gap-2">
+    <div
+      v-else
+      class="flex flex-col lg:flex-row justify-end items-center gap-2"
+    >
       <p
         class="bg-white rounded-lg px-2.5 py-3 inline-flex items-center gap-4 text-licorice font-semibold max-w-[20.875rem] w-full justify-between"
       >
