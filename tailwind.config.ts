@@ -22,6 +22,7 @@ export default <Partial<Config>>{
       alt: ["Cormorant SC", "system-ui", "sans-serif"],
       garamond: ["Cormorant Garamond", "system-ui", "sans-serif"],
       jetbrains: ["JetBrains Mono", "system-ui", "sans-serif"],
+      sf: ["SF Pro Display", "system-ui", "sans-serif"],
     },
     extend: {
       fontSize: {

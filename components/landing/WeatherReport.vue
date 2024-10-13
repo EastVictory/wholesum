@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { DateTime } from "luxon";
+
+withDefaults(defineProps<{ hideDate?: boolean }>(), {
+  hideDate: false,
+});
 const date = DateTime.now().toFormat("DDD");
 
 type Location = {
@@ -75,7 +79,7 @@ onMounted(() => {
 <template>
   <div class="max-w-[13.1875rem] font-mono text-licorice">
     <div v-if="weather">
-      <p class="mb-2 text-lg">{{ date }}</p>
+      <p class="mb-2 text-lg" :class="{ 'lg:hidden': hideDate }">{{ date }}</p>
       <p class="mb-1 text-sm font-light">
         It is about {{ weather?.current?.temp_c }}° near
         {{ weather?.location?.name }},

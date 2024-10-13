@@ -1,4 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useModal, useModalSlot } from "vue-final-modal";
+import ContactUsModalComponent from "~/components/landing/ContactUsModalComponent.vue";
+import AppModal from "~/components/ui/AppModal.vue";
+const { close, open } = useModal({
+  component: AppModal,
+  attrs: {
+    title: "Hello World!",
+    onClose() {
+      close();
+    },
+  },
+  slots: {
+    default: useModalSlot({
+      component: ContactUsModalComponent,
+    }),
+  },
+});
+</script>
 
 <template>
   <footer
@@ -8,16 +26,18 @@
       Made at Orne Media ABN 16423488320
     </p>
     <ul
-      class="flex flex-col md:flex-row items-start md:items-center justify-start lg:justify-around list-disc gap-8"
+      class="flex flex-col md:flex-row items-start md:items-center justify-start lg:justify-around md:list-disc gap-8"
     >
       <li>
-        <a href="" class="underline">Why we started Wholesum</a>
+        <nuxt-link to="/why" class="underline">
+          Why we started Wholesum
+        </nuxt-link>
       </li>
-      <li class="hidden lg:block">
-        <a href="" class="underline">Join the Substack conversation</a>
-      </li>
+      <!--      <li class="hidden lg:block">-->
+      <!--        <a href="" class="underline">Join the Substack conversation</a>-->
+      <!--      </li>-->
       <li>
-        <a href="" class="underline">Contact email</a>
+        <button class="underline" @click.prevent="open">Contact email</button>
       </li>
       <li>
         <p class="">© 2024</p>
@@ -26,4 +46,6 @@
   </footer>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+//.route
+</style>
