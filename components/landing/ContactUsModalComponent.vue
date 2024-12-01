@@ -12,7 +12,7 @@ const { copy, copied } = useClipboard({ source: url });
     <div
       class="max-w-[21.25rem] w-full flex justify-center items-center py-4 lg:px-[3.0625rem] bg-[#F3F2ED] rounded-lg mb-4"
     >
-      <p class="px-2 lg:px-6 text-xs font-medium font-mono">{{ url }}</p>
+      <p class="px-2 lg:px-4 text-sm font-medium font-mono">{{ url }}</p>
       <button>
         <svg
           width="24"

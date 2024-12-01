@@ -24,7 +24,7 @@ const date = DateTime.now().toFormat("DDD");
             <nuxt-icon name="story" class="inline-block mx-auto" filled />
           </div>
           <div
-            class="grid grid-cols-1 md:grid-cols-2 font-sf text-licorice text-sm gap-6 px-4 mb-[5.5rem]"
+            class="grid grid-cols-1 md:grid-cols-2 font-sf text-licorice gap-6 px-4 mb-[5.5rem]"
           >
             <section class="flex flex-col gap-4">
               <p>
@@ -80,7 +80,7 @@ const date = DateTime.now().toFormat("DDD");
               </p>
               <div class="flex items-center gap-4">
                 <img
-                  src="/images/png/founder.png"
+                  src="/images/svg/founder.svg"
                   alt="founder"
                   class="rounded-full w-8 h-8"
                 />

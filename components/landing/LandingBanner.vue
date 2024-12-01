@@ -6,7 +6,7 @@ const readyForLaunch = ref(false);
   <section class="max-w-[51.375rem] mx-auto pb-[4.25rem] px-8 lg:px-0">
     <div class="text-licorice mb-6 max-w-[26.1875rem] mx-auto text-center">
       <p
-        class="font-subtitle text-[4rem] font-light leading-[5.16rem] text-center mb-5"
+        class="font-subtitle text-[4rem] font-light leading-[5.16rem] text-center mb-5 mt-[2.0625rem]"
       >
         Made for Play
       </p>
@@ -55,11 +55,12 @@ const readyForLaunch = ref(false);
         />
         <span class="pr-4"> Join the Substack conversation </span>
       </p>
-      <button
-        class="w-[13.375rem] rounded-lg text-white font-semibold bg-[#2E52B2] px-2.5 py-3"
+      <nuxt-link
+        to="/notify"
+        class="w-[13.375rem] rounded-lg text-white font-semibold bg-[#2E52B2] px-2.5 py-3 text-center"
       >
         Notify Me
-      </button>
+      </nuxt-link>
     </div>
   </section>
 </template>

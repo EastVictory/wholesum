@@ -31,7 +31,9 @@ onMounted(() => {
 
 <template>
   <div class="w-full border-b-2 border-black relative overflow-hidden">
-    <section class="relative md:max-w-[74.4375rem] mx-auto overflow-hidden">
+    <section
+      class="relative md:max-w-[74.4375rem] hd:max-w-full mx-auto overflow-hidden"
+    >
       <button class="slider-controls slider-controls__prev">
         <nuxt-icon name="chevron-left" class="w-6 h-6 no-fill" />
       </button>
@@ -52,7 +54,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .slider-controls {
-  @apply hidden md:inline-flex absolute w-[4.625rem] h-[4.625rem] bg-licorice z-[2] top-[1rem] rounded-full justify-center items-center text-white;
+  @apply hidden md:inline-flex hd:hidden absolute w-[4.625rem] h-[4.625rem] bg-licorice z-[2] top-[1rem] rounded-full justify-center items-center text-white;
   @apply transition-all;
   &__next {
     @apply right-0;
@@ -62,7 +64,7 @@ onMounted(() => {
   }
 }
 .features-slider {
-  @apply w-full max-w-[74.4375rem] overflow-x-auto items-center justify-start flex gap-x-[3.125rem] mx-auto relative scroll-smooth px-12;
+  @apply w-full max-w-[74.4375rem] hd:max-w-full overflow-x-auto items-center justify-start hd:justify-center flex gap-x-[3.125rem] mx-auto relative scroll-smooth px-12;
   @apply flex-col md:flex-row;
 }
 </style>
