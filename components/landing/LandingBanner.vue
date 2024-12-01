@@ -45,8 +45,10 @@ const readyForLaunch = ref(false);
       v-else
       class="flex flex-col lg:flex-row justify-end items-center gap-2"
     >
-      <p
+      <a
         class="bg-white rounded-lg px-2.5 py-3 inline-flex items-center gap-4 text-licorice font-semibold max-w-[20.875rem] w-full justify-between"
+        href="https://playmates.substack.com"
+        target="_blank"
       >
         <img
           src="/images/png/badge-orange.png"
@@ -54,7 +56,7 @@ const readyForLaunch = ref(false);
           class="w-[1.375rem] h-[1.375rem]"
         />
         <span class="pr-4"> Join the Substack conversation </span>
-      </p>
+      </a>
       <nuxt-link
         to="/notify"
         class="w-[13.375rem] rounded-lg text-white font-semibold bg-[#2E52B2] px-2.5 py-3 text-center"
