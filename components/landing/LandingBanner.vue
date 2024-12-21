@@ -6,9 +6,9 @@ const readyForLaunch = ref(false);
   <section class="max-w-[51.375rem] mx-auto pb-[4.25rem] px-8 lg:px-0">
     <div class="text-licorice mb-6 max-w-[26.1875rem] mx-auto text-center">
       <p
-        class="font-subtitle text-[4rem] font-light leading-[5.16rem] text-center mb-5 mt-[2.0625rem]"
+        class="font-title text-[4rem] font-light leading-[5.16rem] text-center mb-5 mt-[2.0625rem]"
       >
-        Made for Play
+        just Play
       </p>
       <div>
         <p class="font-inter font-medium text-lg mb-6">

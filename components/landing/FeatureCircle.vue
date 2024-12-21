@@ -27,7 +27,7 @@ withDefaults(
   >
     <div class="text-center">
       <p
-        class="font-subtitle text-licorice font-light text-[2.5rem] leading-[3.1875rem] mb-4"
+        class="font-title text-licorice font-light text-[2rem] leading-[2.5rem] mb-4"
       >
         {{ feature.title }}
       </p>

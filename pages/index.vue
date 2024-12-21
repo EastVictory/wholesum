@@ -25,7 +25,7 @@ useSeoMeta({
           class="max-w-[69.25rem] mx-auto flex justify-between items-center pl-6"
         >
           <nuxt-link to="/" class="inline-flex">
-            <nuxt-icon name="logo-icon" class="h-8" filled />
+            <nuxt-icon name="logo-icon" class="h-8 lg:hidden" filled />
             <nuxt-icon name="logo-text" class="h-8 hidden lg:block" filled />
           </nuxt-link>
           <WeatherReport />

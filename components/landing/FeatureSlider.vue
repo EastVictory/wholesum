@@ -4,23 +4,23 @@ import { useCarousel } from "assets/composables/useCarousel";
 const { handleCustomCarousel } = useCarousel();
 const features = [
   {
-    title: "Insights",
-    text: "Mark your progress with intuitive goal-setting and insightful charts.",
+    title: "make better decisions",
+    text: "Notice your progress with intuitive insightful charts, and set intuitive goals.",
     color: "#76D7EA",
   },
   {
-    title: "Pomodoro Power",
-    text: "Work at a natural pace and enhance your focus and deep work.",
+    title: "focus with pomodoro",
+    text: "Work at a natural pace, focus, and enhance your deep work.",
     color: "#6693FA",
   },
   {
-    title: "To Do Manager",
-    text: "Schedule your tasks effortlessly with timely reminders.",
+    title: "wholesome organizer",
+    text: "Manage your to do, and schedule your tasks with timely reminders.",
     color: "#76D7AE",
   },
   {
-    title: "Notetaking",
-    text: "Capture thoughts and record memos effortlessly, while learning, collaborating, or connecting with loved ones.",
+    title: "reading notes",
+    text: "Capture thoughts, record memos while learning, and growing.",
     color: "#DCC2EE",
   },
 ];
