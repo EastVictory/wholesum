@@ -59,7 +59,7 @@ const readyForLaunch = ref(false);
       </a>
       <nuxt-link
         to="/notify"
-        class="w-[13.375rem] rounded-lg text-white font-semibold bg-[#2E52B2] px-2.5 py-3 text-center"
+        class="w-full lg:!w-[13.375rem] rounded-lg text-white font-semibold bg-[#2E52B2] px-2.5 py-3 text-center"
       >
         Notify Me
       </nuxt-link>
