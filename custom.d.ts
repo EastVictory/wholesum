@@ -5,3 +5,5 @@ declare module "*.svg" {
 }
 
 declare module "vue3-dropzone";
+
+declare module '@mailchimp/ mailchimp_marketing';

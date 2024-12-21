@@ -8,12 +8,12 @@ const readyForLaunch = ref(false);
       <p
         class="font-title text-[4rem] font-light leading-[5.16rem] text-center mb-5 mt-[2.0625rem]"
       >
-        just Play
+        just play
       </p>
       <div>
         <p class="font-inter font-medium text-lg mb-6">
           Turn your to do list into a fun space for your ideas, where getting
-          things done feels like play.
+          things done is rewarding.
         </p>
         <p class="text-licorice/50 text-xs font-medium">
           Available February 2025

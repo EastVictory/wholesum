@@ -6,6 +6,30 @@ const form = ref({
   email: "",
   fullName: "",
 });
+
+// Add a user to the list
+async function addUserToList() {
+  try {
+    await $fetch("/api/mailchimp/subscribe", {
+      method: "POST",
+      body: {
+        email: form.value.email,
+        firstName: form.value.fullName,
+        lastName: form.value.fullName,
+      },
+    });
+    // message.value = response.success
+    //   ? "Successfully subscribed!"
+    //   : "Subscription failed.";
+  } catch (error) {
+    // message.value = "An error occurred. Please try again later.";
+    console.error(error);
+  }
+}
+
+const saveForm = () => {
+  addUserToList();
+};
 </script>
 
 <template>
@@ -38,7 +62,7 @@ const form = ref({
                 Wholesum when it drops!
               </p>
             </div>
-            <form action="" class="notify-form">
+            <form class="notify-form" @submit.prevent="saveForm">
               <div class="notify-form__group mb-4">
                 <label for="fullName">Full name</label>
                 <input
