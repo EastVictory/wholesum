@@ -46,7 +46,7 @@ const readyForLaunch = ref(false);
       class="flex flex-col lg:flex-row justify-end items-center gap-2"
     >
       <a
-        class="bg-white rounded-lg px-2.5 py-3 inline-flex items-center gap-4 text-licorice font-semibold max-w-[20.875rem] w-full justify-between"
+        class="bg-white rounded-lg px-2.5 py-3 inline-flex items-center gap-4 text-licorice font-semibold lg:max-w-[20.875rem] w-full justify-center lg:justify-between"
         href="https://playmates.substack.com"
         target="_blank"
       >

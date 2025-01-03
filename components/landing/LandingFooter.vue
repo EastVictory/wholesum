@@ -5,7 +5,7 @@ import AppModal from "~/components/ui/AppModal.vue";
 const { close, open } = useModal({
   component: AppModal,
   attrs: {
-    title: "Hello World!",
+    title: "How to reach us!",
     onClose() {
       close();
     },

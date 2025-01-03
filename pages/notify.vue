@@ -1,35 +1,65 @@
 <script setup lang="ts">
 import { DateTime } from "luxon";
+import { useModal, useModalSlot } from "vue-final-modal";
 import WeatherReport from "~/components/landing/WeatherReport.vue";
+import AppModal from "~/components/ui/AppModal.vue";
+import MailSuccessModalComponent from "~/components/landing/MailSuccessModalComponent.vue";
 const date = DateTime.now().toFormat("DDD");
 const form = ref({
   email: "",
-  fullName: "",
+  firstName: "",
+  lastName: "",
 });
+
+const isLoading = ref(false);
 
 // Add a user to the list
 async function addUserToList() {
   try {
-    await $fetch("/api/mailchimp/subscribe", {
+    isLoading.value = true;
+    await $fetch("https://mailchimp-mails.vercel.app/mails", {
       method: "POST",
       body: {
         email: form.value.email,
-        firstName: form.value.fullName,
-        lastName: form.value.fullName,
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
       },
     });
     // message.value = response.success
     //   ? "Successfully subscribed!"
     //   : "Subscription failed.";
+    form.value = {
+      email: "",
+      firstName: "",
+      lastName: "",
+    };
+    await open();
   } catch (error) {
     // message.value = "An error occurred. Please try again later.";
     console.error(error);
+  } finally {
+    isLoading.value = false;
   }
 }
 
 const saveForm = () => {
   addUserToList();
 };
+
+const { close, open } = useModal({
+  component: AppModal,
+  attrs: {
+    title: "How to reach us!",
+    onClose() {
+      close();
+    },
+  },
+  slots: {
+    default: useModalSlot({
+      component: MailSuccessModalComponent,
+    }),
+  },
+});
 </script>
 
 <template>
@@ -64,12 +94,22 @@ const saveForm = () => {
             </div>
             <form class="notify-form" @submit.prevent="saveForm">
               <div class="notify-form__group mb-4">
-                <label for="fullName">Full name</label>
+                <label for="firstName">First name</label>
                 <input
-                  id="fullName"
-                  v-model="form.fullName"
+                  id="firstName"
+                  v-model="form.firstName"
                   type="text"
-                  name="fullName"
+                  name="firstName"
+                  placeholder="Click to edit"
+                />
+              </div>
+              <div class="notify-form__group mb-4">
+                <label for="lastName">Last name</label>
+                <input
+                  id="lastName"
+                  v-model="form.lastName"
+                  type="text"
+                  name="lastName"
                   placeholder="Click to edit"
                 />
               </div>
@@ -102,9 +142,11 @@ const saveForm = () => {
               </p>
               <button
                 class="w-full rounded-lg text-white font-semibold bg-[#2E52B2] px-2.5 py-4 text-center disabled:bg-[#00000080]"
-                :disabled="!(form.email && form.fullName)"
+                :disabled="
+                  !(form.email && form.firstName && form.lastName) || isLoading
+                "
               >
-                Submit
+                {{ isLoading ? "Loading..." : "Submit" }}
               </button>
             </form>
           </section>
